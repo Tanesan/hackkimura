@@ -3,6 +3,9 @@ import 'page/top.dart';
 import 'page/select.dart';
 import 'page/barometer.dart';
 import 'page/result.dart';
+import 'page/battle.dart';
+import 'page/training.dart';
+import 'page/grade.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,12 +23,15 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blueGrey[600],
         accentColor: Colors.blueGrey[600],
       ),
-      home: Barometer(),
+      home: Top(),
       routes: <String,WidgetBuilder>{
         '/top': (BuildContext context) => Top(),
         '/select': (BuildContext context) =>Select(),
         '/result': (BuildContext context) => Result(),
         '/barometer': (BuildContext context) => Barometer(),
+        '/battle': (BuildContext context) => Battle(),
+        '/training': (BuildContext context) => Training(),
+        '/grade': (BuildContext context) => Grade(),
       },
     );
   }
