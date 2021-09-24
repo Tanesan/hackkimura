@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'page/top.dart';
 import 'page/select.dart';
-
+import 'page/battle.dart';
+import 'page/training.dart';
+import 'page/grade.dart';
 void main() {
   runApp(MyApp());
 }
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blueGrey[600],
         accentColor: Colors.blueGrey[600],
       ),
-      home: Select(),
+      home: Grade(),
       routes: <String,WidgetBuilder>{
         // '/home': (BuildContext context) => MyHomePage(),
         // '/profile': (BuildContext context) => ProfilePage(),
