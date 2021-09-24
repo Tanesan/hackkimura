@@ -46,7 +46,15 @@ class _BarometerState extends State<Barometer> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: const Text('Environment Sensors'),
+            leading: IconButton(onPressed: () {Navigator.of(context).pop();}, icon: Icon(Icons.arrow_back)),
+            title: Text('トレーニングモード'),
+            // 右側のアイコン一覧
+            actions: <Widget>[
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.more_vert),
+              ),
+            ],
           ),
           body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             (_pressureAvailable)

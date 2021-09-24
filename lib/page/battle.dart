@@ -16,7 +16,7 @@ class _BattleState extends State<Battle> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.arrow_back),
+          leading: IconButton(onPressed: () {Navigator.of(context).pop();}, icon: Icon(Icons.arrow_back)),
           title: Text('バトルモード'),
           // 右側のアイコン一覧
           actions: <Widget>[

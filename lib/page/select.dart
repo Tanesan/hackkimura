@@ -6,6 +6,17 @@ class Select extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {Navigator.of(context).pop();}, icon: Icon(Icons.arrow_back)),
+        title: Text('胸骨圧迫'),
+        // 右側のアイコン一覧
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.more_vert),
+          ),
+        ],
+      ),
       body:   Center(
         child: Column(
           children: [
@@ -44,10 +55,14 @@ class Select extends StatelessWidget {
                       shape: const StadiumBorder(),
                       side: const BorderSide(color: Colors.green),
                     ),
+<<<<<<< HEAD
                     onPressed: () => Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
                           return Battle();
                         })),
+=======
+                    onPressed: () {Navigator.of(context).pushNamed('/battle');},
+>>>>>>> 8043403e3390e7635b28c20d0b24e4e6e06870f6
                   ),
 
                 ),
@@ -66,12 +81,15 @@ class Select extends StatelessWidget {
                       shape: const StadiumBorder(),
                       side: const BorderSide(color: Colors.green),
                     ),
+<<<<<<< HEAD
                     onPressed: () => Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
                           return Battle();
                         })),
+=======
+                    onPressed: () {Navigator.of(context).pushNamed('/');},
+>>>>>>> 8043403e3390e7635b28c20d0b24e4e6e06870f6
                   ),
-
                 ),
               ),
             ),
