@@ -1,7 +1,17 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:hackkimura/page/barometer.dart';
+import 'dart:io';
 
-class Battle extends StatelessWidget {
-  // This widget is the root of your application.
+class Battle extends StatefulWidget {
+  const Battle({Key? key}) : super(key: key);
+
+  @override
+  _BattleState createState() => _BattleState();
+}
+class _BattleState extends State<Battle> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +46,11 @@ class Battle extends StatelessWidget {
                         shape: const StadiumBorder(),
                         side: const BorderSide(color: Colors.green),
                       ),
-                      onPressed: () {Navigator.of(context).pushNamed('/barometer');},
+                      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        sleep(Duration(seconds: 10));
+                        // countDownCounter
+                        return Barometer();
+                      })),
                     ),
                   ),
                 ),
