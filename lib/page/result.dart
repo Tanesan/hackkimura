@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:hackkimura/model/BarometerArgs.dart';
+import 'package:hackkimura/model/APIResult.dart';
 
 class Result extends StatefulWidget {
   @override
@@ -6,24 +9,41 @@ class Result extends StatefulWidget {
 }
 
 class _ResultState extends State<Result> {
-  var _pressures = List<double>.empty();
+  var _args = BarometerArgs();
   var _score;
+  var _result = APIResult();
   bool _calculated = false;
 
   int _calculateScore(List<double> pressures) {
     return 80;
   }
 
+  /*
+  Future<void> _getResult(BarometerArgs args, int score) {
+    final response = await http.post('');
+    if (response.statusCode == 200) {
+      Map<String, dynamic> decoded = json.decode(response.body);
+      _result.average = decoded['average'];
+      _result.rank = decoded['rank'];
+      _result.topFiveUsers = decoded['topFive']['userName'];
+      _result.topFiveScores = decoded['topFive']['score'];
+      return list;
+    } else {
+      throw Exception('Fail to search repository');
+    }
+  }
+   */
+
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
   Widget build(BuildContext context) {
-    _pressures = ModalRoute.of(context)?.settings.arguments as List<double>;
-    _score = _calculateScore(_pressures);
+    _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
+    _score = _calculateScore(_args.pressures);
+//    _getResult(_args, _score);
     _calculated = true;
     return Scaffold(
         appBar: AppBar(
@@ -42,7 +62,7 @@ class _ResultState extends State<Result> {
           ],
         ),
         body: _calculated
-            ? Text(_pressures.join())
+            ? Text(_args.pressures.join())
             : CircularProgressIndicator());
   }
 }

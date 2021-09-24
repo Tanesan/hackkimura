@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:quiver/async.dart';
+import 'package:hackkimura/model/UserData.dart';
+import 'package:hackkimura/model/BarometerArgs.dart';
 
 import 'package:environment_sensors/environment_sensors.dart';
 
@@ -17,6 +19,8 @@ class _BarometerState extends State<Barometer> {
 
   int _start = 10;
   int _current = 10;
+
+  var args = BarometerArgs();
 
   void _startTimer() {
     CountdownTimer countDownTimer = new CountdownTimer(
@@ -54,7 +58,7 @@ class _BarometerState extends State<Barometer> {
     bool pressureAvailable;
 
     pressureAvailable =
-        await environmentSensors.getSensorAvailable(SensorType.Pressure);
+    await environmentSensors.getSensorAvailable(SensorType.Pressure);
 
     setState(() {
       _pressureAvailable = pressureAvailable;
@@ -62,11 +66,16 @@ class _BarometerState extends State<Barometer> {
   }
 
   void _finishMeasurement() {
-    Navigator.of(context).pushNamed("/result", arguments: _pressures);
+    args.pressures = _pressures;
+    Navigator.of(context).pushNamed("/result", arguments: args);
   }
 
   @override
   Widget build(BuildContext context) {
+    args.userData = ModalRoute
+        .of(context)
+        ?.settings
+        .arguments as UserData;
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
@@ -86,39 +95,47 @@ class _BarometerState extends State<Barometer> {
           ),
           body: Center(
               child: _current > 0
-                  ? Text("$_current秒",
-                      style: Theme.of(context).textTheme.headline4)
-                  : Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                          (_pressureAvailable)
-                              ? StreamBuilder<double>(
-                                  stream: environmentSensors.pressure,
-                                  builder: (context, snapshot) {
-                                    if (!snapshot.hasData)
-                                      return CircularProgressIndicator();
-                                    return Text(
-                                        '圧力: ${snapshot.data?.toStringAsFixed(2)}');
-                                  })
-                              : Column(children: [
-                                  Text('気圧センサが利用できません。'),
-                                  Text('気圧センサが利用できる端末をご利用ください。')
-                                ]),
-                          SizedBox(height: 50),
-                          Container(
-                              width: 300.0,
-                              height: 50.0,
-                              child: OutlinedButton(
-                                child: const Text('測定終了'),
-                                style: OutlinedButton.styleFrom(
-                                  primary: Colors.black,
-                                  shape: const StadiumBorder(),
-                                  side: const BorderSide(color: Colors.green),
-                                ),
-                                onPressed: _finishMeasurement,
-                              )),
-                        ]))),
+                  ? Column(children: [Text("測定開始まで",
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .headline4), Text("$_current秒",
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .headline4)
+              ])
+                      : Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    (_pressureAvailable)
+                        ? StreamBuilder<double>(
+                        stream: environmentSensors.pressure,
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData)
+                            return CircularProgressIndicator();
+                          return Text(
+                              '圧力: ${snapshot.data?.toStringAsFixed(2)}');
+                        })
+                        : Column(children: [
+                      Text('気圧センサが利用できません。'),
+                      Text('気圧センサが利用できる端末をご利用ください。')
+                    ]),
+                    SizedBox(height: 50),
+                    Container(
+                        width: 300.0,
+                        height: 50.0,
+                        child: OutlinedButton(
+                          child: const Text('測定終了'),
+                          style: OutlinedButton.styleFrom(
+                            primary: Colors.black,
+                            shape: const StadiumBorder(),
+                            side: const BorderSide(color: Colors.green),
+                          ),
+                          onPressed: _finishMeasurement,
+                        )),
+                  ]))),
     );
   }
 }
