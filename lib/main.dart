@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'page/top.dart';
 import 'page/select.dart';
+import 'page/barometer.dart';
+import 'page/result.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,13 +20,12 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blueGrey[600],
         accentColor: Colors.blueGrey[600],
       ),
-      home: Select(),
+      home: Barometer(),
       routes: <String,WidgetBuilder>{
-        // '/home': (BuildContext context) => MyHomePage(),
-        // '/profile': (BuildContext context) => ProfilePage(),
-        // '/start': (BuildContext context) => StartPage(),
-        // '/bottom': (BuildContext context) => BottomNavgationBarPage(),
-        // '/name': (BuildContext context) => InputName(),
+        '/top': (BuildContext context) => Top(),
+        '/select': (BuildContext context) =>Select(),
+        '/result': (BuildContext context) => Result(),
+        '/barometer': (BuildContext context) => Barometer(),
       },
     );
   }
