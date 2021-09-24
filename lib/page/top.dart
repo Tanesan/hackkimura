@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'select.dart';
 
 class Top extends StatelessWidget {
   // This widget is the root of your application.
@@ -49,7 +50,10 @@ class Top extends StatelessWidget {
                         shape: const StadiumBorder(),
                         side: const BorderSide(color: Colors.green),
                       ),
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                        return Select();
+                      })),
                     ),
                   ),
                 ),
