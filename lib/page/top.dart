@@ -49,7 +49,7 @@ class Top extends StatelessWidget {
                         shape: const StadiumBorder(),
                         side: const BorderSide(color: Colors.green),
                       ),
-                      onPressed: () {},
+                      onPressed: () {Navigator.of(context).pushNamed('/select');},
                     ),
                   ),
                 ),

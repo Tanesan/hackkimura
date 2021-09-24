@@ -6,7 +6,7 @@ class Training extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.arrow_back),
+          leading: IconButton(onPressed: () {Navigator.of(context).pop();}, icon: Icon(Icons.arrow_back)),
           title: Text('トレーニングモード'),
           // 右側のアイコン一覧
           actions: <Widget>[
@@ -36,7 +36,7 @@ class Training extends StatelessWidget {
                         shape: const StadiumBorder(),
                         side: const BorderSide(color: Colors.green),
                       ),
-                      onPressed: () {},
+                      onPressed: () {Navigator.of(context).pushNamed('/barometer');},
                     ),
                   ),
                 ),

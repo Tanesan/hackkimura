@@ -5,6 +5,17 @@ class Select extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {Navigator.of(context).pop();}, icon: Icon(Icons.arrow_back)),
+        title: Text('胸骨圧迫'),
+        // 右側のアイコン一覧
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.more_vert),
+          ),
+        ],
+      ),
       body:   Center(
         child: Column(
           children: [
@@ -21,7 +32,7 @@ class Select extends StatelessWidget {
                       shape: const StadiumBorder(),
                       side: const BorderSide(color: Colors.green),
                     ),
-                    onPressed: () {},
+                    onPressed: () {Navigator.of(context).pushNamed('/training');},
                   ),
 
                 ),
@@ -40,7 +51,7 @@ class Select extends StatelessWidget {
                       shape: const StadiumBorder(),
                       side: const BorderSide(color: Colors.green),
                     ),
-                    onPressed: () {},
+                    onPressed: () {Navigator.of(context).pushNamed('/battle');},
                   ),
 
                 ),
@@ -59,9 +70,8 @@ class Select extends StatelessWidget {
                       shape: const StadiumBorder(),
                       side: const BorderSide(color: Colors.green),
                     ),
-                    onPressed: () {},
+                    onPressed: () {Navigator.of(context).pushNamed('/');},
                   ),
-
                 ),
               ),
             ),
