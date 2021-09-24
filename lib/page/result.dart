@@ -42,7 +42,7 @@ class _ResultState extends State<Result> {
           ],
         ),
         body: _calculated
-            ? Column(children: _pressures.map((pressure) => Text('$pressure, ')).toList())
+            ? Text(_pressures.join())
             : CircularProgressIndicator());
   }
 }

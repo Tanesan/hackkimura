@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hackkimura/model/UserData.dart';
 
 class Select extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var userData = ModalRoute.of(context)?.settings.arguments as UserData;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: () {Navigator.of(context).pop();}, icon: Icon(Icons.arrow_back)),
@@ -32,7 +35,7 @@ class Select extends StatelessWidget {
                       shape: const StadiumBorder(),
                       side: const BorderSide(color: Colors.green),
                     ),
-                    onPressed: () {Navigator.of(context).pushNamed('/training');},
+                    onPressed: () {Navigator.of(context).pushNamed('/training', arguments: userData);},
                   ),
 
                 ),
@@ -51,7 +54,7 @@ class Select extends StatelessWidget {
                       shape: const StadiumBorder(),
                       side: const BorderSide(color: Colors.green),
                     ),
-                    onPressed: () {Navigator.of(context).pushNamed('/battle');},
+                    onPressed: () {Navigator.of(context).pushNamed('/battle', arguments: userData);},
                   ),
 
                 ),
