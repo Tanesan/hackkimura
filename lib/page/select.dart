@@ -8,6 +8,7 @@ class Select extends StatelessWidget {
     var userData = ModalRoute.of(context)?.settings.arguments as UserData;
 
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         leading: IconButton(onPressed: () {Navigator.of(context).pop();}, icon: Icon(Icons.arrow_back)),
         title: Text('胸骨圧迫トレーニング'),
@@ -31,9 +32,9 @@ class Select extends StatelessWidget {
                   width: 300.0,
                   height: 50.0,
                   child: OutlinedButton(
-                    child: const Text('トレーニングモード'),
+                    child: const Text('トレーニングモード', style: TextStyle(fontWeight: FontWeight.bold)),
                     style: OutlinedButton.styleFrom(
-                      primary: Colors.black,
+                      primary: Colors.white,
                       shape: const StadiumBorder(),
                       side: const BorderSide(color: Colors.green),
                     ),
@@ -50,33 +51,15 @@ class Select extends StatelessWidget {
                   width: 300.0,
                   height: 50.0,
                   child: OutlinedButton(
-                    child: const Text('採点モード'),
+                    child: const Text('採点モード', style: TextStyle(fontWeight: FontWeight.bold)),
                     style: OutlinedButton.styleFrom(
-                      primary: Colors.black,
+                      primary: Colors.white,
                       shape: const StadiumBorder(),
                       side: const BorderSide(color: Colors.green),
                     ),
                     onPressed: () {Navigator.of(context).pushNamed('/battle', arguments: userData);},
                   ),
 
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 40),
-              child: Center(
-                child: Container(
-                  width: 300.0,
-                  height: 50.0,
-                  child: OutlinedButton(
-                    child: const Text('マイページ'),
-                    style: OutlinedButton.styleFrom(
-                      primary: Colors.black,
-                      shape: const StadiumBorder(),
-                      side: const BorderSide(color: Colors.green),
-                    ),
-                    onPressed: () {Navigator.of(context).pushNamed('/');},
-                  ),
                 ),
               ),
             ),

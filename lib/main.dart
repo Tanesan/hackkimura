@@ -18,8 +18,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // default
-        // primarySwatch: Colors.cyan,
         backgroundColor: Colors.black,
         primaryColor: Colors.green,
         accentColor: Colors.green,
