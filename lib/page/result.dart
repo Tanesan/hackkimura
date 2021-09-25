@@ -71,7 +71,7 @@ class _ResultState extends State<Result> {
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
           SizedBox(height: 100),
           _calculated
-              ? Text(_args.pressures.join(','))
+              ? SelectableText(_args.pressures.join(','))
               : CircularProgressIndicator(),
           SizedBox(height: 100),
           FutureBuilder<ApiResults>(
