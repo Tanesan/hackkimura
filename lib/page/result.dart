@@ -49,15 +49,15 @@ class _ResultState extends State<Result> {
     _calculated = true;
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: Icon(Icons.arrow_back)),
-          title: Text(_args.mode == "training" ? 'トレーニングモード' : '採点モード'),
-          backgroundColor: Colors.blueGrey[600]
-          // 右側のアイコン一覧
-          /*
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.arrow_back)),
+            title: Text(_args.mode == "training" ? 'トレーニングモード' : '採点モード'),
+            backgroundColor: Colors.blueGrey[600]
+            // 右側のアイコン一覧
+            /*
           actions: <Widget>[
             IconButton(
               onPressed: () {},
@@ -65,13 +65,17 @@ class _ResultState extends State<Result> {
             ),
           ],
            */
-        ),
+            ),
         body: SingleChildScrollView(
             child: Center(
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
           SizedBox(height: 100),
           _calculated
               ? SelectableText(_args.pressures.join(','))
+              : CircularProgressIndicator(),
+          SizedBox(height: 100),
+          _calculated
+              ? SelectableText(_args.time.join(','))
               : CircularProgressIndicator(),
           SizedBox(height: 100),
           FutureBuilder<ApiResults>(

@@ -36,9 +36,10 @@ class _BarometerState extends State<Barometer> {
 
     sub.onDone(() {
       sub.cancel();
-      /* dummy */
       _pressures.add(0.1);
       _pressures.add(0.2);
+      _time.add(DateTime.now());
+      _time.add(DateTime.now());
       environmentSensors.pressure.listen((pressure) {
         print(pressure.toString());
         _pressures.add(pressure);
@@ -68,6 +69,7 @@ class _BarometerState extends State<Barometer> {
 
   void _finishMeasurement() {
     args.pressures = _pressures;
+    args.time = _time;
     Navigator.of(context).pushNamed("/result", arguments: args);
   }
 
