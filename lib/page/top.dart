@@ -12,7 +12,13 @@ class _TopState extends State<Top> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
+        body: Container(
+        decoration: const BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage('images/AED.jpg'),
+    fit: BoxFit.cover,
+    )),
+    child:Padding(
             padding: EdgeInsets.only(top: 150, left: 72, right: 72),
             child: SingleChildScrollView(
               child: Center(
@@ -76,7 +82,7 @@ class _TopState extends State<Top> {
                   ],
                 ),
               ),
-            )),
+            ))),
       backgroundColor: Colors.lightBlue[50]
     );
   }
