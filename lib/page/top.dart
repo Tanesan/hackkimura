@@ -119,7 +119,7 @@ class _TopState extends State<Top> {
                       ),
                       onPressed: () {
                         Navigator.of(context)
-                            .pushNamed('/select', arguments: userData);
+                            .pushNamed('/grade', arguments: userData);
                       },
                     ),
                   ),
