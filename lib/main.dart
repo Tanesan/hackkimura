@@ -20,8 +20,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // default
         // primarySwatch: Colors.cyan,
-        primaryColor: Colors.blueGrey[600],
-        accentColor: Colors.blueGrey[600],
+        backgroundColor: Colors.black,
+        primaryColor: Colors.green,
+        accentColor: Colors.green,
       ),
       home: Top(),
       routes: <String,WidgetBuilder>{

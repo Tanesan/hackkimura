@@ -11,79 +11,122 @@ class _TopState extends State<Top> {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-        body: Container(
-        decoration: const BoxDecoration(
-        image: DecorationImage(
-        image: AssetImage('images/AED.jpg'),
-    fit: BoxFit.cover,
-    )),
-    child:Padding(
-            padding: EdgeInsets.only(top: 150, left: 72, right: 72),
-            child: SingleChildScrollView(
-              child: Center(
-                child: Column(
-                  children: [
-                    Text('胸骨圧迫',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 48, fontWeight: FontWeight.bold, color: Colors.blueGrey[800])),
-                    Text('トレーニング',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 36, fontWeight: FontWeight.bold, color: Colors.blueGrey[800])),
-                    Padding(
-                      padding: EdgeInsets.only(top: 150),
-                      child: Center(
-                        child: TextField(
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'ユーザー名',
+        backgroundColor: Colors.black,
+        body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                  image: AssetImage('images/AED.jpg'),
+                  fit: BoxFit.cover,
+                )),
+                child: Padding(
+                    padding: EdgeInsets.only(top: size.height * 0.4),
+                    child: Center(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(right: size.width * 0.4),
+                              child: Text('胸骨圧迫',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      fontSize: 48,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white)),
                             ),
-                            onChanged: (text) {
-                              userData.name = text;
-                            }),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 16),
-                      child: TextField(
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'パスワード',
-                          ),
-                          onChanged: (text) {
-                            userData.classCode = text;
-                          }),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: Container(
-                          width: 300.0,
-                          height: 50.0,
-                          child: OutlinedButton(
-                            child: const Text('スタート'),
-                            style: OutlinedButton.styleFrom(
-                              primary: Colors.black,
-                              shape: const StadiumBorder(),
-                              side: const BorderSide(color: Colors.green),
-                            ),
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .pushNamed('/select', arguments: userData);
-                            },
-                          ),
+                            Padding(
+                              padding: EdgeInsets.only(right: size.width * 0.1),
+                              child: Text('ペットボトルdeトレーニング',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white)),
+                            )
+                          ],
                         ),
                       ),
-                    ),
-                  ],
+                    )),
+            Column(children: [
+              Padding(
+                padding: EdgeInsets.only(top: size.width * 0.15,right: size.width * 0.1, left:size.width * 0.1),
+                child: Center(
+                  child: TextField(
+                      obscureText: false,
+                      style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      decoration: InputDecoration(
+                        labelStyle: TextStyle(color: Colors.white),
+                        enabledBorder: OutlineInputBorder(
+                          // width: 0.0 produces a thin "hairline" border
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide:
+                              const BorderSide(color: Colors.green, width: 1.0),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: Colors.green,
+                          ),
+                        ),
+                        labelText: 'ユーザー名',
+                      ),
+                      onChanged: (text) {
+                        userData.name = text;
+                      }),
                 ),
               ),
-            ))),
-      backgroundColor: Colors.lightBlue[50]
-    );
+              Padding(
+                  padding: EdgeInsets.only(top: size.width * 0.08, right: size.width * 0.1, left:size.width * 0.1),
+                  child: Center(
+                    child: TextField(
+                        obscureText: false,
+                        style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.white),
+                          enabledBorder: OutlineInputBorder(
+                            // width: 0.0 produces a thin "hairline" border
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide: const BorderSide(
+                                color: Colors.green, width: 1.0),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide: BorderSide(
+                              color: Colors.green,
+                            ),
+                          ),
+                          labelText: 'パスワード',
+                        ),
+                        onChanged: (text) {
+                          userData.classCode = text;
+                        }),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(top: size.width * 0.10),
+                child: Center(
+                  child: Container(
+                    width: 200.0,
+                    height: 50.0,
+                    child: OutlinedButton(
+                      child: const Text('スタート', style: TextStyle(fontWeight: FontWeight.bold)),
+                      style: OutlinedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: const StadiumBorder(),
+                        side: const BorderSide(color: Colors.green),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed('/select', arguments: userData);
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ]),
+          ],
+        )));
   }
 }
