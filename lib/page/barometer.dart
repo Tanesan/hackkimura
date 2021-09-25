@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:quiver/async.dart';
 import 'package:hackkimura/model/BarometerArgs.dart';
-
 import 'package:sensors/sensors.dart';
 
 class Barometer extends StatefulWidget {

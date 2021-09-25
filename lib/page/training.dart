@@ -9,6 +9,7 @@ class Training extends StatelessWidget {
   Widget build(BuildContext context) {
     var userData = ModalRoute.of(context)?.settings.arguments as UserData;
     return Scaffold(
+      backgroundColor: Colors.black,
         appBar: AppBar(
           leading: IconButton(onPressed: () {Navigator.of(context).pop();}, icon: Icon(Icons.arrow_back)),
           title: Text('トレーニングモード'),
@@ -27,20 +28,21 @@ class Training extends StatelessWidget {
           padding: EdgeInsets.all(30),
           child: Column(
             children: [
-              Text("測定開始ボタンを押してから，ジップロックの袋の中にスマホを入れてください。およそ1分間胸骨圧迫をしてから，スマホを取り出して測定ボタンを押してください。音声でガイドするので音量を大きくしてください")
+              Text("測定開始ボタンを押してから，ジップロックの袋の中にスマホを入れてください。およそ1分間胸骨圧迫をしてから，スマホを取り出して測定ボタンを押してください。音声でガイドするので音量を大きくしてください",
+              style: TextStyle(color: Colors.white, fontSize: 20))
             ,
               Center(
                 child: Padding(
-                  padding: EdgeInsets.only(top: 250),
+                  padding: EdgeInsets.only(top: 130),
                   child: Container(
                     width: 300.0,
                     height: 300.0,
                     child: OutlinedButton(
-                      child: const Text('測定開始'),
+                      child: const Text('測定開始', style: TextStyle(color: Colors.white, fontSize: 64)),
                       style: OutlinedButton.styleFrom(
                         primary: Colors.black,
                         shape: const StadiumBorder(),
-                        side: const BorderSide(color: Colors.green),
+                        side: const BorderSide(color: Colors.green, width: 10.0),
                       ),
                       onPressed: () {Navigator.of(context).pushNamed('/barometer', arguments: BarometerArgs(userData: userData, mode: "training"));},
                     ),
