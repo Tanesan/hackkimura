@@ -21,7 +21,11 @@ class _TopState extends State<Top> {
                     Text('胸骨圧迫',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 48, fontWeight: FontWeight.bold)),
+                            fontSize: 48, fontWeight: FontWeight.bold, color: Colors.blueGrey[800])),
+                    Text('トレーニング',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 36, fontWeight: FontWeight.bold, color: Colors.blueGrey[800])),
                     Padding(
                       padding: EdgeInsets.only(top: 150),
                       child: Center(
@@ -72,6 +76,8 @@ class _TopState extends State<Top> {
                   ],
                 ),
               ),
-            )));
+            )),
+      backgroundColor: Colors.lightBlue[50]
+    );
   }
 }

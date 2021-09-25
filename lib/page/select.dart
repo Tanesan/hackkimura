@@ -10,14 +10,16 @@ class Select extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: () {Navigator.of(context).pop();}, icon: Icon(Icons.arrow_back)),
-        title: Text('胸骨圧迫'),
+        title: Text('胸骨圧迫トレーニング'),
         // 右側のアイコン一覧
+        /*
         actions: <Widget>[
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.more_vert),
           ),
         ],
+         */
       ),
       body:   Center(
         child: Column(
@@ -48,7 +50,7 @@ class Select extends StatelessWidget {
                   width: 300.0,
                   height: 50.0,
                   child: OutlinedButton(
-                    child: const Text('バトルモード'),
+                    child: const Text('採点モード'),
                     style: OutlinedButton.styleFrom(
                       primary: Colors.black,
                       shape: const StadiumBorder(),

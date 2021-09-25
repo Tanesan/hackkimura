@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:quiver/async.dart';
-import 'package:hackkimura/model/UserData.dart';
 import 'package:hackkimura/model/BarometerArgs.dart';
 
 import 'package:environment_sensors/environment_sensors.dart';
@@ -74,10 +73,10 @@ class _BarometerState extends State<Barometer> {
 
   @override
   Widget build(BuildContext context) {
-    args.userData = ModalRoute
+    args = ModalRoute
         .of(context)
         ?.settings
-        .arguments as UserData;
+        .arguments as BarometerArgs;
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
@@ -86,14 +85,17 @@ class _BarometerState extends State<Barometer> {
                   Navigator.of(context).pop();
                 },
                 icon: Icon(Icons.arrow_back)),
-            title: Text('トレーニングモード'),
+            title: Text(args.mode == "training" ? 'トレーニングモード' : '採点モード'),
+            backgroundColor: Colors.blueGrey[600]
             // 右側のアイコン一覧
+            /*
             actions: <Widget>[
               IconButton(
                 onPressed: () {},
                 icon: Icon(Icons.more_vert),
               ),
             ],
+             */
           ),
           body: Center(
               child: _current > 0
