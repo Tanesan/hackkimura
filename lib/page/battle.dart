@@ -38,10 +38,10 @@ class _BattleState extends State<Battle> {
                 child: Padding(
                   padding: EdgeInsets.only(top: 250),
                   child: Container(
-                      width: 300.0,
-                      height: 300.0,
+                      // width: 300.0,
+                      // height: 300.0,
                       child: OutlinedButton(
-                        child: const Text('測定開始'),
+                        child: Text('測定開始', style: TextStyle(fontSize: 40)),
                         style: OutlinedButton.styleFrom(
                           primary: Colors.black,
                           shape: const StadiumBorder(),
