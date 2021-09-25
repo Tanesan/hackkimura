@@ -82,10 +82,13 @@ class Grade extends StatelessWidget {
                                         child: Column(
                                           children: [
                                             Container(
-                                              width: 87,
+                                              width: 110,
                                               child: Row(
                                                 children: [
-                                                  Text("136", style: TextStyle(fontSize: 40,fontWeight: FontWeight.w600, color: Colors.white)),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left: 10),
+                                                    child: Text("136", style: TextStyle(fontSize: 40,fontWeight: FontWeight.w600, color: Colors.white)),
+                                                  ),
                                                   Padding(
                                                     padding: const EdgeInsets.only(left: 4.0, top: 13.0),
                                                     child: Text("p", style: TextStyle(fontSize: 16,fontWeight: FontWeight.normal, color: Colors.white)),
