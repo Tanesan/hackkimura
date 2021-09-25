@@ -83,11 +83,14 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (1.2.12)
+  - sensors (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - environment_sensors (from `.symlinks/plugins/environment_sensors/ios`)
   - Firebase/Analytics
   - Flutter (from `Flutter`)
+  - sensors (from `.symlinks/plugins/sensors/ios`)
 
 SPEC REPOS:
   trunk:
@@ -107,6 +110,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/environment_sensors/ios"
   Flutter:
     :path: Flutter
+  sensors:
+    :path: ".symlinks/plugins/sensors/ios"
 
 SPEC CHECKSUMS:
   environment_sensors: 46802526e2f9e5b84722e0327d6391168b7ad74f
@@ -121,6 +126,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 45dbb24a7f351d69d0a601482b39ad6c32e30dab
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  sensors: 84eb7a30e47a649e4172b71d6e81be614c280336
 
 PODFILE CHECKSUM: e560071d8ee9ef0a037cd6a16a901870e810017c
 

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hackkimura/model/UserData.dart';
 
 class Grade extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    var userData = ModalRoute.of(context)?.settings.arguments as UserData;
     return Scaffold(
         backgroundColor: Colors.black,
-        body: Padding(
-          padding: EdgeInsets.only(top: size.height * 0.08 , right: size.width * 0.08,left:size.width * 0.08),
+        body: SingleChildScrollView(
+            child: Padding(padding: EdgeInsets.only(top: size.height * 0.08 , right: size.width * 0.08,left:size.width * 0.08),
           child: Column(
             children: [
               Container(
@@ -105,27 +107,45 @@ class Grade extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: size.width * 0.9),
-                child: Center(
-                  child: Container(
-                    width: 200.0,
-                    height: 50.0,
-                    child: OutlinedButton(
-                      child: const Text('スタート', style: TextStyle(fontWeight: FontWeight.bold)),
-                      style: OutlinedButton.styleFrom(
-                        primary: Colors.white,
-                        shape: const StadiumBorder(),
-                        side: const BorderSide(color: Colors.green),
+                    padding: EdgeInsets.only(top: 250),
+                    child: Center(
+                      child: Container(
+                        width: 300.0,
+                        height: 50.0,
+                        child: OutlinedButton(
+                          child: const Text('トレーニングモード', style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: OutlinedButton.styleFrom(
+                            primary: Colors.white,
+                            shape: const StadiumBorder(),
+                            side: const BorderSide(color: Colors.green),
+                          ),
+                          onPressed: () {Navigator.of(context).pushNamed('/training', arguments: userData);},
+                        ),
+
                       ),
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed('/select');
-                      },
                     ),
                   ),
-                ),
-              ),],
-          ),
-        ));
+              Padding(
+                    padding: EdgeInsets.only(top: 40),
+                    child: Center(
+                      child: Container(
+                        width: 300.0,
+                        height: 50.0,
+                        child: OutlinedButton(
+                          child: const Text('採点モード', style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: OutlinedButton.styleFrom(
+                            primary: Colors.white,
+                            shape: const StadiumBorder(),
+                            side: const BorderSide(color: Colors.green),
+                          ),
+                          onPressed: () {Navigator.of(context).pushNamed('/battle', arguments: userData);},
+                        ),
+
+                      ),
+                    ),
+                  ),
+              ]),
+          ))
+        );
   }
 }
