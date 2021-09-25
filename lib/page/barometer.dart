@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'dart:math';
 import 'package:quiver/async.dart';
 import 'package:hackkimura/model/BarometerArgs.dart';
 
-import 'package:environment_sensors/environment_sensors.dart';
+import 'package:sensors/sensors.dart';
 
 class Barometer extends StatefulWidget {
   @override
@@ -14,7 +14,6 @@ class _BarometerState extends State<Barometer> {
   bool _pressureAvailable = false;
   var _pressures = <double>[];
   var _time = <int>[];
-  final environmentSensors = EnvironmentSensors();
   var _startTime;
 
   int _start = 5;
@@ -42,31 +41,21 @@ class _BarometerState extends State<Barometer> {
       _pressures.add(0.2);
       _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       _time.add(DateTime.now().difference(_startTime).inMilliseconds);
-      environmentSensors.pressure.listen((pressure) {
-        print(pressure.toString());
-        _pressures.add(pressure);
+      userAccelerometerEvents.listen((UserAccelerometerEvent event) {
+        _pressures.add(_calcSpeed(event));
         _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       });
     });
   }
 
+  double _calcSpeed(UserAccelerometerEvent event) {
+    return sqrt(event.x * event.x + event.y * event.y + event.z * event.z);
+  }
+
   @override
   void initState() {
     super.initState();
-    initPlatformState();
     _startTimer();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    bool pressureAvailable;
-
-    pressureAvailable =
-        await environmentSensors.getSensorAvailable(SensorType.Pressure);
-
-    setState(() {
-      _pressureAvailable = pressureAvailable;
-    });
   }
 
   void _finishMeasurement() {
@@ -111,13 +100,13 @@ class _BarometerState extends State<Barometer> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                           (_pressureAvailable)
-                              ? StreamBuilder<double>(
-                                  stream: environmentSensors.pressure,
+                              ? StreamBuilder<UserAccelerometerEvent>(
+                                  stream: userAccelerometerEvents,
                                   builder: (context, snapshot) {
                                     if (!snapshot.hasData)
                                       return CircularProgressIndicator();
                                     return Text(
-                                        '圧力: ${snapshot.data?.toStringAsFixed(2)}');
+                                        'velocity: ${snapshot.data?.x} ${snapshot.data?.y} ${snapshot.data?.z} ');
                                   })
                               : Column(children: [
                                   Text('気圧センサが利用できません。'),
