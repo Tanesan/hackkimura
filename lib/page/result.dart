@@ -54,21 +54,24 @@ class _ResultState extends State<Result> {
                 Navigator.of(context).pop();
               },
               icon: Icon(Icons.arrow_back)),
-          title: Text('トレーニングモード'),
+          title: Text(_args.mode == "training" ? 'トレーニングモード' : '採点モード'),
+          backgroundColor: Colors.blueGrey[600]
           // 右側のアイコン一覧
+          /*
           actions: <Widget>[
             IconButton(
               onPressed: () {},
               icon: Icon(Icons.more_vert),
             ),
           ],
+           */
         ),
         body: SingleChildScrollView(
             child: Center(
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
           SizedBox(height: 100),
           _calculated
-              ? Text(_args.pressures.join(','))
+              ? SelectableText(_args.pressures.join(','))
               : CircularProgressIndicator(),
           SizedBox(height: 100),
           FutureBuilder<ApiResults>(

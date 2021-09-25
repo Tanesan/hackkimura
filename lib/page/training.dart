@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackkimura/model/BarometerArgs.dart';
 import 'package:hackkimura/model/UserData.dart';
 
 class Training extends StatelessWidget {
@@ -12,12 +13,14 @@ class Training extends StatelessWidget {
           leading: IconButton(onPressed: () {Navigator.of(context).pop();}, icon: Icon(Icons.arrow_back)),
           title: Text('トレーニングモード'),
           // 右側のアイコン一覧
+          /*
           actions: <Widget>[
             IconButton(
               onPressed: () {},
               icon: Icon(Icons.more_vert),
             ),
           ],
+           */
         ),
       body:   Center(
         child: Padding(
@@ -39,7 +42,7 @@ class Training extends StatelessWidget {
                         shape: const StadiumBorder(),
                         side: const BorderSide(color: Colors.green),
                       ),
-                      onPressed: () {Navigator.of(context).pushNamed('/barometer', arguments: userData);},
+                      onPressed: () {Navigator.of(context).pushNamed('/barometer', arguments: BarometerArgs(userData: userData, mode: "training"));},
                     ),
                   ),
                 ),

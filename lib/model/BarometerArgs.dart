@@ -1,6 +1,8 @@
 import 'package:hackkimura/model/UserData.dart';
 
 class BarometerArgs {
-  var userData = UserData();
-  var pressures = List<double>.empty();
+  var userData;
+  var pressures;
+  var mode;
+  BarometerArgs({this.userData, this.pressures, this.mode});
 }
