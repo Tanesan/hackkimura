@@ -35,7 +35,7 @@ class _BarometerState extends State<Barometer> {
     var sub = countDownTimer.listen(null);
     sub.onData((duration) {
       setState(() {
-        player.play('images/sound.mp3');
+        player.play('sound/sound.mp3');
         _current = _start - duration.elapsed.inSeconds; //毎秒減らしていく
       });
     });
