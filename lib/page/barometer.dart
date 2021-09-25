@@ -91,6 +91,7 @@ class _BarometerState extends State<Barometer> {
 
     Timer(Duration(seconds: 30), () {
       isolate.kill();
+      _finishMeasurement();
     });
     setState(() {
       _counter++;
