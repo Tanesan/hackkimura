@@ -15,6 +15,7 @@ class _ResultState extends State<Result> {
   bool _calculated = false;
 
   int _calculateScore(List<double> pressures) {
+    _calculated = true;
     return 80;
   }
 
@@ -61,8 +62,26 @@ class _ResultState extends State<Result> {
             ),
           ],
         ),
-        body: _calculated
-            ? Text(_args.pressures.join())
-            : CircularProgressIndicator());
+        body: SingleChildScrollView(
+            child: Center(
+                child: Column(children: [
+          _calculated
+              ? Text(_args.pressures.join(','))
+              : CircularProgressIndicator(),
+          SizedBox(height: 100),
+          Container(
+              width: 300.0,
+              height: 50.0,
+              child: OutlinedButton(
+                  child: const Text('測定終了'),
+                  style: OutlinedButton.styleFrom(
+                    primary: Colors.black,
+                    shape: const StadiumBorder(),
+                    side: const BorderSide(color: Colors.green),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/training');
+                  })),
+        ]))));
   }
 }

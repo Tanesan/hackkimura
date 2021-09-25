@@ -13,12 +13,12 @@ class Barometer extends StatefulWidget {
 
 class _BarometerState extends State<Barometer> {
   bool _pressureAvailable = false;
-  var _pressures = List<double>.empty();
-  var _time = List<DateTime>.empty();
+  var _pressures = <double>[];
+  var _time = <DateTime>[];
   final environmentSensors = EnvironmentSensors();
 
-  int _start = 10;
-  int _current = 10;
+  int _start = 5;
+  int _current = 5;
 
   var args = BarometerArgs();
 
@@ -95,7 +95,9 @@ class _BarometerState extends State<Barometer> {
           ),
           body: Center(
               child: _current > 0
-                  ? Column(children: [Text("測定開始まで",
+                  ? Column(
+                mainAxisSize: MainAxisSize.min,
+                  children: [Text("測定開始まで",
                   style: Theme
                       .of(context)
                       .textTheme
