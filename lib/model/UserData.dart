@@ -1,4 +1,4 @@
 class UserData {
-  var name;
-  var classCode;
+  var name = "";
+  var classCode = "";
 }
