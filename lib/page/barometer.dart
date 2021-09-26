@@ -161,10 +161,10 @@ class _BarometerState extends State<Barometer> {
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 32)),
-                                      Text("${_counter / 2}",
+                                      Text("${(_counter / 2).round()}",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 300,
+                                              fontSize: 200,
                                               fontWeight: FontWeight.bold)),
                                       Text("秒",
                                           style: TextStyle(
