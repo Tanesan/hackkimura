@@ -35,11 +35,6 @@ class Grade extends StatelessWidget {
                 child: FutureBuilder<UserScoreResponse>(
                     future: _getResult(userData),
                     builder: (context, snapshot) {
-                      if (!snapshot.hasData) {
-                        return CircularProgressIndicator();
-                      } else if (snapshot.hasError) {
-                        return Text("${snapshot.error}");
-                      } else {
                         return Column(children: [
                           Container(
                             width: double.infinity,
@@ -242,6 +237,6 @@ class Grade extends StatelessWidget {
                           ),
                         ]);
                       }
-                    }))));
+                    ))));
   }
 }
