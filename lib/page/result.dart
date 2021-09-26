@@ -13,20 +13,13 @@ class Result extends StatefulWidget {
 
 class _ResultState extends State<Result> {
   var _args = BarometerArgs();
-  var _score;
-  bool _calculated = false;
 
-  int _calculateScore(List<double> pressures) {
-    _calculated = true;
-    return 80;
-  }
-
-  Future<ApiResults> _getResult(BarometerArgs args, int score) async {
-    var url = Uri.parse('');
+  Future<ApiResults> _getResult(BarometerArgs args) async {
+    var url = Uri.parse('http://52.193.204.138:5000');
     Request request = Request(
         className: _args.userData.classCode,
         userName: _args.userData.name,
-        score: _score);
+        data: _args.pressures);
     final response = await http.post(url,
         body: json.encode(request.toJson()),
         headers: {"Content-Type": "application/json"});
@@ -45,8 +38,6 @@ class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
-    _score = _calculateScore(_args.pressures);
-    _calculated = true;
     return Scaffold(
         appBar: AppBar(
             leading: IconButton(
@@ -70,16 +61,12 @@ class _ResultState extends State<Result> {
             child: Center(
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
           SizedBox(height: 100),
-          _calculated
-              ? SelectableText(_args.pressures.join(','))
-              : CircularProgressIndicator(),
+          SelectableText(_args.pressures.join(',')),
           SizedBox(height: 100),
-          _calculated
-              ? SelectableText(_args.time.join(','))
-              : CircularProgressIndicator(),
+          SelectableText(_args.time.join(',')),
           SizedBox(height: 100),
           FutureBuilder<ApiResults>(
-            future: _getResult(_args, _score),
+            future: _getResult(_args),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Column(children: [

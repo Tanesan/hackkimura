@@ -13,10 +13,6 @@ class Grade extends StatelessWidget {
     final response = await http.post(url,
         body: json.encode(request.toJson()),
         headers: {"Content-Type": "application/json"});
-    print(json.encode(request.toJson()));
-    print(userData.name);
-    print(userData.classCode);
-    print(response.body);
     return UserScoreResponse.fromJson(json.decode(response.body));
   }
 
