@@ -278,7 +278,7 @@ class _ResultState extends State<Result> {
                                       Padding(
                                         padding: EdgeInsets.only(top: 15),
                                         child: Text(
-                                            '${snapshot.data?.topFiveUsers[1]}',
+                                            '${snapshot.data?.topFiveUsers[2]}',
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 40)),
@@ -288,7 +288,7 @@ class _ResultState extends State<Result> {
                                           padding: EdgeInsets.only(
                                               left: size.width * 0.18),
                                           child: Text(
-                                              '${snapshot.data?.topFiveScores[1].toString()}',
+                                              '${snapshot.data?.topFiveScores[2].toString()}',
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 48,

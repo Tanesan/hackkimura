@@ -42,7 +42,7 @@ class _TopState extends State<Top> {
                             ),
                             Padding(
                               padding: EdgeInsets.only(right: size.width * 0.1),
-                              child: Text('ジップロックdeトレーニング',
+                              child: Text('ペットボトルdeトレーニング',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       fontSize: 24,
