@@ -40,7 +40,7 @@ class _TopState extends State<Top> {
                             ),
                             Padding(
                               padding: EdgeInsets.only(right: size.width * 0.1),
-                              child: Text('ペットボトルdeトレーニング',
+                              child: Text('ジップロックdeトレーニング',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       fontSize: 24,
@@ -60,6 +60,7 @@ class _TopState extends State<Top> {
                       onFocusChange: (focus) => controller.animateTo(300.0, curve: Curves.easeOut, duration: const Duration(milliseconds: 300),),
                       child: TextField(
                           maxLength: 10,
+                          maxLines:1,
                           obscureText: false,
                       style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                       decoration: InputDecoration(
@@ -86,10 +87,11 @@ class _TopState extends State<Top> {
                 ),
               ),
               Padding(
-                  padding: EdgeInsets.only(top: size.width * 0.08, right: size.width * 0.1, left:size.width * 0.1),
+                  padding: EdgeInsets.only(top: size.width * 0.01, right: size.width * 0.1, left:size.width * 0.1),
                   child: Center(
                     child: TextField(
                         maxLength: 10,
+                        maxLines:1,
                         obscureText: true,
                         style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                         decoration: InputDecoration(
