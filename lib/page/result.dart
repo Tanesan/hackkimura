@@ -38,6 +38,7 @@ class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
@@ -61,15 +62,81 @@ class _ResultState extends State<Result> {
         body: SingleChildScrollView(
             child: Center(
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
-          SizedBox(height: 100),
+                  Padding(
+                    padding: EdgeInsets.only(top: 16.0, left: size.width * 0.05, right: size.width * 0.05),
+                    child: Container(
+                        width: double.infinity,
+                        child: Text('結果発表', textAlign: TextAlign.left, style: TextStyle(color: Colors.white, fontSize: 32))),
+                  ),
           FutureBuilder<ApiResults>(
             future: _getResult(_args),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Column(children: [
-                  Text('クラスの平均点：${snapshot.data?.average.toString()} 点', style: TextStyle(color: Colors.white, fontSize: 20)),
-                  Text('クラス内：第 ${snapshot.data?.rank.toString()} 位', style: TextStyle(color: Colors.white, fontSize: 20))
-                ]);
+                return Padding(
+                  padding:EdgeInsets.only(left: size.width * 0.03, right: size.width * 0.05),
+                  child: Column(children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.08),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 15),
+                            child: Text('総合得点：', style: TextStyle(color: Colors.white, fontSize: 20)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: size.width * 0.18),
+                            child: Text('${snapshot.data?.score.toString()}', style: TextStyle(color: Colors.white, fontSize: 48, fontWeight: FontWeight.w200)),
+                          ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 15, right: 16),
+                              child: Text('点', textAlign: TextAlign.right, style: TextStyle(color: Colors.white, fontSize: 20)),
+                            ),
+                        ],
+                      ),
+                    ),
+                    Divider(color: Colors.white),
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.03),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 15),
+                            child: Text('クラスの平均点：', style: TextStyle(color: Colors.white, fontSize: 20)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: size.width * 0.18),
+                            child: Text('${snapshot.data?.average.toString()}', style: TextStyle(color: Colors.white, fontSize: 48, fontWeight: FontWeight.w200)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 15, left: 8),
+                            child: Text('点', style: TextStyle(color: Colors.white, fontSize: 20)),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(color: Colors.white),
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.03),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 15),
+                            child: Text('クラス内順位：', style: TextStyle(color: Colors.white, fontSize: 20)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: size.width * 0.18),
+                            child: Text('${snapshot.data?.rank.toString()}', style: TextStyle(color: Colors.white, fontSize: 48, fontWeight: FontWeight.w200)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 15, left: 8),
+                            child: Text('位', style: TextStyle(color: Colors.white, fontSize: 20)),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(color: Colors.white),
+                  ]),
+                );
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
@@ -81,9 +148,9 @@ class _ResultState extends State<Result> {
               width: 300.0,
               height: 50.0,
               child: OutlinedButton(
-                  child: const Text('もう一度', style: TextStyle(fontSize: 64)),
+                  child: const Text('もう一度', style: TextStyle(fontSize: 24)),
                   style: OutlinedButton.styleFrom(
-                    primary: Colors.black,
+                    primary: Colors.white,
                     shape: const StadiumBorder(),
                     side: const BorderSide(color: Colors.green),
                   ),
