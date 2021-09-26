@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackkimura/model/UserData.dart';
+import 'package:flutter/services.dart';
 
 class Top extends StatefulWidget {
   @override
@@ -67,6 +68,9 @@ class _TopState extends State<Top> {
                             duration: const Duration(milliseconds: 300),
                           ),
                           child: TextField(
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.allow(RegExp(r'^[0-9a-zA-Z@_.-]+$')),
+                              ],
                               maxLength: 10,
                               maxLines: 1,
                               obscureText: false,
@@ -110,6 +114,9 @@ class _TopState extends State<Top> {
                                   ),
                               child: Center(
                                 child: TextField(
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.allow(RegExp(r'^[0-9a-zA-Z@_.-]+$')),
+                                    ],
                                     maxLength: 10,
                                     maxLines: 1,
                                     obscureText: false,
