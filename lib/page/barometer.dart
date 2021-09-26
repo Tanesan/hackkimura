@@ -48,7 +48,6 @@ class _BarometerState extends State<Barometer> {
       _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       userAccelerometerEvents.listen((UserAccelerometerEvent event) {
         _pressures.add(_calcSpeed(event));
-        print(_time);
         _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       });
     });
