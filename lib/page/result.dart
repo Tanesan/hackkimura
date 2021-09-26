@@ -39,6 +39,7 @@ class _ResultState extends State<Result> {
   Widget build(BuildContext context) {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
     return Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
             leading: IconButton(
                 onPressed: () {
@@ -61,17 +62,13 @@ class _ResultState extends State<Result> {
             child: Center(
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
           SizedBox(height: 100),
-          SelectableText(_args.pressures.join(',')),
-          SizedBox(height: 100),
-          SelectableText(_args.time.join(',')),
-          SizedBox(height: 100),
           FutureBuilder<ApiResults>(
             future: _getResult(_args),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Column(children: [
-                  Text('クラスの平均点：${snapshot.data?.average.toString()} 点'),
-                  Text('クラス内：第 ${snapshot.data?.rank.toString()} 位')
+                  Text('クラスの平均点：${snapshot.data?.average.toString()} 点', style: TextStyle(color: Colors.white, fontSize: 20)),
+                  Text('クラス内：第 ${snapshot.data?.rank.toString()} 位', style: TextStyle(color: Colors.white, fontSize: 20))
                 ]);
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
@@ -84,7 +81,7 @@ class _ResultState extends State<Result> {
               width: 300.0,
               height: 50.0,
               child: OutlinedButton(
-                  child: const Text('もう一度'),
+                  child: const Text('もう一度', style: TextStyle(fontSize: 64)),
                   style: OutlinedButton.styleFrom(
                     primary: Colors.black,
                     shape: const StadiumBorder(),
