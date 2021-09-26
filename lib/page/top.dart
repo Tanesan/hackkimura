@@ -8,7 +8,7 @@ class Top extends StatefulWidget {
 
 class _TopState extends State<Top> {
   UserData userData = UserData();
-
+  final ScrollController controller = ScrollController();
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -54,7 +54,10 @@ class _TopState extends State<Top> {
               Padding(
                 padding: EdgeInsets.only(top: size.width * 0.15,right: size.width * 0.1, left:size.width * 0.1),
                 child: Center(
-                  child: TextField(
+                  child: FocusScope(
+                    child: Focus(
+                      onFocusChange: (focus) => controller.animateTo(30.0, curve: Curves.easeOut, duration: const Duration(milliseconds: 300),),
+                      child: TextField(
                       obscureText: false,
                       style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                       decoration: InputDecoration(
@@ -76,6 +79,8 @@ class _TopState extends State<Top> {
                       onChanged: (text) {
                         userData.name = text;
                       }),
+    ),
+                  ),
                 ),
               ),
               Padding(
