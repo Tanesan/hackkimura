@@ -82,7 +82,7 @@ class _TopState extends State<Top> {
                   padding: EdgeInsets.only(top: size.width * 0.08, right: size.width * 0.1, left:size.width * 0.1),
                   child: Center(
                     child: TextField(
-                        obscureText: false,
+                        obscureText: true,
                         style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                         decoration: InputDecoration(
                           labelStyle: TextStyle(color: Colors.white),
