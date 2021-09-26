@@ -15,6 +15,7 @@ class _TopState extends State<Top> {
     return Scaffold(
         backgroundColor: Colors.black,
         body: SingleChildScrollView(
+            controller: controller,
         child: Column(
           children: [
             Container(
@@ -56,7 +57,7 @@ class _TopState extends State<Top> {
                 child: Center(
                   child: FocusScope(
                     child: Focus(
-                      onFocusChange: (focus) => controller.animateTo(30.0, curve: Curves.easeOut, duration: const Duration(milliseconds: 300),),
+                      onFocusChange: (focus) => controller.animateTo(300.0, curve: Curves.easeOut, duration: const Duration(milliseconds: 300),),
                       child: TextField(
                       obscureText: false,
                       style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -110,7 +111,7 @@ class _TopState extends State<Top> {
                         }),
                   )),
               Padding(
-                padding: EdgeInsets.only(top: size.width * 0.10),
+                padding: EdgeInsets.only(top: size.width * 0.10, bottom: size.height * 0.40),
                 child: Center(
                   child: Container(
                     width: 200.0,
