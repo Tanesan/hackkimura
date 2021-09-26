@@ -59,7 +59,8 @@ class _TopState extends State<Top> {
                     child: Focus(
                       onFocusChange: (focus) => controller.animateTo(300.0, curve: Curves.easeOut, duration: const Duration(milliseconds: 300),),
                       child: TextField(
-                      obscureText: false,
+                          maxLength: 10,
+                          obscureText: false,
                       style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                       decoration: InputDecoration(
                         labelStyle: TextStyle(color: Colors.white),
@@ -88,6 +89,7 @@ class _TopState extends State<Top> {
                   padding: EdgeInsets.only(top: size.width * 0.08, right: size.width * 0.1, left:size.width * 0.1),
                   child: Center(
                     child: TextField(
+                        maxLength: 10,
                         obscureText: true,
                         style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                         decoration: InputDecoration(
@@ -104,7 +106,7 @@ class _TopState extends State<Top> {
                               color: Colors.green,
                             ),
                           ),
-                          labelText: 'パスワード',
+                          labelText: 'クラスID',
                         ),
                         onChanged: (text) {
                           userData.classCode = text;
