@@ -177,7 +177,7 @@ class _BarometerState extends State<Barometer> {
                               width: 300.0,
                               height: 50.0,
                               child: OutlinedButton(
-                                child: const Text('測定終了shuuryou',
+                                child: const Text('測定終了',
                                     style: TextStyle(color: Colors.white)),
                                 style: OutlinedButton.styleFrom(
                                   primary: Colors.black,
