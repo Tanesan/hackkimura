@@ -28,7 +28,7 @@ class Training extends StatelessWidget {
           padding: EdgeInsets.all(30),
           child: Column(
             children: [
-              Text("測定開始ボタンを押してから，ジップロックの袋の中にスマホを入れてください。およそ1分間胸骨圧迫をしてから，スマホを取り出して測定ボタンを押してください。音声でガイドするので音量を大きくしてください",
+              Text("測定開始ボタンを押してから、ジップロックの袋の中にスマホを入れてください。その後、音声のリズムに合わせて胸骨圧迫をしてください。音声が止まると終了です。",
               style: TextStyle(color: Colors.white, fontSize: 20))
             ,
               Center(
