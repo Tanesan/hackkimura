@@ -13,11 +13,11 @@ class Grade extends StatelessWidget {
     final response = await http.post(url,
         body: json.encode(request.toJson()),
         headers: {"Content-Type": "application/json"});
-    if (response.statusCode == 200) {
-      return UserScoreResponse.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Fail to search repository');
-    }
+    print(json.encode(request.toJson()));
+    print(userData.name);
+    print(userData.classCode);
+    print(response.body);
+    return UserScoreResponse.fromJson(json.decode(response.body));
   }
 
   @override
@@ -275,10 +275,10 @@ class Grade extends StatelessWidget {
                                             child: Column(
                                               children: [
                                                 Container(
-                                                  width: 40,
+                                                  width: 80,
                                                   child: Row(
                                                     children: [
-                                                      Text(snapshot.data?.rank,
+                                                      Text(snapshot.data!.rank.toString(),
                                                           style: TextStyle(
                                                               fontSize: 40,
                                                               fontWeight:
@@ -346,7 +346,7 @@ class Grade extends StatelessWidget {
                                                                     left: 10),
                                                             child: Text(
                                                                 snapshot.data
-                                                                    ?.bestScore,
+                                                                    !.bestScore.toString(),
                                                                 style: TextStyle(
                                                                     fontSize:
                                                                         40,
