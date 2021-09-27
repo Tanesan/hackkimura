@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:hackkimura/model/BarometerArgs.dart';
 import 'package:hackkimura/model/ApiResults.dart';
 import 'package:hackkimura/model/Request.dart';
+import 'package:hackkimura/model/TestRequest.dart';
 
 class Result extends StatefulWidget {
   @override
@@ -28,6 +29,21 @@ class _ResultState extends State<Result> {
     } else {
       throw Exception('Fail to search repository');
     }
+  }
+
+  Future<int> _postResult(BarometerArgs args) async {
+    var url = Uri.parse('http://52.193.204.138:5000/data');
+    TestRequest request = TestRequest(
+        userName: _args.userData.name,
+        t: _args.time,
+        ddx: _args.ddx,
+        ddy: _args.ddy,
+        ddz: _args.ddz,
+        timestamp: DateTime.now().microsecondsSinceEpoch);
+    final response = await http.post(url,
+        body: json.encode(request.toJson()),
+        headers: {"Content-Type": "application/json"});
+    return 1;
   }
 
   @override
@@ -58,22 +74,29 @@ class _ResultState extends State<Result> {
           ],
            */
             ),
-        body: SingleChildScrollView(
-            child: Column(children:[
-              SizedBox(height: 100),
-              Text('t:'),
-              SelectableText(_args.time.join(',')),
-              SizedBox(height: 20),
-              Text('ddx:'),
-              SelectableText(_args.ddx.join(',')),
-              SizedBox(height: 20),
-              Text('ddy:'),
-              SelectableText(_args.ddy.join(',')),
-              SizedBox(height: 20),
-              Text('ddz:'),
-              SelectableText(_args.ddz.join(',')),
-            ])
-          /*Center(
+        body: FutureBuilder<int>(
+            future: _postResult(_args),
+            builder: (context, snapshot) {
+              return SingleChildScrollView(
+                  child: Column(children: [
+                SizedBox(height: 100),
+                Text('t:'),
+                SelectableText(_args.time.join(',')),
+                SizedBox(height: 20),
+                Text('ddx:'),
+                SelectableText(_args.ddx.join(',')),
+                SizedBox(height: 20),
+                Text('ddy:'),
+                SelectableText(_args.ddy.join(',')),
+                SizedBox(height: 20),
+                Text('ddz:'),
+                SelectableText(_args.ddz.join(',')),
+              ]));
+            }));
+  }
+}
+
+/*Center(
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
           Padding(
             padding: EdgeInsets.only(
@@ -342,6 +365,4 @@ class _ResultState extends State<Result> {
                     Navigator.of(context)
                         .popUntil(ModalRoute.withName('/training'));
                   })),
-        ]))*/));
-  }
-}
+        ]))*/
