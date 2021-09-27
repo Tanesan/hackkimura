@@ -1,5 +1,3 @@
-import 'dart:io';
-// import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:quiver/async.dart';
@@ -15,10 +13,10 @@ class Barometer extends StatefulWidget {
 }
 
 class _BarometerState extends State<Barometer> {
-  bool _pressureAvailable = false;
   var _pressures = <double>[];
   var _time = <int>[];
   var _startTime;
+  var _receivePort = ReceivePort();
 
   int _start = 5;
   int _current = 5;
@@ -50,7 +48,6 @@ class _BarometerState extends State<Barometer> {
       _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       userAccelerometerEvents.listen((UserAccelerometerEvent event) {
         _pressures.add(_calcSpeed(event));
-        print(_time);
         _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       });
     });
@@ -69,20 +66,22 @@ class _BarometerState extends State<Barometer> {
   void _finishMeasurement() {
     args.pressures = _pressures;
     args.time = _time;
+    _receivePort.close();
     Navigator.of(context).pushNamed("/result", arguments: args);
   }
-  int _counter = 0;
+
+  int _counter = 60;
 
   Future<void> _incrementCounter() async {
-    var recivePort = ReceivePort();
-    var sendPort = recivePort.sendPort;
+    var sendPort = _receivePort.sendPort;
     late Capability capability;
 
     // 子供からメッセージを受け取る
-    recivePort.listen((message) {
+    _receivePort.listen((message) {
       player.play('sound/sound.mp3');
-      if (message == 60){
-        recivePort.close();
+      _counter--;
+      if (message == 60) {
+        _receivePort.close();
         _finishMeasurement();
       }
     });
@@ -91,18 +90,18 @@ class _BarometerState extends State<Barometer> {
 
     Timer(Duration(seconds: 30), () {
       isolate.kill();
+      _receivePort.close();
       _finishMeasurement();
     });
-    setState(() {
-      _counter++;
-    });
+    setState(() {});
   }
+
   // isolate.kill();
   static void child(SendPort sendPort) {
     int i = 0;
     // 親にメッセージを送る
-    Timer.periodic(Duration(milliseconds: 500), (timer) => {
-      sendPort.send(i++)});
+    Timer.periodic(
+        Duration(milliseconds: 500), (timer) => {sendPort.send(i++)});
   }
 
   @override
@@ -112,15 +111,16 @@ class _BarometerState extends State<Barometer> {
       home: Scaffold(
           backgroundColor: Colors.black,
           appBar: AppBar(
-              leading: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: Icon(Icons.arrow_back)),
-              title: Text(args.mode == "training" ? 'トレーニングモード' : '採点モード'),
-              backgroundColor: Colors.black,
-              // 右側のアイコン一覧
-              /*
+            leading: IconButton(
+                onPressed: () {
+                  _receivePort.close();
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.arrow_back)),
+            title: Text(args.mode == "training" ? 'トレーニングモード' : '採点モード'),
+            backgroundColor: Colors.black,
+            // 右側のアイコン一覧
+            /*
             actions: <Widget>[
               IconButton(
                 onPressed: () {},
@@ -128,38 +128,57 @@ class _BarometerState extends State<Barometer> {
               ),
             ],
              */
-              ),
+          ),
           body: Center(
               child: _current > 0
                   ? Column(mainAxisSize: MainAxisSize.min, children: [
                       Text("測定開始まで",
                           style: TextStyle(color: Colors.white, fontSize: 32)),
                       Text("$_current",
-                          style: TextStyle(color: Colors.white, fontSize: 550, fontWeight: FontWeight.bold))
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 550,
+                              fontWeight: FontWeight.bold))
                     ])
                   : Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                          (_pressureAvailable)
-                              ? StreamBuilder<UserAccelerometerEvent>(
-                                  stream: userAccelerometerEvents,
-                                  builder: (context, snapshot) {
-                                    if (!snapshot.hasData)
-                                      return CircularProgressIndicator();
-                                    return Text(
-                                        'velocity: ${snapshot.data?.x} ${snapshot.data?.y} ${snapshot.data?.z} ', style: TextStyle(color: Colors.white));
-                                  })
-                              : Column(children: [
-                                  Text('気圧センサが利用できません。', style: TextStyle(color: Colors.white)),
-                                  Text('気圧センサが利用できる端末をご利用ください。', style: TextStyle(color: Colors.white))
-                                ]),
+                          StreamBuilder<UserAccelerometerEvent>(
+                              stream: userAccelerometerEvents,
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Column(children: [
+                                    Text('気圧センサが利用できません。',
+                                        style: TextStyle(color: Colors.white)),
+                                    Text('気圧センサが利用できる端末をご利用ください。',
+                                        style: TextStyle(color: Colors.white))
+                                  ]);
+                                return Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text("残り",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 32)),
+                                      Text("${(_counter / 2).round()}",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 200,
+                                              fontWeight: FontWeight.bold)),
+                                      Text("秒",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 32)),
+                                    ]);
+                              }),
                           SizedBox(height: 50),
                           Container(
                               width: 300.0,
                               height: 50.0,
                               child: OutlinedButton(
-                                child: const Text('測定終了', style: TextStyle(color: Colors.white)),
+                                child: const Text('測定終了',
+                                    style: TextStyle(color: Colors.white)),
                                 style: OutlinedButton.styleFrom(
                                   primary: Colors.black,
                                   shape: const StadiumBorder(),

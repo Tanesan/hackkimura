@@ -32,8 +32,7 @@ class _BattleState extends State<Battle> {
           padding: EdgeInsets.all(30),
           child: Column(
             children: [
-              Text(
-                  "測定開始ボタンを押してから，ジップロックの袋の中にスマホを入れてください。およそ1分間胸骨圧迫をしてから，スマホを取り出して測定ボタンを押してください。"),
+              Text("2Lペットボトルの上にスマホを固定し，測定開始ボタンを押してください。"),
               Center(
                 child: Padding(
                   padding: EdgeInsets.only(top: 250),

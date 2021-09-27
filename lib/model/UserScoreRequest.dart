@@ -3,8 +3,8 @@ class UserScoreRequest {
   var userName;
 
   UserScoreRequest({var className, var userName}) {
-    className = this.className;
-    userName = this.userName;
+    this.className = className;
+    this.userName = userName;
   }
 
   Map<String, dynamic> toJson() =>

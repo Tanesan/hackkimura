@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackkimura/model/UserData.dart';
+import 'package:flutter/services.dart';
 
 class Top extends StatefulWidget {
   @override
@@ -8,6 +9,7 @@ class Top extends StatefulWidget {
 
 class _TopState extends State<Top> {
   UserData userData = UserData();
+  final ScrollController controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +17,18 @@ class _TopState extends State<Top> {
     return Scaffold(
         backgroundColor: Colors.black,
         body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                  image: AssetImage('images/AED.jpg'),
-                  fit: BoxFit.cover,
-                )),
-                child: Padding(
-                    padding: EdgeInsets.only(top: size.height * 0.4),
-                    child: Center(
+            controller: controller,
+            child: Column(
+              children: [
+                Container(
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                      image: AssetImage('images/AED.jpg'),
+                      fit: BoxFit.cover,
+                    )),
+                    child: Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.4),
+                      child: Center(
                         child: Column(
                           children: [
                             Padding(
@@ -50,83 +53,124 @@ class _TopState extends State<Top> {
                         ),
                       ),
                     )),
-            Column(children: [
-              Padding(
-                padding: EdgeInsets.only(top: size.width * 0.15,right: size.width * 0.1, left:size.width * 0.1),
-                child: Center(
-                  child: TextField(
-                      obscureText: false,
-                      style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                      decoration: InputDecoration(
-                        labelStyle: TextStyle(color: Colors.white),
-                        enabledBorder: OutlineInputBorder(
-                          // width: 0.0 produces a thin "hairline" border
-                          borderRadius: BorderRadius.circular(20.0),
-                          borderSide:
-                              const BorderSide(color: Colors.green, width: 1.0),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          borderSide: BorderSide(
-                            color: Colors.green,
+                Column(children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: size.width * 0.15,
+                        right: size.width * 0.1,
+                        left: size.width * 0.1),
+                    child: Center(
+                      child: FocusScope(
+                        child: Focus(
+                          onFocusChange: (focus) => controller.animateTo(
+                            size.height * 0.3,
+                            curve: Curves.easeOut,
+                            duration: const Duration(milliseconds: 300),
                           ),
+                          child: TextField(
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.allow(RegExp(r'^[0-9a-zA-Z@_.-]+$')),
+                              ],
+                              maxLength: 10,
+                              maxLines: 1,
+                              obscureText: false,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                              decoration: InputDecoration(
+                                labelStyle: TextStyle(color: Colors.white),
+                                enabledBorder: OutlineInputBorder(
+                                  // width: 0.0 produces a thin "hairline" border
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderSide: const BorderSide(
+                                      color: Colors.green, width: 1.0),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.green,
+                                  ),
+                                ),
+                                labelText: 'ユーザー名',
+                              ),
+                              onChanged: (text) {
+                                userData.name = text;
+                              }),
                         ),
-                        labelText: 'ユーザー名',
                       ),
-                      onChanged: (text) {
-                        userData.name = text;
-                      }),
-                ),
-              ),
-              Padding(
-                  padding: EdgeInsets.only(top: size.width * 0.08, right: size.width * 0.1, left:size.width * 0.1),
-                  child: Center(
-                    child: TextField(
-                        obscureText: false,
-                        style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                        decoration: InputDecoration(
-                          labelStyle: TextStyle(color: Colors.white),
-                          enabledBorder: OutlineInputBorder(
-                            // width: 0.0 produces a thin "hairline" border
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: const BorderSide(
-                                color: Colors.green, width: 1.0),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: Colors.green,
-                            ),
-                          ),
-                          labelText: 'パスワード',
-                        ),
-                        onChanged: (text) {
-                          userData.classCode = text;
-                        }),
-                  )),
-              Padding(
-                padding: EdgeInsets.only(top: size.width * 0.10),
-                child: Center(
-                  child: Container(
-                    width: 200.0,
-                    height: 50.0,
-                    child: OutlinedButton(
-                      child: const Text('スタート', style: TextStyle(fontWeight: FontWeight.bold)),
-                      style: OutlinedButton.styleFrom(
-                        primary: Colors.white,
-                        shape: const StadiumBorder(),
-                        side: const BorderSide(color: Colors.green),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed('/grade', arguments: userData);
-                      },
                     ),
                   ),
-                ),
-              ),
-            ]),
-          ],
-        )));
+                  Padding(
+                      padding: EdgeInsets.only(
+                          top: size.width * 0.01,
+                          right: size.width * 0.1,
+                          left: size.width * 0.1),
+                      child: FocusScope(
+                          child: Focus(
+                              onFocusChange: (focus) => controller.animateTo(
+                                    size.height * 0.3,
+                                    curve: Curves.easeOut,
+                                    duration: const Duration(milliseconds: 300),
+                                  ),
+                              child: Center(
+                                child: TextField(
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.allow(RegExp(r'^[0-9a-zA-Z@_.-]+$')),
+                                    ],
+                                    maxLength: 10,
+                                    maxLines: 1,
+                                    obscureText: false,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                    decoration: InputDecoration(
+                                      labelStyle:
+                                          TextStyle(color: Colors.white),
+                                      enabledBorder: OutlineInputBorder(
+                                        // width: 0.0 produces a thin "hairline" border
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        borderSide: const BorderSide(
+                                            color: Colors.green, width: 1.0),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        borderSide: BorderSide(
+                                          color: Colors.green,
+                                        ),
+                                      ),
+                                      labelText: 'クラスID',
+                                    ),
+                                    onChanged: (text) {
+                                      userData.classCode = text;
+                                    }),
+                              )))),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: size.width * 0.10, bottom: size.height * 0.40),
+                    child: Center(
+                      child: Container(
+                        width: 200.0,
+                        height: 50.0,
+                        child: OutlinedButton(
+                          child: const Text('スタート',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: OutlinedButton.styleFrom(
+                            primary: Colors.white,
+                            shape: const StadiumBorder(),
+                            side: const BorderSide(color: Colors.green),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed('/grade', arguments: userData);
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
+              ],
+            )));
   }
 }

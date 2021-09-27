@@ -13,20 +13,13 @@ class Result extends StatefulWidget {
 
 class _ResultState extends State<Result> {
   var _args = BarometerArgs();
-  var _score;
-  bool _calculated = false;
 
-  int _calculateScore(List<double> pressures) {
-    _calculated = true;
-    return 80;
-  }
-
-  Future<ApiResults> _getResult(BarometerArgs args, int score) async {
-    var url = Uri.parse('');
+  Future<ApiResults> _getResult(BarometerArgs args) async {
+    var url = Uri.parse('http://52.193.204.138:5000');
     Request request = Request(
         className: _args.userData.classCode,
         userName: _args.userData.name,
-        score: _score);
+        data: _args.pressures);
     final response = await http.post(url,
         body: json.encode(request.toJson()),
         headers: {"Content-Type": "application/json"});
@@ -45,9 +38,9 @@ class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
-    _score = _calculateScore(_args.pressures);
-    _calculated = true;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
             leading: IconButton(
                 onPressed: () {
@@ -69,23 +62,252 @@ class _ResultState extends State<Result> {
         body: SingleChildScrollView(
             child: Center(
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
-          SizedBox(height: 100),
-          _calculated
-              ? SelectableText(_args.pressures.join(','))
-              : CircularProgressIndicator(),
-          SizedBox(height: 100),
-          _calculated
-              ? SelectableText(_args.time.join(','))
-              : CircularProgressIndicator(),
-          SizedBox(height: 100),
+          Padding(
+            padding: EdgeInsets.only(
+                top: 16.0, left: size.width * 0.05, right: size.width * 0.05),
+            child: Container(
+                width: double.infinity,
+                child: Text('結果発表',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(color: Colors.white, fontSize: 48))),
+          ),
           FutureBuilder<ApiResults>(
-            future: _getResult(_args, _score),
+            future: _getResult(_args),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Column(children: [
-                  Text('クラスの平均点：${snapshot.data?.average.toString()} 点'),
-                  Text('クラス内：第 ${snapshot.data?.rank.toString()} 位')
-                ]);
+                return Padding(
+                    padding: EdgeInsets.only(
+                        left: size.width * 0.03, right: size.width * 0.05),
+                    child: Column(children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.08),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 15),
+                              child: Text('総合得点：',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20)),
+                            ),
+                            Row(children: [
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(left: size.width * 0.18),
+                                child: Text(
+                                    '${snapshot.data?.score.toString()}',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 48,
+                                        fontWeight: FontWeight.w200)),
+                              ),
+                              SizedBox(width: 20),
+                              Padding(
+                                padding: EdgeInsets.only(top: 15, right: 8),
+                                child: Text('点',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20)),
+                              )
+                            ]),
+                          ],
+                        ),
+                      ),
+                      Divider(color: Colors.white),
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.03),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 15),
+                              child: Text('クラスの平均点：',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20)),
+                            ),
+                            Row(children: [
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(left: size.width * 0.18),
+                                child: Text(
+                                    '${snapshot.data?.average.toStringAsFixed(1)}',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 48,
+                                        fontWeight: FontWeight.w200)),
+                              ),
+                              SizedBox(width: 20),
+                              Padding(
+                                padding: EdgeInsets.only(top: 15, left: 8),
+                                child: Text('点',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20)),
+                              )
+                            ]),
+                          ],
+                        ),
+                      ),
+                      Divider(color: Colors.white),
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.03),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 15),
+                              child: Text('クラス内順位：',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20)),
+                            ),
+                            Row(children: [
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(left: size.width * 0.18),
+                                child: Text('${snapshot.data?.rank.toString()}',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 48,
+                                        fontWeight: FontWeight.w200)),
+                              ),
+                              SizedBox(width: 20),
+                              Padding(
+                                padding: EdgeInsets.only(top: 15, left: 8),
+                                child: Text('位',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20)),
+                              )
+                            ]),
+                          ],
+                        ),
+                      ),
+                      Divider(color: Colors.white),
+                      snapshot.data?.topFiveUsers.length < 3
+                          ? Text('')
+                          : Container(
+                              height: 500,
+                              child: Column(children: [
+                                SizedBox(height: 100),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 16.0,
+                                      left: size.width * 0.02,
+                                      right: size.width * 0.05),
+                                  child: Container(
+                                      width: double.infinity,
+                                      child: Text('クラスTop3',
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 40))),
+                                ),
+                                SizedBox(height: 20),
+                                Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 15),
+                                        child: Text(
+                                            '${snapshot.data?.topFiveUsers[0]}',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 40)),
+                                      ),
+                                      Row(children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: size.width * 0.18),
+                                          child: Text(
+                                              '${snapshot.data?.topFiveScores[0].toString()}',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 48,
+                                                  fontWeight: FontWeight.w200)),
+                                        ),
+                                        SizedBox(width: 20),
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.only(top: 15, left: 8),
+                                          child: Text('点',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20)),
+                                        )
+                                      ]),
+                                    ]),
+                                Divider(color: Colors.white),
+                                Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 15),
+                                        child: Text(
+                                            '${snapshot.data?.topFiveUsers[1]}',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 40)),
+                                      ),
+                                      Row(children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: size.width * 0.18),
+                                          child: Text(
+                                              '${snapshot.data?.topFiveScores[1].toString()}',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 48,
+                                                  fontWeight: FontWeight.w200)),
+                                        ),
+                                        SizedBox(width: 20),
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.only(top: 15, left: 8),
+                                          child: Text('点',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20)),
+                                        )
+                                      ]),
+                                    ]),
+                                Divider(color: Colors.white),
+                                Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 15),
+                                        child: Text(
+                                            '${snapshot.data?.topFiveUsers[2]}',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 40)),
+                                      ),
+                                      Row(children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: size.width * 0.18),
+                                          child: Text(
+                                              '${snapshot.data?.topFiveScores[2].toString()}',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 48,
+                                                  fontWeight: FontWeight.w200)),
+                                        ),
+                                        SizedBox(width: 20),
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.only(top: 15, left: 8),
+                                          child: Text('点',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20)),
+                                        )
+                                      ]),
+                                    ]),
+                                Divider(color: Colors.white),
+                              ])),
+                    ]));
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
@@ -97,9 +319,9 @@ class _ResultState extends State<Result> {
               width: 300.0,
               height: 50.0,
               child: OutlinedButton(
-                  child: const Text('もう一度'),
+                  child: const Text('もう一度', style: TextStyle(fontSize: 24)),
                   style: OutlinedButton.styleFrom(
-                    primary: Colors.black,
+                    primary: Colors.white,
                     shape: const StadiumBorder(),
                     side: const BorderSide(color: Colors.green),
                   ),
