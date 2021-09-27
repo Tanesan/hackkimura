@@ -40,7 +40,6 @@ class _ResultState extends State<Result> {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
             leading: IconButton(
                 onPressed: () {
@@ -60,7 +59,21 @@ class _ResultState extends State<Result> {
            */
             ),
         body: SingleChildScrollView(
-            child: Center(
+            child: Column(children:[
+              SizedBox(height: 100),
+              Text('t:'),
+              SelectableText(_args.time.join(',')),
+              SizedBox(height: 20),
+              Text('ddx:'),
+              SelectableText(_args.ddx.join(',')),
+              SizedBox(height: 20),
+              Text('ddy:'),
+              SelectableText(_args.ddy.join(',')),
+              SizedBox(height: 20),
+              Text('ddz:'),
+              SelectableText(_args.ddz.join(',')),
+            ])
+          /*Center(
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
           Padding(
             padding: EdgeInsets.only(
@@ -329,6 +342,6 @@ class _ResultState extends State<Result> {
                     Navigator.of(context)
                         .popUntil(ModalRoute.withName('/training'));
                   })),
-        ]))));
+        ]))*/));
   }
 }
