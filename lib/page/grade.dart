@@ -201,6 +201,7 @@ class Grade extends StatelessWidget {
                                     side: const BorderSide(color: Colors.green),
                                   ),
                                   onPressed: () {
+                                    userData.chooseMode = "training";
                                     Navigator.of(context).pushNamed('/training',
                                         arguments: userData);
                                   },
@@ -224,6 +225,7 @@ class Grade extends StatelessWidget {
                                     side: const BorderSide(color: Colors.green),
                                   ),
                                   onPressed: () {
+                                    userData.chooseMode = "battle";
                                     Navigator.of(context).pushNamed('/battle',
                                         arguments: userData);
                                   },
@@ -405,6 +407,7 @@ class Grade extends StatelessWidget {
                                     side: const BorderSide(color: Colors.green),
                                   ),
                                   onPressed: () {
+                                    userData.chooseMode = "training";
                                     Navigator.of(context).pushNamed('/training',
                                         arguments: userData);
                                   },
@@ -428,7 +431,8 @@ class Grade extends StatelessWidget {
                                     side: const BorderSide(color: Colors.green),
                                   ),
                                   onPressed: () {
-                                    Navigator.of(context).pushNamed('/battle',
+                                    userData.chooseMode = "battle";
+                                    Navigator.of(context).pushNamed('/training',
                                         arguments: userData);
                                   },
                                 ),

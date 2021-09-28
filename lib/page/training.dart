@@ -5,6 +5,7 @@ import 'package:hackkimura/model/UserData.dart';
 class Training extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print(ModalRoute.of(context)?.settings.arguments);
     var userData = ModalRoute.of(context)?.settings.arguments as UserData;
     return Scaffold(
       backgroundColor: Colors.black,
@@ -14,7 +15,7 @@ class Training extends StatelessWidget {
               Navigator.of(context).pop();
             },
             icon: Icon(Icons.arrow_back)),
-        title: Text('トレーニングモード'),
+        title: Text(userData.chooseMode == "training" ? 'トレーニングモード' : '採点モード'),
         // 右側のアイコン一覧
         /*
           actions: <Widget>[
@@ -49,8 +50,7 @@ class Training extends StatelessWidget {
                       ),
                       onPressed: () {
                         Navigator.of(context).pushNamed('/barometer',
-                            arguments: BarometerArgs(
-                                userData: userData, mode: "training"));
+                            arguments: BarometerArgs(userData: userData, mode: userData.chooseMode));
                       },
                     ),
                   ),
