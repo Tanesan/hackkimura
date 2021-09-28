@@ -396,7 +396,7 @@ class Grade extends StatelessWidget {
                                 width: 300.0,
                                 height: 50.0,
                                 child: OutlinedButton(
-                                  child: const Text('トレーニングモード',
+                                  child: const Text('いつものやつ',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold)),
                                   style: OutlinedButton.styleFrom(
@@ -419,7 +419,7 @@ class Grade extends StatelessWidget {
                                 width: 300.0,
                                 height: 50.0,
                                 child: OutlinedButton(
-                                  child: const Text('採点モード',
+                                  child: const Text('重力そのままのやつ',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold)),
                                   style: OutlinedButton.styleFrom(

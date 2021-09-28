@@ -7,12 +7,12 @@ import 'dart:isolate';
 import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 
-class Barometer extends StatefulWidget {
+class UserBarometer extends StatefulWidget {
   @override
-  _BarometerState createState() => _BarometerState();
+  _UserBarometerState createState() => _UserBarometerState();
 }
 
-class _BarometerState extends State<Barometer> {
+class _UserBarometerState extends State<UserBarometer> {
   var _pressures = <double>[];
   var _time = <int>[];
   var _ddx = <double>[];
@@ -58,7 +58,7 @@ class _BarometerState extends State<Barometer> {
       _ddz.add(0.6);
 
        */
-      accelerometerEvents.listen((AccelerometerEvent event) {
+      userAccelerometerEvents.listen((UserAccelerometerEvent event) {
         _pressures.add(_calcSpeed(event));
         _time.add(DateTime.now().difference(_startTime).inMilliseconds);
         _ddx.add(event.x);
@@ -68,7 +68,7 @@ class _BarometerState extends State<Barometer> {
     });
   }
 
-  double _calcSpeed(AccelerometerEvent event) {
+  double _calcSpeed(UserAccelerometerEvent event) {
     return sqrt(event.x * event.x + event.y * event.y + event.z * event.z);
   }
 

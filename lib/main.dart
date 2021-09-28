@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'page/top.dart';
 import 'page/barometer.dart';
+import 'page/userBarometer.dart';
 import 'page/result.dart';
 import 'page/battle.dart';
 import 'page/training.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/top': (BuildContext context) => Top(),
         '/result': (BuildContext context) => Result(),
         '/barometer': (BuildContext context) => Barometer(),
+        '/userBarometer': (BuildContext context) => UserBarometer(),
         '/battle': (BuildContext context) => Battle(),
         '/training': (BuildContext context) => Training(),
         '/grade': (BuildContext context) => Grade(),

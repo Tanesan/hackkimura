@@ -48,7 +48,7 @@ class Training extends StatelessWidget {
                             const BorderSide(color: Colors.green, width: 10.0),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/barometer',
+                        Navigator.of(context).pushNamed('/userBarometer',
                             arguments: BarometerArgs(
                                 userData: userData, mode: "training"));
                       },

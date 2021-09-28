@@ -40,9 +40,11 @@ class _ResultState extends State<Result> {
         ddy: _args.ddy,
         ddz: _args.ddz,
         timestamp: DateTime.now().microsecondsSinceEpoch);
+    print(request.toJson());
     final response = await http.post(url,
         body: json.encode(request.toJson()),
         headers: {"Content-Type": "application/json"});
+    print(response.body);
     return 1;
   }
 
