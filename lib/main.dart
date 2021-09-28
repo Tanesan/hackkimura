@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'page/top.dart';
 import 'page/barometer.dart';
 import 'page/result.dart';
-import 'page/training.dart';
-import 'page/grade.dart';
+import 'page/play.dart';
+import 'page/mypage.dart';
 
 void main() {
   runApp(MyApp());
