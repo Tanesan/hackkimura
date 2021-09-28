@@ -215,7 +215,7 @@ class Grade extends StatelessWidget {
                                 width: 300.0,
                                 height: 50.0,
                                 child: OutlinedButton(
-                                  child: const Text('重力引いたやつ',
+                                  child: const Text('重力そのままのやつ',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold)),
                                   style: OutlinedButton.styleFrom(
