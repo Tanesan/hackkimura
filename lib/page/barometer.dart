@@ -147,7 +147,7 @@ class _BarometerState extends State<Barometer> {
             ],
              */
           ),
-          body: Center(
+          body: SingleChildScrollView(child: Center(
               child: _current > 0
                   ? Column(mainAxisSize: MainAxisSize.min, children: [
                       Text("測定開始まで",
@@ -204,7 +204,7 @@ class _BarometerState extends State<Barometer> {
                                 ),
                                 onPressed: _finishMeasurement,
                               )),
-                        ]))),
+                        ])))),
     );
   }
 }

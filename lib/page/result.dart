@@ -33,6 +33,14 @@ class _ResultState extends State<Result> {
 
   Future<int> _postResult(BarometerArgs args) async {
     var url = Uri.parse('http://52.193.204.138:5000/data');
+    print(url);
+    print("a");
+    print(_args.userData.name);
+    print("b");
+    print(_args.time);
+    print(_args.ddx);
+    print(_args.ddy);
+    print(_args.ddz);
     TestRequest request = TestRequest(
         userName: _args.userData.name,
         t: _args.time,
@@ -40,6 +48,7 @@ class _ResultState extends State<Result> {
         ddy: _args.ddy,
         ddz: _args.ddz,
         timestamp: DateTime.now().microsecondsSinceEpoch);
+    print(url);
     print(request.toJson());
     final response = await http.post(url,
         body: json.encode(request.toJson()),
@@ -57,6 +66,8 @@ class _ResultState extends State<Result> {
   Widget build(BuildContext context) {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
     final Size size = MediaQuery.of(context).size;
+    print("build");
+    print(_args.userData.name);
     return Scaffold(
         appBar: AppBar(
             leading: IconButton(
