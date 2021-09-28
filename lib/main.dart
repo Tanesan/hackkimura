@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_line_sdk/flutter_line_sdk.dart';
+
 import 'page/top.dart';
 import 'page/barometer.dart';
 import 'page/result.dart';
@@ -6,6 +8,10 @@ import 'page/training.dart';
 import 'page/grade.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  LineSDK.instance.setup("${1656472887}").then((_) {
+    print("LineSDK Prepared");
+  });
   runApp(MyApp());
 }
 
@@ -17,11 +23,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor: Colors.black,
-        primaryColor:  Colors.black,
+        primaryColor: Colors.black,
         accentColor: Colors.green,
       ),
       home: Top(),
-      routes: <String,WidgetBuilder>{
+      routes: <String, WidgetBuilder>{
         '/top': (BuildContext context) => Top(),
         '/result': (BuildContext context) => Result(),
         '/barometer': (BuildContext context) => Barometer(),

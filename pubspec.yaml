@@ -35,6 +35,7 @@ dependencies:
   sensors: ^2.0.3
   volume: ^1.0.1
   audioplayers: ^0.20.1
+  flutter_line_sdk: ^2.0.0
 
 dev_dependencies:
   flutter_test:

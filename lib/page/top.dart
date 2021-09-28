@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackkimura/model/UserData.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_line_sdk/flutter_line_sdk.dart';
 
 class Top extends StatefulWidget {
   @override
@@ -10,6 +11,17 @@ class Top extends StatefulWidget {
 class _TopState extends State<Top> {
   UserData userData = UserData();
   final ScrollController controller = ScrollController();
+
+  void _signIn() async {
+    try {
+      final result = await LineSDK.instance.login();
+      // user id -> result.userProfile?.userId
+      // user name -> result.userProfile?.displayName
+      // user avatar -> result.userProfile?.pictureUrl
+    } on PlatformException catch (e) {
+//      _showDialog(context, e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
