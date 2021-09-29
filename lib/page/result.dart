@@ -128,7 +128,8 @@ class _ResultState extends State<Result> {
                             Row(children: [
                               Padding(
                                 padding:
-                                    EdgeInsets.only(left: size.width * 0.18),
+                                    //EdgeInsets.only(left: size.width * 0.18),
+                                EdgeInsets.only(left: size.width * 0.0),
                                 child: Text(
                                     '${snapshot.data?.average.toStringAsFixed(1)}',
                                     style: TextStyle(
@@ -211,12 +212,13 @@ class _ResultState extends State<Result> {
                                             '${snapshot.data?.topFiveUsers[0]}',
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 40)),
+                                                fontSize: 30)),
                                       ),
                                       Row(children: [
                                         Padding(
                                           padding: EdgeInsets.only(
-                                              left: size.width * 0.18),
+                                              //left: size.width * 0.18),
+                                              left: size.width * 0),
                                           child: Text(
                                               '${snapshot.data?.topFiveScores[0].toString()}',
                                               style: TextStyle(
@@ -246,12 +248,13 @@ class _ResultState extends State<Result> {
                                             '${snapshot.data?.topFiveUsers[1]}',
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 40)),
+                                                fontSize: 30)),
                                       ),
                                       Row(children: [
                                         Padding(
                                           padding: EdgeInsets.only(
-                                              left: size.width * 0.18),
+                                              //left: size.width * 0.18),
+                                              left: size.width * 0),
                                           child: Text(
                                               '${snapshot.data?.topFiveScores[1].toString()}',
                                               style: TextStyle(
@@ -281,12 +284,13 @@ class _ResultState extends State<Result> {
                                             '${snapshot.data?.topFiveUsers[2]}',
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 40)),
+                                                fontSize: 30)),
                                       ),
                                       Row(children: [
                                         Padding(
                                           padding: EdgeInsets.only(
-                                              left: size.width * 0.18),
+                                              //left: size.width * 0.18),
+                                              left: size.width * 0),
                                           child: Text(
                                               '${snapshot.data?.topFiveScores[2].toString()}',
                                               style: TextStyle(

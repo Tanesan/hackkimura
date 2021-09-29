@@ -41,21 +41,24 @@ class _BarometerState extends State<Barometer> {
     sub.onDone(() {
       sub.cancel();
       _startTime = DateTime.now();
-      _pressures.add(0.1);
-      _pressures.add(0.2);
+//      _pressures.add(0.1);
+//      _pressures.add(0.2);
       _incrementCounter();
-      _time.add(DateTime.now().difference(_startTime).inMilliseconds);
-      _time.add(DateTime.now().difference(_startTime).inMilliseconds);
+//      _time.add(DateTime.now().difference(_startTime).inMilliseconds);
+//      _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       userAccelerometerEvents.listen((UserAccelerometerEvent event) {
-        _pressures.add(_calcSpeed(event));
+        _pressures.add(event.z);
         _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       });
     });
   }
 
+/*
   double _calcSpeed(UserAccelerometerEvent event) {
     return sqrt(event.x * event.x + event.y * event.y + event.z * event.z);
   }
+
+ */
 
   @override
   void initState() {
@@ -67,9 +70,9 @@ class _BarometerState extends State<Barometer> {
     args.pressures = _pressures;
     args.time = _time;
     _receivePort.close();
-    if(args.mode == "battle"){
-    Navigator.of(context).pushNamed("/result", arguments: args);
-    }else{
+    if (args.mode == "battle") {
+      Navigator.of(context).pushNamed("/result", arguments: args);
+    } else {
       Navigator.of(context).pushNamed("/grade", arguments: args.userData);
     }
   }
@@ -78,7 +81,7 @@ class _BarometerState extends State<Barometer> {
 
   Future<void> _incrementCounter() async {
     var sendPort = _receivePort.sendPort;
-    late Capability capability;
+//    late Capability capability;
 
     // 子供からメッセージを受け取る
     _receivePort.listen((message) {
@@ -112,19 +115,19 @@ class _BarometerState extends State<Barometer> {
   Widget build(BuildContext context) {
     args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
     return MaterialApp(
-      home: Scaffold(
-          backgroundColor: Colors.black,
-          appBar: AppBar(
-            leading: IconButton(
-                onPressed: () {
-                  _receivePort.close();
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(Icons.arrow_back)),
-            title: Text(args.mode == "training" ? 'トレーニングモード' : '採点モード'),
-            backgroundColor: Colors.black,
-            // 右側のアイコン一覧
-            /*
+        home: Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              _receivePort.close();
+              Navigator.of(context).pop();
+            },
+            icon: Icon(Icons.arrow_back)),
+        title: Text(args.mode == "training" ? 'トレーニングモード' : '採点モード'),
+        backgroundColor: Colors.black,
+        // 右側のアイコン一覧
+        /*
             actions: <Widget>[
               IconButton(
                 onPressed: () {},
@@ -132,8 +135,9 @@ class _BarometerState extends State<Barometer> {
               ),
             ],
              */
-          ),
-          body: Center(
+      ),
+      body: SingleChildScrollView(
+          child: Center(
               child: _current > 0
                   ? Column(mainAxisSize: MainAxisSize.min, children: [
                       Text("測定開始まで",
@@ -141,7 +145,7 @@ class _BarometerState extends State<Barometer> {
                       Text("$_current",
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 550,
+                              fontSize: 300,
                               fontWeight: FontWeight.bold))
                     ])
                   : Column(
@@ -191,6 +195,6 @@ class _BarometerState extends State<Barometer> {
                                 onPressed: _finishMeasurement,
                               )),
                         ]))),
-    );
+    ));
   }
 }

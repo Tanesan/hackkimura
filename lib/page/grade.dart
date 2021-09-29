@@ -226,7 +226,7 @@ class Grade extends StatelessWidget {
                                   ),
                                   onPressed: () {
                                     userData.chooseMode = "battle";
-                                    Navigator.of(context).pushNamed('/battle',
+                                    Navigator.of(context).pushNamed('/training',
                                         arguments: userData);
                                   },
                                 ),
