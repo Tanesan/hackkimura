@@ -56,6 +56,8 @@
     <key>LSApplicationQueriesSchemes</key>
     <array>
       <!-- Specify URL scheme to use when launching LINE from your app. -->
+       <string>https</string>
+       <string>http</string>
       <string>lineauth2</string>
     </array>
 </dict>

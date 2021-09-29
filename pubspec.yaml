@@ -36,6 +36,7 @@ dependencies:
   volume: ^1.0.1
   audioplayers: ^0.20.1
   flutter_line_sdk: ^2.0.0
+  url_launcher: ^6.0.10
 
 dev_dependencies:
   flutter_test:
@@ -58,8 +59,14 @@ flutter:
     - assets/
     - images/AED.jpg
     - images/emergency.jpg
+    - assets/sound/
     - assets/sound/sound.mp3
-    - assets/sound/傷病者.mp3
+    - assets/sound/effect_check.mp3
+    - assets/sound/big_voice_help.mp3
+    - assets/sound/AED.mp3
+    - assets/sound/announce_lye_people.mp3
+    - assets/sound/around_check.mp3
+    - assets/sound/help.mp3
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

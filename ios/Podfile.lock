@@ -97,6 +97,8 @@ PODS:
     - Flutter
   - system_shortcuts (0.0.1):
     - Flutter
+  - url_launcher (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
@@ -107,6 +109,7 @@ DEPENDENCIES:
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - sensors (from `.symlinks/plugins/sensors/ios`)
   - system_shortcuts (from `.symlinks/plugins/system_shortcuts/ios`)
+  - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
   trunk:
@@ -137,6 +140,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sensors/ios"
   system_shortcuts:
     :path: ".symlinks/plugins/system_shortcuts/ios"
+  url_launcher:
+    :path: ".symlinks/plugins/url_launcher/ios"
 
 SPEC CHECKSUMS:
   audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
@@ -157,6 +162,7 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   sensors: 84eb7a30e47a649e4172b71d6e81be614c280336
   system_shortcuts: fa91743cc51eed3811f5ea5461e23f972b9de780
+  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
 PODFILE CHECKSUM: 6b093ebfb1b8449e079b11eaf92625a356eea298
 
