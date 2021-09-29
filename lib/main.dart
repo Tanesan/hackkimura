@@ -4,8 +4,8 @@ import 'package:flutter_line_sdk/flutter_line_sdk.dart';
 import 'page/top.dart';
 import 'page/barometer.dart';
 import 'page/result.dart';
-import 'page/training.dart';
-import 'page/grade.dart';
+import 'page/play.dart';
+import 'page/mypage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
