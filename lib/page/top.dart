@@ -30,9 +30,9 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
 //      final userEmail = (idToken != null) ? idToken['email'] : null;
 
       _userProfile = result.userProfile;
-      print(_userProfile);
-      print(_userProfile!.displayName);
       userData.name = _userProfile!.displayName;
+      userData.id = _userProfile!.userId;
+      print(userData.id);
 //      userData.mail = userEmail;
 //      userData.accessToken = accessToken;
       Navigator.of(context).pushNamed('/grade', arguments: userData);
