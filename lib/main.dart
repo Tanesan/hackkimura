@@ -10,7 +10,7 @@ import 'page/emergency.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  LineSDK.instance.setup("${1656472887}").then((_) {
+  LineSDK.instance.setup("${1656477616}").then((_) {
     print("LineSDK Prepared");
   });
   runApp(MyApp());
