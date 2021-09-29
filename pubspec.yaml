@@ -57,6 +57,7 @@ flutter:
     - sound/
     - assets/
     - images/AED.jpg
+    - images/emergency.jpg
     - sound/sound.mp3
     - assets/sound/sound.mp3
   #   - images/a_dot_ham.jpeg
