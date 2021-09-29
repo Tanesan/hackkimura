@@ -70,9 +70,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: Colors.black,
-        body: SingleChildScrollView(
-            controller: controller,
-            child: Column(
+        body: Column(
               children: [
                 InkWell(
                     onTap: () {
@@ -90,7 +88,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                         )),
                         child: Padding(
                           padding:
-                              EdgeInsets.only(top: size.height * 0.45 - 72),
+                              EdgeInsets.only(top: size.height * 0.4 - 72),
                           child: Center(
                             child: Column(
                               children: [
@@ -134,9 +132,11 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                         ))),
                 Container(
                     width: double.infinity,
-                    height: animation.value * 1.4,
+                    height: animation.value * 1.3,
                     child: animation.value > 40
-                        ? Column(children: [
+                        ? SingleChildScrollView(
+                        child: Column(
+                        children:[
                             /*
                             Padding(
                               padding: EdgeInsets.only(
@@ -287,7 +287,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                                             arguments: userData);
                                       })),
                             ),
-                          ])
+                          ]))
                         : null),
                 InkWell(
                   onTap: () {
@@ -302,7 +302,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                       )),
                       child: Padding(
                         padding: EdgeInsets.only(
-                            top: size.height * 0.3 - 72 - animation.value * 1 + 100),
+                            top: size.height * 0.4 - 72 - animation.value * 1),
                         child: Center(
                           child: Column(
                             children: [
@@ -357,7 +357,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                       )),
                 )
               ],
-            )));
+            ));
   }
 
   void _showDialog(BuildContext context, String text) {
