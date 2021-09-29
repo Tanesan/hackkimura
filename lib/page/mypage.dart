@@ -219,6 +219,30 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                 width: 300.0,
                                 height: 50.0,
                                 child: OutlinedButton(
+                                  child: const Text('一連の流れ練習モード',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                  style: OutlinedButton.styleFrom(
+                                    primary: Colors.white,
+                                    shape: const StadiumBorder(),
+                                    side: const BorderSide(color: Colors.green),
+                                  ),
+                                  onPressed: () {
+                                    userData.chooseMode = "all_training";
+                                    Navigator.of(context).pushNamed('/training',
+                                        arguments: userData);
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 40),
+                            child: Center(
+                              child: Container(
+                                width: 300.0,
+                                height: 50.0,
+                                child: OutlinedButton(
                                   child: const Text('トレーニングモード',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold)),

@@ -6,6 +6,7 @@ import 'page/barometer.dart';
 import 'page/result.dart';
 import 'page/play.dart';
 import 'page/mypage.dart';
+import 'page/emergency.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/barometer': (BuildContext context) => Barometer(),
         '/training': (BuildContext context) => Training(),
         '/grade': (BuildContext context) => Grade(),
+        '/emergency': (BuildContext context) => Emergency(),
       },
     );
   }

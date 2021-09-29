@@ -78,6 +78,8 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                     onTap: () {
                       if (animation.value == 0) {
                         animationController.forward(from: 0.0);
+                      }else{
+                        animationController.reverse();
                       }
                     },
                     child: Container(
@@ -289,7 +291,8 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                         : null),
                 InkWell(
                   onTap: () {
-                    animationController.reverse();
+                    Navigator.of(context)
+                        .pushNamed('/emergency');
                   },
                   child: Container(
                       decoration: const BoxDecoration(
