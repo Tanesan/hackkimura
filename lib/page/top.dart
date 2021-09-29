@@ -12,8 +12,6 @@ class _TopState extends State<Top> {
   UserData userData = UserData();
   final ScrollController controller = ScrollController();
   UserProfile? _userProfile;
-  String? _userEmail;
-  StoredAccessToken? _accessToken;
   bool _isOnlyWebLogin = false;
 
   final Set<String> _selectedScopes = Set.from(['profile']);
@@ -22,19 +20,21 @@ class _TopState extends State<Top> {
     try {
       /// requestCode is for Android platform only, use another unique value in your application.
       final loginOption =
-      LoginOption(_isOnlyWebLogin, 'normal', requestCode: 8192);
+          LoginOption(_isOnlyWebLogin, 'normal', requestCode: 8192);
       final result = await LineSDK.instance
           .login(scopes: _selectedScopes.toList(), option: loginOption);
       final accessToken = await LineSDK.instance.currentAccessToken;
 
       final idToken = result.accessToken.idToken;
-      final userEmail = (idToken != null) ? idToken['email'] : null;
+//      final userEmail = (idToken != null) ? idToken['email'] : null;
 
-      setState(() {
-        _userProfile = result.userProfile;
-        _userEmail = userEmail;
-        _accessToken = accessToken;
-      });
+      _userProfile = result.userProfile;
+      print(_userProfile);
+      print(_userProfile!.displayName);
+      userData.name = _userProfile!.displayName;
+//      userData.mail = userEmail;
+//      userData.accessToken = accessToken;
+      Navigator.of(context).pushNamed('/grade', arguments: userData);
     } on PlatformException catch (e) {
       _showDialog(context, e.toString());
     }
@@ -83,6 +83,7 @@ class _TopState extends State<Top> {
                       ),
                     )),
                 Column(children: [
+                  /*
                   Padding(
                     padding: EdgeInsets.only(
                         top: size.width * 0.15,
@@ -129,6 +130,8 @@ class _TopState extends State<Top> {
                       ),
                     ),
                   ),
+
+                   */
                   Padding(
                       padding: EdgeInsets.only(
                           top: size.width * 0.01,
@@ -144,7 +147,8 @@ class _TopState extends State<Top> {
                               child: Center(
                                 child: TextField(
                                     inputFormatters: <TextInputFormatter>[
-                                      FilteringTextInputFormatter.allow(RegExp(r'^[0-9a-zA-Z@_.-]+$')),
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp(r'^[0-9a-zA-Z@_.-]+$')),
                                     ],
                                     maxLength: 10,
                                     maxLines: 1,
@@ -177,25 +181,38 @@ class _TopState extends State<Top> {
                               )))),
                   Padding(
                     padding: EdgeInsets.only(
-                        top: size.width * 0.10, bottom: size.height * 0.40),
+                        top: size.width * 0.10),
                     child: Center(
                       child: Container(
                         width: 200.0,
                         height: 50.0,
                         child: OutlinedButton(
-                          child: const Text('スタート',
+                            child: const Text('LINEでログイン',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            style: OutlinedButton.styleFrom(
+                              primary: Colors.white,
+                              shape: const StadiumBorder(),
+                              side: const BorderSide(color: Colors.green),
+                            ),
+                            onPressed: _signIn),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Center(
+                    child: Container(
+                      width: 200.0,
+                      height: 50.0,
+                      child: TextButton(
+                          child: const Text('ログインしないで続ける',
                               style: TextStyle(fontWeight: FontWeight.bold)),
-                          style: OutlinedButton.styleFrom(
+                          style: TextButton.styleFrom(
                             primary: Colors.white,
-                            shape: const StadiumBorder(),
-                            side: const BorderSide(color: Colors.green),
                           ),
                           onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed('/grade', arguments: userData);
-                          },
-                        ),
-                      ),
+                            userData.name = "Guest";
+                            Navigator.of(context).pushNamed("/grade", arguments: userData);
+                          })
                     ),
                   ),
                 ]),
@@ -211,10 +228,10 @@ class _TopState extends State<Top> {
           content: Text(text),
           actions: <Widget>[
             TextButton(
-                child: Text('Close'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+              child: Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
 //                style: TextButton.styleFrom(primary: accentColor),
             )
           ],
