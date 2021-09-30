@@ -241,7 +241,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                                                     color: Colors.green,
                                                   ),
                                                 ),
-                                                labelText: 'クラスID',
+                                                labelText: 'クラスID(指定ない場合は新規作成)',
                                               ),
                                               onChanged: (text) {
                                                 userData.classCode = text;
