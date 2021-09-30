@@ -24,6 +24,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State {
+  MapboxMapController? mapController;
+
+  void _onMapCreated(MapboxMapController controller) {
+    mapController = controller;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: MapboxMap(
