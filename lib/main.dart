@@ -8,12 +8,14 @@ import 'page/play.dart';
 import 'page/mypage.dart';
 import 'page/emergency.dart';
 
+import 'page/AEDMap.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   LineSDK.instance.setup("${1656477616}").then((_) {
     print("LineSDK Prepared");
   });
-  runApp(MyApp());
+  runApp(MyAEDApp());
 }
 
 class MyApp extends StatelessWidget {
