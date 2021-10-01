@@ -82,6 +82,8 @@ flutter:
     - assets/sound/announce_lye_people.mp3
     - assets/sound/around_check.mp3
     - assets/sound/help.mp3
+    - assets/sound/breath.mp3
+    - assets/sound/kyokotuappaku.mp3
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -200,7 +200,6 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                                         userData.classCode = text;
                                       }),
                                 )))),
-                    SizedBox(height: 20),
                     Center(
                         child: Container(
                             width: 200.0,

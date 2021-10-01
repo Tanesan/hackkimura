@@ -22,9 +22,9 @@ class _EmergencyState extends State<Emergency> {
     }else if (index == 3){
       player.play('sound/AED.mp3');
     }else if (index == 4){
-      // player.play('sound/AED.mp3');
+      player.play('sound/breath.mp3');
     }else if (index == 5){
-      // player.play('sound/AED.mp3');
+      player.play('sound/kyokotuappaku.mp3');
     }
   }
   void _call119() async =>
