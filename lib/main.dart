@@ -22,11 +22,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        backgroundColor: Colors.black,
-        primaryColor: Colors.black,
-        accentColor: Colors.green,
-      ),
+      theme: ThemeData.from(
+          colorScheme:ColorScheme.light(primary: Colors.green),
+          textTheme: Typography.material2018().black.copyWith(
+              subtitle1: TextStyle(fontWeight: FontWeight.bold),
+              subtitle2: TextStyle(fontWeight: FontWeight.bold),
+              // headline3: TextStyle(color: Colors.white)
+          )),
+      darkTheme: ThemeData.from(
+          colorScheme:ColorScheme.dark(primary: Colors.green),
+          textTheme: Typography.material2018().white.copyWith(
+              subtitle1: TextStyle(fontWeight: FontWeight.bold,
+                  color: Colors.white60),
+              subtitle2: TextStyle(fontWeight: FontWeight.bold,
+                  color: Colors.white60),
+              headline4: TextStyle(color: Colors.white),
+              headline2: TextStyle(color: Colors.white),
+              bodyText1: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              headline3: TextStyle(color: Colors.white))),
       home: Top(),
       routes: <String, WidgetBuilder>{
         '/top': (BuildContext context) => Top(),
@@ -35,6 +48,7 @@ class MyApp extends StatelessWidget {
         '/training': (BuildContext context) => Training(),
         '/grade': (BuildContext context) => Grade(),
         '/emergency': (BuildContext context) => Emergency(),
+        '/mypage': (BuildContext context) => Grade()
       },
     );
   }

@@ -8,7 +8,6 @@ class Training extends StatelessWidget {
     print(ModalRoute.of(context)?.settings.arguments);
     var userData = ModalRoute.of(context)?.settings.arguments as UserData;
     return Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
@@ -34,17 +33,16 @@ class Training extends StatelessWidget {
               child: Column(
                 children: [
                   Text("2Lペットボトルの上にスマホを固定し，測定開始ボタンを押してください。",
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                  style: Theme.of(context).textTheme.headline5),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(top: 80),
+                      padding: EdgeInsets.only(top: 180),
                       child: Container(
                         width: 300.0,
                         height: 300.0,
                         child: OutlinedButton(
-                          child: const Text('測定開始',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 64)),
+                          child: Text('測定開始',
+                              style: Theme.of(context).textTheme.headline2),
                           style: OutlinedButton.styleFrom(
                             primary: Colors.black,
                             shape: const StadiumBorder(),

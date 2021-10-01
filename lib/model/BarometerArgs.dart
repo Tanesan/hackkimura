@@ -1,4 +1,4 @@
-import 'package:hackkimura/model/UserData.dart';
+
 
 class BarometerArgs {
   var userData;
