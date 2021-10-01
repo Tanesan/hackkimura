@@ -47,7 +47,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     animationController = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 500),
       vsync: this,
     );
     animation = Tween<double>(begin: 0, end: 180).animate(animationController);
