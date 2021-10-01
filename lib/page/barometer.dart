@@ -107,7 +107,7 @@ class _BarometerState extends State<Barometer> {
     int i = 0;
     // 親にメッセージを送る
     Timer.periodic(
-        Duration(milliseconds: 500), (timer) => {sendPort.send(i++)});
+        Duration(milliseconds: 545), (timer) => {sendPort.send(i++)});
   }
 
   @override
