@@ -31,31 +31,21 @@ class _MyHomePageState extends State {
 
   void _onMapCreated(MapboxMapController controller) async {
     mapController = controller;
-    // Acquire current location (returns the LatLng instance)
-    final result = await acquireCurrentLocation();
 
-    // You can either use the moveCamera or animateCamera, but the former
-    // causes a sudden movement from the initial to 'new' camera position,
-    // while animateCamera gives a smooth animated transition
+    var location = LatLng(35.17176088096857, 136.88817886263607);
+
+    await controller.addSymbol(
+      SymbolOptions(
+        geometry: location,
+        iconImage: "images/AED.jpg",
+        iconSize: .1
+      ),
+    );
+    final result = await acquireCurrentLocation();
     await controller.animateCamera(
       CameraUpdate.newLatLng(result),
     );
 
-    // Add a circle denoting current user location
-    await controller.addCircle(
-        CircleOptions(
-          circleRadius: 8.0,
-          circleColor: '#006992',
-          circleOpacity: 0.8,
-
-          // YOU NEED TO PROVIDE THIS FIELD!!!
-          // Otherwise, you'll get a silent exception somewhere in the stack
-          // trace, but the parameter is never marked as @required, so you'll
-          // never know unless you check the stack trace
-          geometry: result,
-          draggable: false,
-        ),
-    );
   }
 
   @override
