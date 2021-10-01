@@ -185,7 +185,7 @@ class _ResultState extends State<Result> {
                         child: const Text('認定証を発行',
                             style: TextStyle(fontWeight: FontWeight.bold)),
                         style: OutlinedButton.styleFrom(
-                          primary: Colors.white,
+                          primary: Colors.green,
                           shape: const StadiumBorder(),
                           side: const BorderSide(color: Colors.green),
                         ),
@@ -337,7 +337,7 @@ class _ResultState extends State<Result> {
               child: OutlinedButton(
                   child: const Text('もう一度', style: TextStyle(fontSize: 24)),
                   style: OutlinedButton.styleFrom(
-                    primary: Colors.white,
+                    primary: Colors.green,
                     shape: const StadiumBorder(),
                     side: const BorderSide(color: Colors.green),
                   ),
