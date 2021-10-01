@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hackkimura/model/BarometerArgs.dart';
-import 'package:hackkimura/model/UserData.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -12,7 +10,6 @@ class Emergency extends StatefulWidget {
 }
 
 class _EmergencyState extends State<Emergency> {
-  @override
   int _index = 0;
   AudioCache player = AudioCache();
   void _music(index) {
@@ -42,7 +39,6 @@ class _EmergencyState extends State<Emergency> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text('緊急事態'),
         ),
@@ -68,7 +64,7 @@ class _EmergencyState extends State<Emergency> {
                     setState(() {
                       _index -= 1;
                       _music(_index);
-                      print(_index);
+                      // print(_index);
                     });
                   }
                 },
@@ -77,7 +73,7 @@ class _EmergencyState extends State<Emergency> {
                     setState(() {
                       _index += 1;
                       _music(_index);
-                      print(_index);
+                      // print(_index);
                     });
                   }
                 },
@@ -103,7 +99,7 @@ class _EmergencyState extends State<Emergency> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(left: 4, right: 4),
-                                    child: Icon(Icons.undo, color: Colors.white),
+                                    child: Icon(Icons.undo),
                                   ),
                                   Text('戻る', style: TextStyle(fontSize: 24)),
                                 ],
@@ -122,7 +118,7 @@ class _EmergencyState extends State<Emergency> {
                                   Text('進む', style: TextStyle(fontSize: 24)),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 4, right: 4),
-                                    child: Icon(Icons.redo, color: Colors.white),
+                                    child: Icon(Icons.redo),
                                   )
                                 ],
                               ),
@@ -140,7 +136,7 @@ class _EmergencyState extends State<Emergency> {
                     isActive: _index >= 0,
                     content: Container(
                         alignment: Alignment.centerLeft,
-                        child: const Text('車道の上であれば少し道脇に運んでください。', style: TextStyle(fontSize: 24))),
+                        child: Text('車道の上であれば少し道脇に運んでください。', style: TextStyle(fontSize: 24))),
                   ),
                   Step(
                     title: _index == 1 ? Text('傷病者の反応、意識を確認',

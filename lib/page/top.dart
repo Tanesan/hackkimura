@@ -24,9 +24,9 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
           LoginOption(_isOnlyWebLogin, 'normal', requestCode: 8192);
       final result = await LineSDK.instance
           .login(scopes: _selectedScopes.toList(), option: loginOption);
-      final accessToken = await LineSDK.instance.currentAccessToken;
+      // final accessToken = await LineSDK.instance.currentAccessToken;
 
-      final idToken = result.accessToken.idToken;
+      // final idToken = result.accessToken.idToken;
 //      final userEmail = (idToken != null) ? idToken['email'] : null;
 
       _userProfile = result.userProfile;
@@ -59,9 +59,9 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    if (animationController != null) {
+    // if (animationController != null) {
       animationController.dispose();
-    }
+    // }
     super.dispose();
   }
 
@@ -69,7 +69,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.black,
         body: Column(
               children: [
                 InkWell(
@@ -192,6 +192,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                               ),
                             ),
                                */
+                          SizedBox(height: 20),
                             Padding(
                                 padding: EdgeInsets.only(
                                     top: size.width * 0.01,
@@ -218,11 +219,12 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                                               maxLines: 1,
                                               obscureText: false,
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  // color: Colors.white,
                                                   fontWeight: FontWeight.bold),
                                               decoration: InputDecoration(
                                                 labelStyle: TextStyle(
-                                                    color: Colors.white),
+                                                    color: Colors.green
+                                                ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   // width: 0.0 produces a thin "hairline" border
@@ -260,7 +262,6 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold)),
                                     style: OutlinedButton.styleFrom(
-                                      primary: Colors.white,
                                       shape: const StadiumBorder(),
                                       side:
                                           const BorderSide(color: Colors.green),
@@ -268,7 +269,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                                     onPressed: _signIn),
                               )),
                             ),
-                            SizedBox(height: 20),
+                          SizedBox(height: 5),
                             Center(
                               child: Container(
                                   width: 200.0,
@@ -278,7 +279,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
                                       style: TextButton.styleFrom(
-                                        primary: Colors.white,
+                                        // primary: Colors.white,
                                       ),
                                       onPressed: () {
                                         userData.name = "Guest";

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 import 'package:quiver/async.dart';
 import 'package:hackkimura/model/BarometerArgs.dart';
 import 'package:sensors/sensors.dart';
@@ -114,9 +113,7 @@ class _BarometerState extends State<Barometer> {
   @override
   Widget build(BuildContext context) {
     args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
-    return MaterialApp(
-        home: Scaffold(
-      backgroundColor: Colors.black,
+    return Scaffold(
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
@@ -125,7 +122,6 @@ class _BarometerState extends State<Barometer> {
             },
             icon: Icon(Icons.arrow_back)),
         title: Text(args.mode == "training" ? 'トレーニングモード' : '採点モード'),
-        backgroundColor: Colors.black,
         // 右側のアイコン一覧
         /*
             actions: <Widget>[
@@ -140,12 +136,15 @@ class _BarometerState extends State<Barometer> {
           child: Center(
               child: _current > 0
                   ? Column(mainAxisSize: MainAxisSize.min, children: [
-                      Text("測定開始まで",
-                          style: TextStyle(color: Colors.white, fontSize: 32)),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 64.0),
+                        child: Center(
+                          child: Text("測定開始まで",
+                              style: Theme.of(context).textTheme.headline5)),
+                        ),
                       Text("$_current",
                           style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 300,
+                              fontSize: 500,
                               fontWeight: FontWeight.bold))
                     ])
                   : Column(
@@ -156,27 +155,25 @@ class _BarometerState extends State<Barometer> {
                               stream: userAccelerometerEvents,
                               builder: (context, snapshot) {
                                 if (!snapshot.hasData)
-                                  return Column(children: [
-                                    Text('気圧センサが利用できません。',
-                                        style: TextStyle(color: Colors.white)),
-                                    Text('気圧センサが利用できる端末をご利用ください。',
-                                        style: TextStyle(color: Colors.white))
-                                  ]);
+                                  return Padding(
+                                    padding: const EdgeInsets.only(top: 24.0),
+                                    child: Column(children: [
+                                      Text('気圧センサが利用できません。'),
+                                      Text('気圧センサが利用できる端末をご利用ください。')
+                                    ]),
+                                  );
                                 return Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text("残り",
                                           style: TextStyle(
-                                              color: Colors.white,
                                               fontSize: 32)),
                                       Text("${(_counter / 2).round()}",
                                           style: TextStyle(
-                                              color: Colors.white,
                                               fontSize: 200,
                                               fontWeight: FontWeight.bold)),
                                       Text("秒",
                                           style: TextStyle(
-                                              color: Colors.white,
                                               fontSize: 32)),
                                     ]);
                               }),
@@ -185,16 +182,15 @@ class _BarometerState extends State<Barometer> {
                               width: 300.0,
                               height: 50.0,
                               child: OutlinedButton(
-                                child: const Text('測定終了',
-                                    style: TextStyle(color: Colors.white)),
+                                child: Text('測定終了',
+                                    style: Theme.of(context).textTheme.bodyText1),
                                 style: OutlinedButton.styleFrom(
-                                  primary: Colors.black,
                                   shape: const StadiumBorder(),
                                   side: const BorderSide(color: Colors.green),
                                 ),
                                 onPressed: _finishMeasurement,
                               )),
                         ]))),
-    ));
+    );
   }
 }
