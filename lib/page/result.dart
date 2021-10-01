@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:hackkimura/model/BarometerArgs.dart';
 import 'package:hackkimura/model/ApiResults.dart';
 import 'package:hackkimura/model/Request.dart';
+import 'package:hackkimura/function/requestCertificate.dart';
 
 class Result extends StatefulWidget {
   @override
@@ -129,7 +130,7 @@ class _ResultState extends State<Result> {
                               Padding(
                                 padding:
                                     //EdgeInsets.only(left: size.width * 0.18),
-                                EdgeInsets.only(left: size.width * 0.0),
+                                    EdgeInsets.only(left: size.width * 0.0),
                                 child: Text(
                                     '${snapshot.data?.average.toStringAsFixed(1)}',
                                     style: TextStyle(
@@ -180,6 +181,19 @@ class _ResultState extends State<Result> {
                             ]),
                           ],
                         ),
+                      ),
+                      Divider(color: Colors.white),
+                      OutlinedButton(
+                        child: const Text('認定証を発行',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        style: OutlinedButton.styleFrom(
+                          primary: Colors.white,
+                          shape: const StadiumBorder(),
+                          side: const BorderSide(color: Colors.green),
+                        ),
+                        onPressed: () {
+                          requestCertificate(context);
+                        },
                       ),
                       Divider(color: Colors.white),
                       snapshot.data?.topFiveUsers.length < 3
