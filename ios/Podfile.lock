@@ -43,6 +43,9 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (~> 1.2)
   - Flutter (1.0.0)
+  - flutter_line_sdk (2.0.0):
+    - Flutter
+    - LineSDKSwift (~> 5.3)
   - GoogleAppMeasurement (8.2.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.2.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
@@ -79,6 +82,9 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.4.3):
     - GoogleUtilities/Logger
+  - LineSDKSwift (5.8.0):
+    - LineSDKSwift/Core (= 5.8.0)
+  - LineSDKSwift/Core (5.8.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -91,15 +97,19 @@ PODS:
     - Flutter
   - system_shortcuts (0.0.1):
     - Flutter
+  - url_launcher (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
   - environment_sensors (from `.symlinks/plugins/environment_sensors/ios`)
   - Firebase/Analytics
   - Flutter (from `Flutter`)
+  - flutter_line_sdk (from `.symlinks/plugins/flutter_line_sdk/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - sensors (from `.symlinks/plugins/sensors/ios`)
   - system_shortcuts (from `.symlinks/plugins/system_shortcuts/ios`)
+  - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
   trunk:
@@ -111,6 +121,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
+    - LineSDKSwift
     - nanopb
     - PromisesObjC
 
@@ -121,12 +132,16 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/environment_sensors/ios"
   Flutter:
     :path: Flutter
+  flutter_line_sdk:
+    :path: ".symlinks/plugins/flutter_line_sdk/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   sensors:
     :path: ".symlinks/plugins/sensors/ios"
   system_shortcuts:
     :path: ".symlinks/plugins/system_shortcuts/ios"
+  url_launcher:
+    :path: ".symlinks/plugins/url_launcher/ios"
 
 SPEC CHECKSUMS:
   audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
@@ -137,15 +152,18 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 61384f54989065b15c36b5922b65112e86811d3c
   FirebaseInstallations: 9394ea09e242bf0816e95ac30e56a9214cc86ced
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_line_sdk: e906ffa756c0ab01a3fd9c3dbe1c26e0092de3ff
   GoogleAppMeasurement: b52eafc9dff542d580700e708216568bd2fbf168
   GoogleDataTransport: 04c3e9a480bbcaa2ec3f5d27f1cdeb6a92f20c8d
   GoogleUtilities: 45dbb24a7f351d69d0a601482b39ad6c32e30dab
+  LineSDKSwift: 07caae66911f77d1ccf9e650e4da4020d737ecc7
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   sensors: 84eb7a30e47a649e4172b71d6e81be614c280336
   system_shortcuts: fa91743cc51eed3811f5ea5461e23f972b9de780
+  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
-PODFILE CHECKSUM: e560071d8ee9ef0a037cd6a16a901870e810017c
+PODFILE CHECKSUM: 6b093ebfb1b8449e079b11eaf92625a356eea298
 
 COCOAPODS: 1.10.1

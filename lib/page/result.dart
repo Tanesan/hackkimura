@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:hackkimura/model/BarometerArgs.dart';
 import 'package:hackkimura/model/ApiResults.dart';
 import 'package:hackkimura/model/Request.dart';
+import 'package:hackkimura/function/requestCertificate.dart';
 
 class Result extends StatefulWidget {
   @override
@@ -40,7 +41,7 @@ class _ResultState extends State<Result> {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.black,
         appBar: AppBar(
             leading: IconButton(
                 onPressed: () {
@@ -69,7 +70,7 @@ class _ResultState extends State<Result> {
                 width: double.infinity,
                 child: Text('結果発表',
                     textAlign: TextAlign.left,
-                    style: TextStyle(color: Colors.white, fontSize: 48))),
+                    style: TextStyle( fontSize: 48))),
           ),
           FutureBuilder<ApiResults>(
             future: _getResult(_args),
@@ -88,7 +89,7 @@ class _ResultState extends State<Result> {
                               padding: EdgeInsets.only(top: 15),
                               child: Text('総合得点：',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 20)),
+                                       fontSize: 20)),
                             ),
                             Row(children: [
                               Padding(
@@ -97,7 +98,6 @@ class _ResultState extends State<Result> {
                                 child: Text(
                                     '${snapshot.data?.score.toString()}',
                                     style: TextStyle(
-                                        color: Colors.white,
                                         fontSize: 48,
                                         fontWeight: FontWeight.w200)),
                               ),
@@ -106,8 +106,7 @@ class _ResultState extends State<Result> {
                                 padding: EdgeInsets.only(top: 15, right: 8),
                                 child: Text('点',
                                     textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20)),
+                                    style: TextStyle(fontSize: 20)),
                               )
                             ]),
                           ],
@@ -123,17 +122,17 @@ class _ResultState extends State<Result> {
                               padding: EdgeInsets.only(top: 15),
                               child: Text('クラスの平均点：',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 20)),
+                                       fontSize: 20)),
                             ),
                             Row(children: [
                               Padding(
                                 padding:
                                     //EdgeInsets.only(left: size.width * 0.18),
-                                EdgeInsets.only(left: size.width * 0.0),
+                                    EdgeInsets.only(left: size.width * 0.0),
                                 child: Text(
                                     '${snapshot.data?.average.toStringAsFixed(1)}',
                                     style: TextStyle(
-                                        color: Colors.white,
+                                        
                                         fontSize: 48,
                                         fontWeight: FontWeight.w200)),
                               ),
@@ -142,7 +141,7 @@ class _ResultState extends State<Result> {
                                 padding: EdgeInsets.only(top: 15, left: 8),
                                 child: Text('点',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20)),
+                                         fontSize: 20)),
                               )
                             ]),
                           ],
@@ -158,7 +157,7 @@ class _ResultState extends State<Result> {
                               padding: EdgeInsets.only(top: 15),
                               child: Text('クラス内順位：',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 20)),
+                                       fontSize: 20)),
                             ),
                             Row(children: [
                               Padding(
@@ -166,7 +165,7 @@ class _ResultState extends State<Result> {
                                     EdgeInsets.only(left: size.width * 0.18),
                                 child: Text('${snapshot.data?.rank.toString()}',
                                     style: TextStyle(
-                                        color: Colors.white,
+                                        
                                         fontSize: 48,
                                         fontWeight: FontWeight.w200)),
                               ),
@@ -175,11 +174,24 @@ class _ResultState extends State<Result> {
                                 padding: EdgeInsets.only(top: 15, left: 8),
                                 child: Text('位',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20)),
+                                         fontSize: 20)),
                               )
                             ]),
                           ],
                         ),
+                      ),
+                      Divider(color: Colors.white),
+                      OutlinedButton(
+                        child: const Text('認定証を発行',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        style: OutlinedButton.styleFrom(
+                          primary: Colors.green,
+                          shape: const StadiumBorder(),
+                          side: const BorderSide(color: Colors.green),
+                        ),
+                        onPressed: () {
+                          requestCertificate(context);
+                        },
                       ),
                       Divider(color: Colors.white),
                       snapshot.data?.topFiveUsers.length < 3
@@ -198,7 +210,7 @@ class _ResultState extends State<Result> {
                                       child: Text('クラスTop3',
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              
                                               fontSize: 40))),
                                 ),
                                 SizedBox(height: 20),
@@ -211,7 +223,7 @@ class _ResultState extends State<Result> {
                                         child: Text(
                                             '${snapshot.data?.topFiveUsers[0]}',
                                             style: TextStyle(
-                                                color: Colors.white,
+                                                
                                                 fontSize: 30)),
                                       ),
                                       Row(children: [
@@ -222,7 +234,7 @@ class _ResultState extends State<Result> {
                                           child: Text(
                                               '${snapshot.data?.topFiveScores[0].toString()}',
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  
                                                   fontSize: 48,
                                                   fontWeight: FontWeight.w200)),
                                         ),
@@ -232,7 +244,7 @@ class _ResultState extends State<Result> {
                                               EdgeInsets.only(top: 15, left: 8),
                                           child: Text('点',
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  
                                                   fontSize: 20)),
                                         )
                                       ]),
@@ -247,7 +259,7 @@ class _ResultState extends State<Result> {
                                         child: Text(
                                             '${snapshot.data?.topFiveUsers[1]}',
                                             style: TextStyle(
-                                                color: Colors.white,
+                                                
                                                 fontSize: 30)),
                                       ),
                                       Row(children: [
@@ -258,7 +270,7 @@ class _ResultState extends State<Result> {
                                           child: Text(
                                               '${snapshot.data?.topFiveScores[1].toString()}',
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  
                                                   fontSize: 48,
                                                   fontWeight: FontWeight.w200)),
                                         ),
@@ -268,7 +280,7 @@ class _ResultState extends State<Result> {
                                               EdgeInsets.only(top: 15, left: 8),
                                           child: Text('点',
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  
                                                   fontSize: 20)),
                                         )
                                       ]),
@@ -283,7 +295,7 @@ class _ResultState extends State<Result> {
                                         child: Text(
                                             '${snapshot.data?.topFiveUsers[2]}',
                                             style: TextStyle(
-                                                color: Colors.white,
+                                                
                                                 fontSize: 30)),
                                       ),
                                       Row(children: [
@@ -294,7 +306,7 @@ class _ResultState extends State<Result> {
                                           child: Text(
                                               '${snapshot.data?.topFiveScores[2].toString()}',
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  
                                                   fontSize: 48,
                                                   fontWeight: FontWeight.w200)),
                                         ),
@@ -304,7 +316,7 @@ class _ResultState extends State<Result> {
                                               EdgeInsets.only(top: 15, left: 8),
                                           child: Text('点',
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  
                                                   fontSize: 20)),
                                         )
                                       ]),
@@ -325,7 +337,7 @@ class _ResultState extends State<Result> {
               child: OutlinedButton(
                   child: const Text('もう一度', style: TextStyle(fontSize: 24)),
                   style: OutlinedButton.styleFrom(
-                    primary: Colors.white,
+                    primary: Colors.green,
                     shape: const StadiumBorder(),
                     side: const BorderSide(color: Colors.green),
                   ),
