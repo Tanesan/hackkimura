@@ -370,6 +370,39 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                         ],
                                       ))
                                 ]))),
+                        Padding(
+                          padding: EdgeInsets.only(top: 24, bottom: 8),
+                          child: Text("-トップページ-"),
+                        ),
+                        Card(
+                          // color: Colors.grey[900],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: new InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pushNamed('/top',
+                                      arguments: userData);
+                                },
+                                child: Column(children: [
+                                  Container(
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(
+                                                size.height * 0.03),
+                                            child: Container(
+                                              child: Center(
+                                                child: Text("トップページ",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .headline6),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ))
+                                ]))),
                       ]);
                     }))));
   }
