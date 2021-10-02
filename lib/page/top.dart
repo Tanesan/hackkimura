@@ -264,7 +264,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                 : null),
         InkWell(
           onTap: () {
-            Navigator.of(context).pushNamed('/emergency');
+            Navigator.of(context).pushNamed('/sos');
           },
           child: Container(
               decoration: const BoxDecoration(

@@ -95,7 +95,7 @@ class _HowtoplayState extends State<Howtoplay> {
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "疲れたら変わろう",
+          title: "疲れたら代わろう",
           bodyWidget:Column(
             children: [
               Text("助者が疲労して、圧迫の深さ、テンポ、解除（胸の戻り）が不十分になるのを防ぐため、周りに協力してくれる人がいたら、１～２分ごとを目安に胸骨圧迫の役割を交代しよう。"),

@@ -10,6 +10,8 @@ import 'page/emergency.dart';
 import 'page/AEDMap.dart';
 import 'page/explain.dart';
 import 'page/howtoplay.dart';
+import 'page/sos.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,7 +55,8 @@ class MyApp extends StatelessWidget {
         '/emergency': (BuildContext context) => Emergency(),
         '/mypage': (BuildContext context) => Grade(),
         '/explain': (BuildContext context) => Explain(),
-        '/howtoplay': (BuildContext context) => Howtoplay()
+        '/howtoplay': (BuildContext context) => Howtoplay(),
+        '/sos': (BuildContext context) => Sos()
       },
     );
   }
