@@ -38,6 +38,7 @@ dependencies:
   flutter_line_sdk: ^2.0.0
   url_launcher: ^6.0.10
   mapbox_gl: ^0.12.0
+  introduction_screen: ^2.1.0
   location: ^4.3.0
 
 dependency_overrides:
@@ -62,7 +63,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -73,7 +73,10 @@ flutter:
     - images/
     - assets/
     - images/AED.jpg
+    - images/img1.png
     - images/emergency.jpg
+    - images/petbottle.jpg
+    - images/kyokotu.jpg
     - assets/sound/
     - assets/sound/sound.mp3
     - assets/sound/effect_check.mp3

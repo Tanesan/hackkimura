@@ -3,96 +3,26 @@ PODS:
     - Flutter
   - environment_sensors (0.0.1):
     - Flutter
-  - Firebase/Analytics (8.2.0):
-    - Firebase/Core
-  - Firebase/Core (8.2.0):
-    - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 8.2.0)
-  - Firebase/CoreOnly (8.2.0):
-    - FirebaseCore (= 8.2.0)
-  - FirebaseAnalytics (8.2.0):
-    - FirebaseAnalytics/AdIdSupport (= 8.2.0)
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
-    - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (8.2.0):
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - GoogleAppMeasurement (= 8.2.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
-    - nanopb (~> 2.30908.0)
-  - FirebaseCore (8.2.0):
-    - FirebaseCoreDiagnostics (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/Logger (~> 7.4)
-  - FirebaseCoreDiagnostics (8.2.0):
-    - GoogleDataTransport (~> 9.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/Logger (~> 7.4)
-    - nanopb (~> 2.30908.0)
-  - FirebaseInstallations (8.2.0):
-    - FirebaseCore (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/UserDefaults (~> 7.4)
-    - PromisesObjC (~> 1.2)
   - Flutter (1.0.0)
   - flutter_line_sdk (2.0.0):
     - Flutter
     - LineSDKSwift (~> 5.3)
-  - GoogleAppMeasurement (8.2.0):
-    - GoogleAppMeasurement/AdIdSupport (= 8.2.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
-    - nanopb (~> 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (8.2.0):
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
-    - nanopb (~> 2.30908.0)
-  - GoogleDataTransport (9.0.1):
-    - GoogleUtilities/Environment (~> 7.2)
-    - nanopb (~> 2.30908.0)
-    - PromisesObjC (~> 1.2)
-  - GoogleUtilities/AppDelegateSwizzler (7.4.3):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.4.3):
-    - PromisesObjC (~> 1.2)
-  - GoogleUtilities/Logger (7.4.3):
-    - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.4.3):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.4.3):
-    - GoogleUtilities/Logger
-    - "GoogleUtilities/NSData+zlib"
-    - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.4.3)"
-  - GoogleUtilities/Reachability (7.4.3):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.4.3):
-    - GoogleUtilities/Logger
   - LineSDKSwift (5.8.0):
     - LineSDKSwift/Core (= 5.8.0)
   - LineSDKSwift/Core (5.8.0)
-  - nanopb (2.30908.0):
-    - nanopb/decode (= 2.30908.0)
-    - nanopb/encode (= 2.30908.0)
-  - nanopb/decode (2.30908.0)
-  - nanopb/encode (2.30908.0)
+  - location (0.0.1):
+    - Flutter
+  - Mapbox-iOS-SDK (6.3.0):
+    - MapboxMobileEvents (~> 0.10.4)
+  - mapbox_gl (0.0.1):
+    - Flutter
+    - Mapbox-iOS-SDK (~> 6.3.0)
+    - MapboxAnnotationExtension (~> 0.0.1-beta.1)
+  - MapboxAnnotationExtension (0.0.1-beta.2):
+    - Mapbox-iOS-SDK (~> 6.0)
+  - MapboxMobileEvents (0.10.12)
   - path_provider (0.0.1):
     - Flutter
-  - PromisesObjC (1.2.12)
   - sensors (0.0.1):
     - Flutter
   - system_shortcuts (0.0.1):
@@ -103,9 +33,10 @@ PODS:
 DEPENDENCIES:
   - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
   - environment_sensors (from `.symlinks/plugins/environment_sensors/ios`)
-  - Firebase/Analytics
   - Flutter (from `Flutter`)
   - flutter_line_sdk (from `.symlinks/plugins/flutter_line_sdk/ios`)
+  - location (from `.symlinks/plugins/location/ios`)
+  - mapbox_gl (from `.symlinks/plugins/mapbox_gl/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - sensors (from `.symlinks/plugins/sensors/ios`)
   - system_shortcuts (from `.symlinks/plugins/system_shortcuts/ios`)
@@ -113,17 +44,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseCore
-    - FirebaseCoreDiagnostics
-    - FirebaseInstallations
-    - GoogleAppMeasurement
-    - GoogleDataTransport
-    - GoogleUtilities
     - LineSDKSwift
-    - nanopb
-    - PromisesObjC
+    - Mapbox-iOS-SDK
+    - MapboxAnnotationExtension
+    - MapboxMobileEvents
 
 EXTERNAL SOURCES:
   audioplayers:
@@ -134,6 +58,10 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_line_sdk:
     :path: ".symlinks/plugins/flutter_line_sdk/ios"
+  location:
+    :path: ".symlinks/plugins/location/ios"
+  mapbox_gl:
+    :path: ".symlinks/plugins/mapbox_gl/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   sensors:
@@ -146,24 +74,19 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
   environment_sensors: 46802526e2f9e5b84722e0327d6391168b7ad74f
-  Firebase: 12c568897b807321964e89d2b263ef4c6cff3db6
-  FirebaseAnalytics: 7a744b1e7dc50125cb37714c6bdaea167e412082
-  FirebaseCore: 3a83f24c3de69ec9f9a426e2598125ea51f3a2ce
-  FirebaseCoreDiagnostics: 61384f54989065b15c36b5922b65112e86811d3c
-  FirebaseInstallations: 9394ea09e242bf0816e95ac30e56a9214cc86ced
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_line_sdk: e906ffa756c0ab01a3fd9c3dbe1c26e0092de3ff
-  GoogleAppMeasurement: b52eafc9dff542d580700e708216568bd2fbf168
-  GoogleDataTransport: 04c3e9a480bbcaa2ec3f5d27f1cdeb6a92f20c8d
-  GoogleUtilities: 45dbb24a7f351d69d0a601482b39ad6c32e30dab
   LineSDKSwift: 07caae66911f77d1ccf9e650e4da4020d737ecc7
-  nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
+  Mapbox-iOS-SDK: 2563ed87ead6ec08f1c2090873977b8a7be335a8
+  mapbox_gl: 4b91045a7fefc61a8813bad5248f54a8bd8bd1e5
+  MapboxAnnotationExtension: 4eee6c26349ef6d909f1a23a7eae2d0f7ca5fa7d
+  MapboxMobileEvents: b72b07268586c6fd1f53178f08df15f74070b188
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
-  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   sensors: 84eb7a30e47a649e4172b71d6e81be614c280336
   system_shortcuts: fa91743cc51eed3811f5ea5461e23f972b9de780
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
-PODFILE CHECKSUM: 6b093ebfb1b8449e079b11eaf92625a356eea298
+PODFILE CHECKSUM: a0e06ed57f4ae5398388f7981a40518f8cdc90a3
 
 COCOAPODS: 1.10.1

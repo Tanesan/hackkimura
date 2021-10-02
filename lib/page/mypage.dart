@@ -13,7 +13,6 @@ class Grade extends StatefulWidget {
 }
 
 class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
-
   Future<UserScoreResponse> _getResult(UserData userData) async {
     var url = Uri.parse('http://52.193.204.138:5000/class');
     UserScoreRequest request = UserScoreRequest(
@@ -29,7 +28,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
     final Size size = MediaQuery.of(context).size;
     var userData = ModalRoute.of(context)?.settings.arguments as UserData;
     final Brightness platformBrightness =
-    MediaQuery.platformBrightnessOf(context);
+        MediaQuery.platformBrightnessOf(context);
     return Scaffold(
         body: SingleChildScrollView(
             child: Padding(
@@ -57,14 +56,17 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                             padding: EdgeInsets.only(top: size.height * 0.04),
                             child: Row(children: <Widget>[
                               Container(
-                                decoration: platformBrightness != Brightness.light ? BoxDecoration(boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xAE216EF3),
-                                    spreadRadius: 0.0001,
-                                    blurRadius: 24.0,
-                                    offset: Offset(0, 0),
-                                  ),
-                                ]) : null,
+                                decoration:
+                                    platformBrightness != Brightness.light
+                                        ? BoxDecoration(boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0xAE216EF3),
+                                              spreadRadius: 0.0001,
+                                              blurRadius: 24.0,
+                                              offset: Offset(0, 0),
+                                            ),
+                                          ])
+                                        : null,
                                 child: Card(
                                     // color: Colors.lightBlueAccent,
                                     // color: _color!.value,
@@ -83,7 +85,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                 child: Column(
                                                   children: [
                                                     Container(
-                                                      width: size.width * 0.2,
+                                                      width: size.width * 0.25,
                                                       child: Row(
                                                         children: [
                                                           Text(
@@ -129,16 +131,19 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                               ),
                               Padding(
                                   padding:
-                                      EdgeInsets.only(left: size.width * 0.05),
+                                      EdgeInsets.only(left: size.width * 0.07),
                                   child: Container(
-                                    decoration: platformBrightness != Brightness.light ? BoxDecoration(boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x7A000000),
-                                        spreadRadius: 1.0,
-                                        blurRadius: 24.0,
-                                        offset: Offset(0, 0),
-                                      ),
-                                    ]): null,
+                                    decoration:
+                                        platformBrightness != Brightness.light
+                                            ? BoxDecoration(boxShadow: [
+                                                BoxShadow(
+                                                  color: Color(0x7A000000),
+                                                  spreadRadius: 1.0,
+                                                  blurRadius: 24.0,
+                                                  offset: Offset(0, 0),
+                                                ),
+                                              ])
+                                            : null,
                                     child: Card(
                                         // color: Colors.grey[900],
                                         shape: RoundedRectangleBorder(
@@ -155,7 +160,8 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                   child: Column(
                                                     children: [
                                                       Container(
-                                                        width: size.width * 0.2,
+                                                        width:
+                                                            size.width * 0.21,
                                                         child: Row(
                                                           children: [
                                                             Padding(
@@ -208,77 +214,162 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                   ))
                             ])),
                         Padding(
-                          padding: EdgeInsets.only(top: 250),
-                          child: Center(
-                            child: Container(
-                              width: 300.0,
-                              height: 50.0,
-                              child: OutlinedButton(
-                                child: Text('一連の流れ練習モード',
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1),
-                                style: OutlinedButton.styleFrom(
-                                  primary: Colors.white,
-                                  shape: const StadiumBorder(),
-                                  side: const BorderSide(color: Colors.green),
-                                ),
-                                onPressed: () {
-                                  userData.chooseMode = "all_training";
-                                  Navigator.of(context).pushNamed('/training',
-                                      arguments: userData);
-                                },
-                              ),
-                            ),
-                          ),
+                          padding: EdgeInsets.only(top: 24, bottom: 8),
+                          child: Text("-やり方紹介-"),
                         ),
+                        Row(children: [
+                          Card(
+                              // color: Colors.grey[900],
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: new InkWell(
+                                  onTap: () {
+                                    userData.chooseMode = "training";
+                                    Navigator.of(context).pushNamed('/howtoplay', arguments: userData);
+                                  },
+                                  child: Column(children: [
+                                    Container(
+                                        child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(
+                                              size.height * 0.03),
+                                          child: Container(
+                                            child: Text("胸骨圧迫やり方",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline6),
+                                          ),
+                                        )
+                                      ],
+                                    ))
+                                  ]))),
+                          Card(
+                              // color: Colors.grey[900],
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: new InkWell(
+                                  onTap: () {
+                                    userData.chooseMode = "training";
+                                    Navigator.of(context).pushNamed('/explain', arguments: userData);
+                                  },
+                                  child: Column(children: [
+                                    Container(
+                                        child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(
+                                              size.height * 0.03),
+                                          child: Container(
+                                            child: Text("遊び方",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline6),
+                                          ),
+                                        )
+                                      ],
+                                    ))
+                                  ]))),
+                        ]),
                         Padding(
-                          padding: EdgeInsets.only(top: 40),
-                          child: Center(
-                            child: Container(
-                              width: 300.0,
-                              height: 50.0,
-                              child: OutlinedButton(
-                                child: Text('トレーニングモード',
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1),
-                                style: OutlinedButton.styleFrom(
-                                  primary: Colors.white,
-                                  shape: const StadiumBorder(),
-                                  side: const BorderSide(color: Colors.green),
-                                ),
-                                onPressed: () {
+                          padding: EdgeInsets.only(top: 24, bottom: 8),
+                          child: Text("-やってみよう-"),
+                        ),
+                        Card(
+                              // color: Colors.grey[900],
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: new InkWell(
+                                  onTap: () {
+                                    userData.chooseMode = "training";
+                                    Navigator.of(context).pushNamed('/training',
+                                        arguments: userData);
+                                  },
+                                  child: Column(children: [
+                                    Container(
+                                        child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(
+                                              size.height * 0.03),
+                                          child: Container(
+                                            width: double.infinity,
+                                            child: Center(
+                                              child: Text("一連の流れ練習モード",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headline6),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ))
+                                  ]))),
+                        Card(
+                          // color: Colors.grey[900],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: new InkWell(
+                                onTap: () {
                                   userData.chooseMode = "training";
                                   Navigator.of(context).pushNamed('/training',
                                       arguments: userData);
                                 },
-                              ),
+                                child: Column(children: [
+                                  Container(
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(
+                                                size.height * 0.03),
+                                            child: Container(
+                                              width: double.infinity,
+                                              child: Center(
+                                                child: Text("トレーニングモード",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .headline6),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ))
+                                ]))),
+                        Card(
+                          // color: Colors.grey[900],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 40),
-                          child: Center(
-                            child: Container(
-                              width: 300.0,
-                              height: 50.0,
-                              child: OutlinedButton(
-                                child: Text('採点モード',
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1),
-                                style: OutlinedButton.styleFrom(
-                                  primary: Colors.white,
-                                  shape: const StadiumBorder(),
-                                  side: const BorderSide(color: Colors.green),
-                                ),
-                                onPressed: () {
+                            child: new InkWell(
+                                onTap: () {
                                   userData.chooseMode = "battle";
                                   Navigator.of(context).pushNamed('/training',
                                       arguments: userData);
                                 },
-                              ),
-                            ),
-                          ),
-                        ),
+                                child: Column(children: [
+                                  Container(
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(
+                                                size.height * 0.03),
+                                            child: Container(
+                                              width: double.infinity,
+                                              child: Center(
+                                                child: Text("採点モード",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .headline6),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ))
+                                ]))),
                       ]);
                     }))));
   }
