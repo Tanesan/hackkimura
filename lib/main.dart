@@ -56,7 +56,8 @@ class MyApp extends StatelessWidget {
         '/mypage': (BuildContext context) => Grade(),
         '/explain': (BuildContext context) => Explain(),
         '/howtoplay': (BuildContext context) => Howtoplay(),
-        '/sos': (BuildContext context) => Sos()
+        '/sos': (BuildContext context) => Sos(),
+        '/aed': (BuildContext context) => AEDMap()
       },
     );
   }

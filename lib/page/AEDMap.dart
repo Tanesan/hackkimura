@@ -7,29 +7,14 @@ import 'package:location/location.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:hackkimura/model/AEDResponse.dart';
 
-class MyAEDApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+class AEDMap extends StatefulWidget {
+  AEDMap({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _AEDMapState createState() => _AEDMapState();
 }
 
-class _MyHomePageState extends State {
+class _AEDMapState extends State {
   final Location _locationService = Location();
   final Completer<MapboxMapController> _controller = Completer();
   LocationData? _yourLocation;
@@ -69,8 +54,7 @@ class _MyHomePageState extends State {
                   Navigator.of(context).pop();
                 },
                 icon: Icon(Icons.arrow_back)),
-            title: Text("AEDマップ"),
-            backgroundColor: Colors.blueGrey[600]),
+            title: Text("AEDマップ")),
         backgroundColor: Colors.black,
         body: MapboxMap(
             onMapCreated: (MapboxMapController controller) {
