@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:hackkimura/model/UserData.dart';
 import 'package:hackkimura/model/UserScoreResponse.dart';
 import 'package:hackkimura/model/UserScoreRequest.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Grade extends StatefulWidget {
   const Grade({Key? key}) : super(key: key);
@@ -57,16 +58,16 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                             child: Row(children: <Widget>[
                               Container(
                                 decoration:
-                                    platformBrightness != Brightness.light
-                                        ? BoxDecoration(boxShadow: [
-                                            BoxShadow(
-                                              color: Color(0xAE216EF3),
-                                              spreadRadius: 0.0001,
-                                              blurRadius: 24.0,
-                                              offset: Offset(0, 0),
-                                            ),
-                                          ])
-                                        : null,
+                                platformBrightness != Brightness.light
+                                    ? BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x7A000000),
+                                    spreadRadius: 1.0,
+                                    blurRadius: 24.0,
+                                    offset: Offset(0, 0),
+                                  ),
+                                ])
+                                    : null,
                                 child: Card(
                                     // color: Colors.lightBlueAccent,
                                     // color: _color!.value,
@@ -75,52 +76,76 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                     ),
                                     child: InkWell(
                                       splashColor: Colors.blue.withAlpha(30),
-                                      child: Column(children: [
+                                      child: Column(
+                                          children: [
                                         Container(
                                           child: Column(
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets.all(
-                                                    size.height * 0.03),
-                                                child: Column(
-                                                  children: [
-                                                    Container(
-                                                      width: size.width * 0.25,
-                                                      child: Row(
-                                                        children: [
-                                                          Text(
-                                                              !snapshot.hasData ||
-                                                                      snapshot
-                                                                          .hasError
-                                                                  ? "--"
-                                                                  : snapshot
-                                                                      .data!
-                                                                      .rank
-                                                                      .toString(),
-                                                              style: Theme.of(
-                                                                      context)
-                                                                  .textTheme
-                                                                  .headline3),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    left: 4.0,
-                                                                    top: 13.0),
-                                                            child: Text("位",
+                                                padding: EdgeInsets.only(
+                                                   left:size.width * 0.03,
+                                                   //  right:size.width * 0.03,
+                                                    top: size.height * 0.02,
+                                                bottom: size.height * 0.02),
+                                                child: Container(
+                                                  width: size.width * 0.345,
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Padding(
+                                                        padding: EdgeInsets.only(bottom: 8.0),
+                                                        child: Container(
+                                                              decoration: BoxDecoration(
+                                                                color: Colors.green,
+                                                                border: Border.all(color: Colors.green),
+                                                                borderRadius: BorderRadius.circular(10),
+                                                              ),
+                                                              child: Padding(
+                                                                padding: EdgeInsets.all(size.height * 0.01),
+                                                                child: Icon(FontAwesomeIcons.award,
+                                                                    size: 20,
+                                                                    color: Colors.white),
+                                                              ),
+                                                            ),
+                                                      ),
+                                                      Container(
+                                                        width: size.width * 0.25,
+                                                        child: Row(
+                                                          children: [
+                                                            Text(
+                                                                !snapshot.hasData ||
+                                                                        snapshot
+                                                                            .hasError
+                                                                    ? "27"
+                                                                    : snapshot
+                                                                        .data!
+                                                                        .rank
+                                                                        .toString(),
                                                                 style: Theme.of(
                                                                         context)
                                                                     .textTheme
-                                                                    .subtitle2),
-                                                          )
-                                                        ],
+                                                                    .headline3),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      left: 4.0,
+                                                                      top: 13.0),
+                                                              child: Text("位",
+                                                                  style: Theme.of(
+                                                                          context)
+                                                                      .textTheme
+                                                                      .subtitle2),
+                                                            )
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Text("in class",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .subtitle2),
-                                                  ],
+                                                      Text("in class",
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .subtitle2),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -131,7 +156,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                               ),
                               Padding(
                                   padding:
-                                      EdgeInsets.only(left: size.width * 0.07),
+                                      EdgeInsets.only(left: size.width * 0.04),
                                   child: Container(
                                     decoration:
                                         platformBrightness != Brightness.light
@@ -155,13 +180,32 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                             child: Column(
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.all(
-                                                      size.height * 0.03),
+                                                  padding: EdgeInsets.only(
+                                                      left:size.width * 0.03,
+                                                      top: size.height * 0.02,
+                                                      bottom: size.height * 0.02),
                                                   child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
+                                                      Padding(
+                                                        padding: EdgeInsets.only(bottom: 8.0),
+                                                        child: Container(
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.deepOrangeAccent,
+                                                            border: Border.all(color: Colors.deepOrangeAccent),
+                                                            borderRadius: BorderRadius.circular(10),
+                                                          ),
+                                                          child: Padding(
+                                                            padding: EdgeInsets.all(size.height * 0.01),
+                                                            child: Icon(FontAwesomeIcons.star,
+                                                                size: 20,
+                                                                color: Colors.white),
+                                                          ),
+                                                        ),
+                                                      ),
                                                       Container(
                                                         width:
-                                                            size.width * 0.21,
+                                                            size.width * 0.345,
                                                         child: Row(
                                                           children: [
                                                             Padding(
@@ -173,7 +217,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                                   !snapshot.hasData ||
                                                                           snapshot
                                                                               .hasError
-                                                                      ? "--"
+                                                                      ? "98"
                                                                       : snapshot
                                                                           .data!
                                                                           .bestScore
