@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackkimura/model/UserData.dart';
 import 'package:flutter/services.dart';
+import 'package:games_services/games_services.dart';
 
 class Top extends StatefulWidget {
   @override
@@ -24,6 +25,8 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
     animation.addListener(() {
       setState(() {});
     });
+    final result = GamesServices.signIn();
+    print(result);
     super.initState();
   }
 
@@ -103,7 +106,6 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
             child: animation.value > 40
                 ? SingleChildScrollView(
                     child: Column(children: [
-
                     Padding(
                         padding: EdgeInsets.only(
                             top: size.width * 0.01,

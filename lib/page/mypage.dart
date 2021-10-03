@@ -5,6 +5,7 @@ import 'package:hackkimura/model/UserData.dart';
 import 'package:hackkimura/model/UserScoreResponse.dart';
 import 'package:hackkimura/model/UserScoreRequest.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:games_services/games_services.dart';
 
 class Grade extends StatefulWidget {
   const Grade({Key? key}) : super(key: key);
@@ -58,16 +59,16 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                             child: Row(children: <Widget>[
                               Container(
                                 decoration:
-                                platformBrightness != Brightness.light
-                                    ? BoxDecoration(boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0x7A000000),
-                                    spreadRadius: 1.0,
-                                    blurRadius: 24.0,
-                                    offset: Offset(0, 0),
-                                  ),
-                                ])
-                                    : null,
+                                    platformBrightness != Brightness.light
+                                        ? BoxDecoration(boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0x7A000000),
+                                              spreadRadius: 1.0,
+                                              blurRadius: 24.0,
+                                              offset: Offset(0, 0),
+                                            ),
+                                          ])
+                                        : null,
                                 child: Card(
                                     // color: Colors.lightBlueAccent,
                                     // color: _color!.value,
@@ -76,40 +77,56 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                     ),
                                     child: InkWell(
                                       splashColor: Colors.blue.withAlpha(30),
-                                      child: Column(
-                                          children: [
+                                      child: Column(children: [
                                         Container(
                                           child: Column(
                                             children: [
                                               Padding(
                                                 padding: EdgeInsets.only(
-                                                   left:size.width * 0.03,
-                                                   //  right:size.width * 0.03,
+                                                    left: size.width * 0.03,
+                                                    //  right:size.width * 0.03,
                                                     top: size.height * 0.02,
-                                                bottom: size.height * 0.02),
+                                                    bottom: size.height * 0.02),
                                                 child: Container(
                                                   width: size.width * 0.345,
                                                   child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Padding(
-                                                        padding: EdgeInsets.only(bottom: 8.0),
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                bottom: 8.0),
                                                         child: Container(
-                                                              decoration: BoxDecoration(
-                                                                color: Colors.green,
-                                                                border: Border.all(color: Colors.green),
-                                                                borderRadius: BorderRadius.circular(10),
-                                                              ),
-                                                              child: Padding(
-                                                                padding: EdgeInsets.all(size.height * 0.01),
-                                                                child: Icon(FontAwesomeIcons.award,
-                                                                    size: 20,
-                                                                    color: Colors.white),
-                                                              ),
-                                                            ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors.green,
+                                                            border: Border.all(
+                                                                color: Colors
+                                                                    .green),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    size.height *
+                                                                        0.01),
+                                                            child: Icon(
+                                                                FontAwesomeIcons
+                                                                    .award,
+                                                                size: 20,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        ),
                                                       ),
                                                       Container(
-                                                        width: size.width * 0.25,
+                                                        width:
+                                                            size.width * 0.25,
                                                         child: Row(
                                                           children: [
                                                             Text(
@@ -130,7 +147,8 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                                   const EdgeInsets
                                                                           .only(
                                                                       left: 4.0,
-                                                                      top: 13.0),
+                                                                      top:
+                                                                          13.0),
                                                               child: Text("位",
                                                                   style: Theme.of(
                                                                           context)
@@ -141,9 +159,10 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                         ),
                                                       ),
                                                       Text("in class",
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .subtitle2),
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .subtitle2),
                                                     ],
                                                   ),
                                                 ),
@@ -181,25 +200,43 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsets.only(
-                                                      left:size.width * 0.03,
+                                                      left: size.width * 0.03,
                                                       top: size.height * 0.02,
-                                                      bottom: size.height * 0.02),
+                                                      bottom:
+                                                          size.height * 0.02),
                                                   child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Padding(
-                                                        padding: EdgeInsets.only(bottom: 8.0),
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                bottom: 8.0),
                                                         child: Container(
-                                                          decoration: BoxDecoration(
-                                                            color: Colors.deepOrangeAccent,
-                                                            border: Border.all(color: Colors.deepOrangeAccent),
-                                                            borderRadius: BorderRadius.circular(10),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors
+                                                                .deepOrangeAccent,
+                                                            border: Border.all(
+                                                                color: Colors
+                                                                    .deepOrangeAccent),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
                                                           ),
                                                           child: Padding(
-                                                            padding: EdgeInsets.all(size.height * 0.01),
-                                                            child: Icon(FontAwesomeIcons.star,
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    size.height *
+                                                                        0.01),
+                                                            child: Icon(
+                                                                FontAwesomeIcons
+                                                                    .star,
                                                                 size: 20,
-                                                                color: Colors.white),
+                                                                color: Colors
+                                                                    .white),
                                                           ),
                                                         ),
                                                       ),
@@ -255,24 +292,110 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                             ),
                                           )
                                         ])),
-                                  ))
+                                  )),
                             ])),
+                        Container(
+                          decoration: platformBrightness != Brightness.light
+                              ? BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x7A000000),
+                                    spreadRadius: 1.0,
+                                    blurRadius: 24.0,
+                                    offset: Offset(0, 0),
+                                  ),
+                                ])
+                              : null,
+                          child: new InkWell(
+                              onTap: () async {
+                                final result =
+                                    await GamesServices.showLeaderboards(
+                                        iOSLeaderboardID: 'training_score');
+                              },
+                              child: Card(
+                                  // color: Colors.grey[900],
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(children: [
+                                    Container(
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                left: size.width * 0.03,
+                                                top: size.height * 0.02,
+                                                bottom: size.height * 0.02),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      bottom: 8.0),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.blue,
+                                                      border: Border.all(
+                                                          color: Colors.blue),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          top: size.height * 0.01,
+                                                      bottom: size.height * 0.01,
+                                                      right: size.height * 0.015,
+                                                      left: size.height * 0.01),
+                                                      child: Icon(
+                                                          FontAwesomeIcons
+                                                              .gamepad,
+                                                          size: 20,
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: size.width * 0.8,
+                                                  child: Row(
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(left: 2),
+                                                        child: Text(
+                                                            "GameCenter",
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .headline3),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ]))),
+                        ),
                         Padding(
                           padding: EdgeInsets.only(top: 24, bottom: 8),
                           child: Text("-やり方紹介-"),
                         ),
                         Row(children: [
                           Container(
-                            decoration:
-                            platformBrightness != Brightness.light
+                            decoration: platformBrightness != Brightness.light
                                 ? BoxDecoration(boxShadow: [
-                              BoxShadow(
-                                color: Color(0xFF000000),
-                                spreadRadius: 5.0,
-                                blurRadius: 20.0,
-                                offset: Offset(0, 0),
-                              ),
-                            ])
+                                    BoxShadow(
+                                      color: Color(0xFF000000),
+                                      spreadRadius: 5.0,
+                                      blurRadius: 20.0,
+                                      offset: Offset(0, 0),
+                                    ),
+                                  ])
                                 : null,
                             child: Card(
                                 // color: Colors.grey[900],
@@ -282,7 +405,9 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                 child: new InkWell(
                                     onTap: () {
                                       userData.chooseMode = "training";
-                                      Navigator.of(context).pushNamed('/howtoplay', arguments: userData);
+                                      Navigator.of(context).pushNamed(
+                                          '/howtoplay',
+                                          arguments: userData);
                                     },
                                     child: Column(children: [
                                       Container(
@@ -311,7 +436,9 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                 child: new InkWell(
                                     onTap: () {
                                       userData.chooseMode = "training";
-                                      Navigator.of(context).pushNamed('/explain', arguments: userData);
+                                      Navigator.of(context).pushNamed(
+                                          '/explain',
+                                          arguments: userData);
                                     },
                                     child: Column(children: [
                                       Container(
@@ -334,43 +461,44 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                         ]),
                         Row(children: [
                           Container(
-                            decoration:
-                            platformBrightness != Brightness.light
+                            decoration: platformBrightness != Brightness.light
                                 ? BoxDecoration(boxShadow: [
-                              BoxShadow(
-                                color: Color(0xFF000000),
-                                spreadRadius: 5.0,
-                                blurRadius: 20.0,
-                                offset: Offset(0, 0),
-                              ),
-                            ])
+                                    BoxShadow(
+                                      color: Color(0xFF000000),
+                                      spreadRadius: 5.0,
+                                      blurRadius: 20.0,
+                                      offset: Offset(0, 0),
+                                    ),
+                                  ])
                                 : null,
                             child: Card(
-                              // color: Colors.grey[900],
+                                // color: Colors.grey[900],
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: new InkWell(
                                     onTap: () {
                                       userData.chooseMode = "training";
-                                      Navigator.of(context).pushNamed('/emergency', arguments: userData);
+                                      Navigator.of(context).pushNamed(
+                                          '/emergency',
+                                          arguments: userData);
                                     },
                                     child: Column(children: [
                                       Container(
                                           child: Column(
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.all(
-                                                    size.height * 0.03),
-                                                child: Container(
-                                                  child: Text("救急蘇生法について",
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .headline6),
-                                                ),
-                                              )
-                                            ],
-                                          ))
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(
+                                                size.height * 0.03),
+                                            child: Container(
+                                              child: Text("救急蘇生法について",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headline6),
+                                            ),
+                                          )
+                                        ],
+                                      ))
                                     ]))),
                           ),
                         ]),
@@ -379,38 +507,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                           child: Text("-やってみよう-"),
                         ),
                         Card(
-                              // color: Colors.grey[900],
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: new InkWell(
-                                  onTap: () {
-                                    userData.chooseMode = "training";
-                                    Navigator.of(context).pushNamed('/training',
-                                        arguments: userData);
-                                  },
-                                  child: Column(children: [
-                                    Container(
-                                        child: Column(
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.all(
-                                              size.height * 0.03),
-                                          child: Container(
-                                            width: double.infinity,
-                                            child: Center(
-                                              child: Text("一連の流れ練習モード",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline6),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ))
-                                  ]))),
-                        Card(
-                          // color: Colors.grey[900],
+                            // color: Colors.grey[900],
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -423,25 +520,56 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                 child: Column(children: [
                                   Container(
                                       child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.all(
-                                                size.height * 0.03),
-                                            child: Container(
-                                              width: double.infinity,
-                                              child: Center(
-                                                child: Text("トレーニングモード",
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .headline6),
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ))
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.all(size.height * 0.03),
+                                        child: Container(
+                                          width: double.infinity,
+                                          child: Center(
+                                            child: Text("一連の流れ練習モード",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline6),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ))
                                 ]))),
                         Card(
-                          // color: Colors.grey[900],
+                            // color: Colors.grey[900],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: new InkWell(
+                                onTap: () {
+                                  userData.chooseMode = "training";
+                                  Navigator.of(context).pushNamed('/training',
+                                      arguments: userData);
+                                },
+                                child: Column(children: [
+                                  Container(
+                                      child: Column(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.all(size.height * 0.03),
+                                        child: Container(
+                                          width: double.infinity,
+                                          child: Center(
+                                            child: Text("トレーニングモード",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline6),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ))
+                                ]))),
+                        Card(
+                            // color: Colors.grey[900],
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -454,55 +582,55 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                 child: Column(children: [
                                   Container(
                                       child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.all(
-                                                size.height * 0.03),
-                                            child: Container(
-                                              width: double.infinity,
-                                              child: Center(
-                                                child: Text("採点モード",
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .headline6),
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ))
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.all(size.height * 0.03),
+                                        child: Container(
+                                          width: double.infinity,
+                                          child: Center(
+                                            child: Text("採点モード",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline6),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ))
                                 ]))),
                         Padding(
                           padding: EdgeInsets.only(top: 24, bottom: 8),
                           child: Text("-トップページ-"),
                         ),
                         Card(
-                          // color: Colors.grey[900],
+                            // color: Colors.grey[900],
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: new InkWell(
                                 onTap: () {
-                                  Navigator.of(context).pushNamed('/top',
-                                      arguments: userData);
+                                  Navigator.of(context)
+                                      .pushNamed('/top', arguments: userData);
                                 },
                                 child: Column(children: [
                                   Container(
                                       child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.all(
-                                                size.height * 0.03),
-                                            child: Container(
-                                              child: Center(
-                                                child: Text("トップページ",
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .headline6),
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ))
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.all(size.height * 0.03),
+                                        child: Container(
+                                          child: Center(
+                                            child: Text("トップページ",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline6),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ))
                                 ]))),
                       ]);
                     }))));

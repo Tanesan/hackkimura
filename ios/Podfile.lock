@@ -7,6 +7,8 @@ PODS:
   - flutter_line_sdk (2.0.0):
     - Flutter
     - LineSDKSwift (~> 5.3)
+  - games_services (0.0.1):
+    - Flutter
   - LineSDKSwift (5.8.0):
     - LineSDKSwift/Core (= 5.8.0)
   - LineSDKSwift/Core (5.8.0)
@@ -35,6 +37,7 @@ DEPENDENCIES:
   - environment_sensors (from `.symlinks/plugins/environment_sensors/ios`)
   - Flutter (from `Flutter`)
   - flutter_line_sdk (from `.symlinks/plugins/flutter_line_sdk/ios`)
+  - games_services (from `.symlinks/plugins/games_services/ios`)
   - location (from `.symlinks/plugins/location/ios`)
   - mapbox_gl (from `.symlinks/plugins/mapbox_gl/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
@@ -58,6 +61,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_line_sdk:
     :path: ".symlinks/plugins/flutter_line_sdk/ios"
+  games_services:
+    :path: ".symlinks/plugins/games_services/ios"
   location:
     :path: ".symlinks/plugins/location/ios"
   mapbox_gl:
@@ -76,6 +81,7 @@ SPEC CHECKSUMS:
   environment_sensors: 46802526e2f9e5b84722e0327d6391168b7ad74f
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_line_sdk: e906ffa756c0ab01a3fd9c3dbe1c26e0092de3ff
+  games_services: 6c9a23d55bc6ae0129b24507e008643dcb02f341
   LineSDKSwift: 07caae66911f77d1ccf9e650e4da4020d737ecc7
   location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
   Mapbox-iOS-SDK: 2563ed87ead6ec08f1c2090873977b8a7be335a8
@@ -87,6 +93,6 @@ SPEC CHECKSUMS:
   system_shortcuts: fa91743cc51eed3811f5ea5461e23f972b9de780
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
-PODFILE CHECKSUM: a0e06ed57f4ae5398388f7981a40518f8cdc90a3
+PODFILE CHECKSUM: c7949d22b2e7eb09033beaeb9541e7ed39d80a0a
 
 COCOAPODS: 1.10.1
