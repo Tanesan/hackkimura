@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_line_sdk/flutter_line_sdk.dart';
-
 import 'page/top.dart';
 import 'page/barometer.dart';
 import 'page/result.dart';
@@ -12,7 +11,6 @@ import 'page/explain.dart';
 import 'page/howtoplay.dart';
 import 'page/sos.dart';
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   LineSDK.instance.setup("${1656477616}").then((_) {
@@ -20,6 +18,7 @@ void main() {
   });
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
