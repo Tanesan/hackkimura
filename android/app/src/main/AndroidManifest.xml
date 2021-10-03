@@ -33,6 +33,7 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <meta-data android:name="mapbox_access_token" android:value="pk.eyJ1IjoidG95b2NjaGkiLCJhIjoiY2t1NW0xaDB1MXdqOTJvcXJvOW5sOXhldiJ9.iCs54vVoaX17Bow30P4K3Q" />
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
