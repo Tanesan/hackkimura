@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:games_services/games_services.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:hackkimura/model/BarometerArgs.dart';
@@ -75,6 +75,11 @@ class _ResultState extends State<Result> {
           FutureBuilder<ApiResults>(
             future: _getResult(_args),
             builder: (context, snapshot) {
+              final result = GamesServices.submitScore(
+                  score: Score(
+                      // androidLeaderboardID: 'android_leaderboard_id',
+                      iOSLeaderboardID: 'training_score',
+                      value: snapshot.data?.score));
               if (snapshot.hasData) {
                 return Padding(
                     padding: EdgeInsets.only(

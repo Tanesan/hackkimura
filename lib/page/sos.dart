@@ -21,7 +21,7 @@ class Sos extends StatelessWidget {
             ),
             child: new InkWell(
                 onTap: () {
-                  // Navigator.of(context).pushNamed('/emergency');
+                  Navigator.of(context).pushNamed('/emergency');
                 },
                 child: Column(
                   children: [

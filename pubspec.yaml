@@ -41,6 +41,7 @@ dependencies:
   introduction_screen: ^2.1.0
   location: ^4.3.0
   font_awesome_flutter: ^9.1.0
+  games_services: ^2.0.1
 
 dependency_overrides:
   mapbox_gl:

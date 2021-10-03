@@ -15,6 +15,7 @@
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		9D72EFEC3C64BC809E16BAD4 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EB4D83D9C6A538F4055092 /* Pods_Runner.framework */; };
 		D0638D4D26FE33C1002E7489 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0638D4C26FE33C1002E7489 /* GoogleService-Info.plist */; };
+		D090B4F62709398B005A6BFE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D090B4F52709398B005A6BFE /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		B5A07479ECFF001C83315D77 /* Pods-Runner.debug-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-dev.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-dev.xcconfig"; sourceTree = "<group>"; };
 		D00725752705B0BB00947F75 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		D0638D4C26FE33C1002E7489 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D090B4F52709398B005A6BFE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D72EFEC3C64BC809E16BAD4 /* Pods_Runner.framework in Frameworks */,
+				D090B4F62709398B005A6BFE /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +82,7 @@
 		684C1F80FA207C101696AE9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D090B4F52709398B005A6BFE /* GameKit.framework */,
 				11EB4D83D9C6A538F4055092 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
