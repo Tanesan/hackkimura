@@ -5,5 +5,6 @@ class BarometerArgs {
   var pressures;
   var time;
   var mode;
-  BarometerArgs({this.userData, this.pressures, this.mode});
+  var metro;
+  BarometerArgs({this.userData, this.time, this.metro, this.pressures, this.mode});
 }

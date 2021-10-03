@@ -42,7 +42,7 @@ class _BarometerState extends State<Barometer> {
       _startTime = DateTime.now();
 //      _pressures.add(0.1);
 //      _pressures.add(0.2);
-      _incrementCounter();
+      args.metro ? _incrementCounter(): null;
 //      _time.add(DateTime.now().difference(_startTime).inMilliseconds);
 //      _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       userAccelerometerEvents.listen((UserAccelerometerEvent event) {
