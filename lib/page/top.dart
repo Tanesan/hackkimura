@@ -196,7 +196,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                                         labelText: 'ユーザー名'
                                       ),
                                       onChanged: (text) {
-                                        userData.classCode = text;
+                                        userData.name = text;
                                       }),
                                 )))),
                     Padding(
