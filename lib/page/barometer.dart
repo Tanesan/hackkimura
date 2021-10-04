@@ -73,7 +73,7 @@ class _BarometerState extends State<Barometer> {
     args.ddx = _ddx;
     args.ddy = _ddy;
     args.ddz = _ddz;
-    args.time = _time;
+    args.t = _time;
     _receivePort.close();
     if (args.mode == "battle") {
       Navigator.of(context).pushNamed("/result", arguments: args);

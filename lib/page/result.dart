@@ -15,9 +15,10 @@ class Result extends StatefulWidget {
 
 class _ResultState extends State<Result> {
   var _args = BarometerArgs();
-
   Future<ApiResults> _getResult(BarometerArgs args) async {
     var url = Uri.parse('http://52.193.204.138:5000');
+    print(_args.t);
+    print(_args.ddx);
     Request request = Request(
         className: _args.userData.classCode,
         userName: _args.userData.name,
