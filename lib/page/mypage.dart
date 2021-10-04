@@ -461,45 +461,48 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                         ]),
                         Row(children: [
                           Container(
-                            decoration: platformBrightness != Brightness.light
-                                ? BoxDecoration(boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0xFF000000),
-                                      spreadRadius: 5.0,
-                                      blurRadius: 20.0,
-                                      offset: Offset(0, 0),
-                                    ),
-                                  ])
-                                : null,
-                            child: Card(
-                                // color: Colors.grey[900],
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: new InkWell(
-                                    onTap: () {
-                                      userData.chooseMode = "training";
-                                      Navigator.of(context).pushNamed(
-                                          '/emergency',
-                                          arguments: userData);
-                                    },
-                                    child: Column(children: [
-                                      Container(
-                                          child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.all(
-                                                size.height * 0.03),
-                                            child: Container(
-                                              child: Text("救急蘇生法について",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline6),
-                                            ),
-                                          )
-                                        ],
-                                      ))
-                                    ]))),
+                            // decoration: platformBrightness != Brightness.light
+                            //     ? BoxDecoration(boxShadow: [
+                            //         BoxShadow(
+                            //           color: Color(0xFF000000),
+                            //           spreadRadius: 5.0,
+                            //           blurRadius: 20.0,
+                            //           offset: Offset(0, 0),
+                            //         ),
+                            //       ])
+                            //     : null,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Card(
+                                  // color: Colors.grey[900],
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: new InkWell(
+                                      onTap: () {
+                                        userData.chooseMode = "training";
+                                        Navigator.of(context).pushNamed(
+                                            '/emergency',
+                                            arguments: userData);
+                                      },
+                                      child: Column(children: [
+                                        Container(
+                                            child: Column(
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.all(
+                                                  size.height * 0.03),
+                                              child: Container(
+                                                child: Text("救急蘇生法について",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .headline6),
+                                              ),
+                                            )
+                                          ],
+                                        ))
+                                      ]))),
+                            ),
                           ),
                         ]),
                         Padding(

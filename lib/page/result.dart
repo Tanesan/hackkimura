@@ -28,7 +28,7 @@ class _ResultState extends State<Result> {
     if (response.statusCode == 200) {
       return ApiResults.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Fail to search repository');
+      throw Exception('さーばーから情報が送られてきませんでした。残念！');
     }
   }
 
