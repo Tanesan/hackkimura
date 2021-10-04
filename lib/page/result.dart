@@ -6,6 +6,7 @@ import 'package:hackkimura/model/BarometerArgs.dart';
 import 'package:hackkimura/model/ApiResults.dart';
 import 'package:hackkimura/model/Request.dart';
 import 'package:hackkimura/function/requestCertificate.dart';
+import 'package:hackkimura/page/chart.dart';
 
 class Result extends StatefulWidget {
   @override
@@ -39,6 +40,8 @@ class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
+    _args.pressures = [.0, 0.1, 0.5, 0.7, .8, .7, .5, .1, .0];
+    _args.time = [.0, .1, .2, .3, .4, .5, .6, .7, .8];
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
         // backgroundColor: Colors.black,
@@ -336,6 +339,7 @@ class _ResultState extends State<Result> {
             },
           ),
           SizedBox(height: 100),
+          Container(height: 200, child: SimpleTimeSeriesChart.withData(_args.pressures, _args.time)),
           Container(
               width: 300.0,
               height: 50.0,
