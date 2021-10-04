@@ -20,9 +20,8 @@ class _ResultState extends State<Result> {
     Request request = Request(
         className: _args.userData.classCode,
         userName: _args.userData.name,
-        timestamp: (DateTime.now().microsecondsSinceEpoch / 1000).round(),
+        timestamp: (DateTime.now().millisecondsSinceEpoch).round(),
         t: _args.t, ddx: _args.ddx, ddy: _args.ddy, ddz: _args.ddz);
-    print(request.toJson());
     final response = await http.post(url,
         body: json.encode(request.toJson()),
         headers: {"Content-Type": "application/json"});
