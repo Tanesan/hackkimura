@@ -87,7 +87,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-        // backgroundColor: Colors.black,
+        backgroundColor: Color(0x43A3A1A1),
         body: Column(
       children: [
         InkWell(
@@ -105,7 +105,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                   fit: BoxFit.cover,
                 )),
                 child: Padding(
-                  padding: EdgeInsets.only(top: size.height * 0.4 - 72),
+                  padding: EdgeInsets.only(top: size.height * 0.4 - 56),
                   child: Center(
                     child: Column(
                       children: [
@@ -321,7 +321,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
               )),
               child: Padding(
                 padding: EdgeInsets.only(
-                    top: size.height * 0.4 - 72 - animation.value * 1),
+                    top: size.height * 0.4 - 66 - animation.value * 1),
                 child: Center(
                   child: Column(
                     children: [
