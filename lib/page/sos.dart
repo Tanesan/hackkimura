@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audioplayers.dart' hide PlayerState;
 import 'package:hackkimura/function/audio.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_playout/audio.dart';
-import 'package:flutter_playout/multiaudio/HLSManifestLanguage.dart';
-import 'package:flutter_playout/multiaudio/LanguageCode.dart';
-import 'package:flutter_playout/multiaudio/MultiAudioSupport.dart';
-import 'package:flutter_playout/player_observer.dart';
 import 'package:flutter_playout/player_state.dart';
-import 'package:flutter_playout/textTrack.dart';
-import 'package:flutter_playout/video.dart';
 
 
 
@@ -19,7 +11,7 @@ class Sos extends StatefulWidget {
 }
 
 class _SosState extends State<Sos> {
-  // PlayerState _desiredState = PlayerState.PLAYING;
+  AudioCache player = AudioCache();
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -65,7 +57,7 @@ class _SosState extends State<Sos> {
                     ),
                     child: new InkWell(
                         onTap: () {
-                          // Navigator.of(context).pushNamed('/emergency');
+                          player.play('sound/sos.mp3');
                         },
                         child: Column(
                           children: [

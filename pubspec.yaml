@@ -82,6 +82,7 @@ flutter:
     - images/petbottle.jpg
     - images/kyokotu.jpg
     - assets/sound/
+    - assets/sound/sos.mp3
     - assets/sound/training.mp3
     - assets/sound/sound.mp3
     - assets/sound/effect_check.mp3
