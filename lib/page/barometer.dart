@@ -184,18 +184,19 @@ class _BarometerState extends State<Barometer> {
                                     ]);
                               }),
                           SizedBox(height: 50),
-                          Container(
-                              width: 300.0,
-                              height: 50.0,
-                              child: OutlinedButton(
-                                child: Text('測定終了',
-                                    style: Theme.of(context).textTheme.bodyText1),
-                                style: OutlinedButton.styleFrom(
-                                  shape: const StadiumBorder(),
-                                  side: const BorderSide(color: Colors.green),
-                                ),
-                                onPressed: _finishMeasurement,
-                              )),
+                          // Container(
+                          //     width: 300.0,
+                          //     height: 50.0,
+                          //     child: OutlinedButton(
+                          //       child:
+                          //       Text('測定終了',
+                          //           style: Theme.of(context).textTheme.bodyText1),
+                          //       style: OutlinedButton.styleFrom(
+                          //         shape: const StadiumBorder(),
+                          //         side: const BorderSide(color: Colors.green),
+                          //       ),
+                          //       onPressed: _finishMeasurement,
+                          //     )),
                         ]))),
     );
   }
