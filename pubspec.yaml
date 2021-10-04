@@ -41,6 +41,7 @@ dependencies:
   flutter_siri_suggestions: ^2.0.0
   introduction_screen: ^2.1.0
   location: ^4.3.0
+  flutter_playout: ^2.0.1
   font_awesome_flutter: ^9.1.0
   games_services: ^2.0.1
 
@@ -81,6 +82,7 @@ flutter:
     - images/petbottle.jpg
     - images/kyokotu.jpg
     - assets/sound/
+    - assets/sound/training.mp3
     - assets/sound/sound.mp3
     - assets/sound/effect_check.mp3
     - assets/sound/big_voice_help.mp3
