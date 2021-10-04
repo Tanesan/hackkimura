@@ -23,7 +23,7 @@ class SimpleTimeSeriesChart extends StatelessWidget {
   }
 
   static List<charts.Series<TimeSeriesPressures, double>> _createData(List<double> pressures, List<int> time) {
-    var data = List<TimeSeriesPressures>.empty();
+    var data = <TimeSeriesPressures>[];
     for (int i = 0; i < time.length; i++) {
       if (i < pressures.length) {
         data.add(TimeSeriesPressures(time[i] / 1000, pressures[i]));

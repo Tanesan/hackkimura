@@ -41,7 +41,7 @@ class _ResultState extends State<Result> {
   Widget build(BuildContext context) {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
     _args.pressures = [.0, 0.1, 0.5, 0.7, .8, .7, .5, .1, .0];
-    _args.time = [.0, .1, .2, .3, .4, .5, .6, .7, .8];
+    _args.time = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
         // backgroundColor: Colors.black,
