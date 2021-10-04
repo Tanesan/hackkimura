@@ -40,6 +40,7 @@ class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
+
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
         // backgroundColor: Colors.black,
@@ -337,7 +338,11 @@ class _ResultState extends State<Result> {
             },
           ),
           SizedBox(height: 100),
-//          Container(height: 200, child: SimpleTimeSeriesChart.withData(_args.ddz, _args.t)),
+          _args.t != null ?
+          Container(height: 200, child: SimpleTimeSeriesChart.withData(_args.ddz, _args.t)) : SizedBox(height:0),
+          _args.t != null ?
+          Center(child: Text('time [ms]')) : SizedBox(height:0),
+          SizedBox(height: 20),
           Container(
               width: 300.0,
               height: 50.0,

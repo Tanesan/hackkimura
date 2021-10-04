@@ -8,6 +8,8 @@ class SimpleTimeSeriesChart extends StatelessWidget {
   SimpleTimeSeriesChart(this.seriesList, {this.animate = false});
 
   factory SimpleTimeSeriesChart.withData(List<double> pressures, List<int> time) {
+    print(pressures);
+    print(time);
     return new SimpleTimeSeriesChart(
       _createData(pressures, time),
       animate: false
@@ -26,7 +28,7 @@ class SimpleTimeSeriesChart extends StatelessWidget {
     var data = <TimeSeriesPressures>[];
     for (int i = 0; i < time.length; i++) {
       if (i < pressures.length) {
-        data.add(TimeSeriesPressures(time[i] / 1000, pressures[i]));
+        data.add(TimeSeriesPressures(time[i]*1.0, pressures[i]));
       }
     }
 
