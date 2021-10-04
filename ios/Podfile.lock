@@ -7,6 +7,8 @@ PODS:
   - flutter_line_sdk (2.0.0):
     - Flutter
     - LineSDKSwift (~> 5.3)
+  - flutter_playout (0.0.1):
+    - Flutter
   - flutter_siri_suggestions (0.0.1):
     - Flutter
   - games_services (0.0.1):
@@ -39,6 +41,7 @@ DEPENDENCIES:
   - environment_sensors (from `.symlinks/plugins/environment_sensors/ios`)
   - Flutter (from `Flutter`)
   - flutter_line_sdk (from `.symlinks/plugins/flutter_line_sdk/ios`)
+  - flutter_playout (from `.symlinks/plugins/flutter_playout/ios`)
   - flutter_siri_suggestions (from `.symlinks/plugins/flutter_siri_suggestions/ios`)
   - games_services (from `.symlinks/plugins/games_services/ios`)
   - location (from `.symlinks/plugins/location/ios`)
@@ -64,6 +67,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_line_sdk:
     :path: ".symlinks/plugins/flutter_line_sdk/ios"
+  flutter_playout:
+    :path: ".symlinks/plugins/flutter_playout/ios"
   flutter_siri_suggestions:
     :path: ".symlinks/plugins/flutter_siri_suggestions/ios"
   games_services:
@@ -86,6 +91,7 @@ SPEC CHECKSUMS:
   environment_sensors: 46802526e2f9e5b84722e0327d6391168b7ad74f
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_line_sdk: e906ffa756c0ab01a3fd9c3dbe1c26e0092de3ff
+  flutter_playout: a5aed32b3003b02eb4432815ecfe0c0e42a801ff
   flutter_siri_suggestions: 2c0bc235516b5b51a86a641d0f39dba3cd336ac3
   games_services: 6c9a23d55bc6ae0129b24507e008643dcb02f341
   LineSDKSwift: 07caae66911f77d1ccf9e650e4da4020d737ecc7
