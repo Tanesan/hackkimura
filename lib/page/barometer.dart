@@ -12,7 +12,9 @@ class Barometer extends StatefulWidget {
 }
 
 class _BarometerState extends State<Barometer> {
-  var _pressures = <double>[];
+  var _ddx = <double>[];
+  var _ddy = <double>[];
+  var _ddz = <double>[];
   var _time = <int>[];
   var _startTime;
   var _receivePort = ReceivePort();
@@ -46,7 +48,9 @@ class _BarometerState extends State<Barometer> {
 //      _time.add(DateTime.now().difference(_startTime).inMilliseconds);
 //      _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       userAccelerometerEvents.listen((UserAccelerometerEvent event) {
-        _pressures.add(event.z);
+        _ddx.add(event.x);
+        _ddy.add(event.y);
+        _ddz.add(event.z);
         _time.add(DateTime.now().difference(_startTime).inMilliseconds);
       });
     });
@@ -66,7 +70,9 @@ class _BarometerState extends State<Barometer> {
   }
 
   void _finishMeasurement() {
-    args.pressures = _pressures;
+    args.ddx = _ddx;
+    args.ddy = _ddy;
+    args.ddz = _ddz;
     args.time = _time;
     _receivePort.close();
     if (args.mode == "battle") {

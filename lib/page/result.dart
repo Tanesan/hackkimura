@@ -21,7 +21,7 @@ class _ResultState extends State<Result> {
     Request request = Request(
         className: _args.userData.classCode,
         userName: _args.userData.name,
-        data: _args.pressures);
+        t: _args.t, ddx: _args.ddx, ddy: _args.ddy, ddz: _args.ddz);
     final response = await http.post(url,
         body: json.encode(request.toJson()),
         headers: {"Content-Type": "application/json"});
@@ -40,8 +40,6 @@ class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
     _args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
-    _args.pressures = [.0, 0.1, 0.5, 0.7, .8, .7, .5, .1, .0];
-    _args.time = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
         // backgroundColor: Colors.black,
@@ -339,7 +337,7 @@ class _ResultState extends State<Result> {
             },
           ),
           SizedBox(height: 100),
-          Container(height: 200, child: SimpleTimeSeriesChart.withData(_args.pressures, _args.time)),
+//          Container(height: 200, child: SimpleTimeSeriesChart.withData(_args.ddz, _args.t)),
           Container(
               width: 300.0,
               height: 50.0,
