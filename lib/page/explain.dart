@@ -13,16 +13,6 @@ class Explain extends StatefulWidget {
 class _ExplainState extends State<Explain> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
-  // Widget _buildFullscrenImage() {
-  //   return Image.asset(
-  //     'assets/fullscreen.jpg',
-  //     fit: BoxFit.cover,
-  //     height: double.infinity,
-  //     width: double.infinity,
-  //     alignment: Alignment.center,
-  //   );
-  // }
-
   Widget _buildImage(String assetName, [double width = 350]) {
     return Image.asset('images/$assetName', width: width);
   }
@@ -39,7 +29,8 @@ class _ExplainState extends State<Explain> {
       imagePadding: EdgeInsets.zero,
     );
 
-    return IntroductionScreen(
+    return Scaffold(
+        body: IntroductionScreen(
       key: introKey,
       globalBackgroundColor: Colors.white,
       globalHeader: Align(
@@ -52,7 +43,7 @@ class _ExplainState extends State<Explain> {
                 textStyle: const TextStyle(fontSize: 20),
               ),
               onPressed: () {Navigator.of(context).pushNamed("/grade", arguments: userData);},
-              child: Text('モード選択に戻る', style: Theme.of(context).textTheme.subtitle1),
+              child: Text('トップに戻る', style: Theme.of(context).textTheme.subtitle1),
             ),
           ),
         ),
@@ -87,7 +78,7 @@ class _ExplainState extends State<Explain> {
         PageViewModel(
           title: "上から押そう",
           body:
-          "リズムに乗って上から押すだけ。",
+          "リズムに乗って上から押すだけ",
           image: _buildImage('img3.jpg'),
           decoration: pageDecoration,
         ),
@@ -124,6 +115,6 @@ class _ExplainState extends State<Explain> {
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
       ),
-    );
+    ));
   }
 }

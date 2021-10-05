@@ -93,23 +93,25 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                     await GamesServices.showLeaderboards(
                                         iOSLeaderboardID: 'training_score');
                               },
-                              child: Text("Learderboad >",
+                              child: Text("リーダーボードを見る",
                                   textAlign: TextAlign.left,
-                                  style: Theme.of(context).textTheme.subtitle1),
+                                  style: Theme.of(context).textTheme.subtitle2),
                             )),
                       ]),
 
                       _selectedIndex == 0
                           ? Column(children: [
-                        Container(
-                          width: double.infinity,
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 24),
-                            child: Text("概要",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-                          ),
-                        ),
+                              Container(
+                                width: double.infinity,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 24),
+                                  child: Text("概要",
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 24)),
+                                ),
+                              ),
                               Padding(
                                   padding:
                                       EdgeInsets.only(top: size.height * 0.01),
@@ -420,8 +422,8 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                           child: Container(
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: Colors
-                                                                  .blue,
+                                                              color:
+                                                                  Colors.blue,
                                                               border: Border.all(
                                                                   color: Colors
                                                                       .blue),
@@ -489,8 +491,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                                             4.0,
                                                                         top:
                                                                             13.0),
-                                                                child: Text(
-                                                                    "回",
+                                                                child: Text("回",
                                                                     style: Theme.of(
                                                                             context)
                                                                         .textTheme
@@ -613,17 +614,15 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                                             .headline3),
                                                                   ),
                                                                   Padding(
-                                                                    padding:
-                                                                    const EdgeInsets
-                                                                        .only(
+                                                                    padding: const EdgeInsets
+                                                                            .only(
                                                                         left:
-                                                                        4.0,
+                                                                            4.0,
                                                                         top:
-                                                                        13.0),
+                                                                            13.0),
                                                                     child: Text(
                                                                         "回",
-                                                                        style: Theme.of(
-                                                                            context)
+                                                                        style: Theme.of(context)
                                                                             .textTheme
                                                                             .subtitle2),
                                                                   )
@@ -663,131 +662,150 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                           : Container(),
 
                       _selectedIndex == 1
-                          ? Column(children: [
-                              Container(
-                                width: double.infinity,
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 24, bottom: 8),
-                                  child: Text("やり方紹介",
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-                                ),
-                              ),
-                              Row(children: [
-                                Container(
-                                  decoration:
-                                      platformBrightness != Brightness.light
-                                          ? BoxDecoration(boxShadow: [
-                                              BoxShadow(
-                                                color: Color(0xFF000000),
-                                                spreadRadius: 5.0,
-                                                blurRadius: 10.0,
-                                                offset: Offset(0, 0),
-                                              ),
-                                            ])
-                                          : null,
-                                  child: Card(
-                                      // color: Colors.grey[900],
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: new InkWell(
-                                          onTap: () {
-                                            userData.chooseMode = "training";
-                                            Navigator.of(context).pushNamed(
-                                                '/howtoplay',
-                                                arguments: userData);
-                                          },
-                                          child: Column(children: [
-                                            Container(
-                                                child: Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(
-                                                      size.height * 0.03),
-                                                  child: Container(
-                                                    child: Text("胸骨圧迫やり方",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headline6),
+                          ?  Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                                  Container(
+                                    width: double.infinity,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.only(top: 24, bottom: 8),
+                                      child: Text("やり方紹介",
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 24)),
+                                    ),
+                                  ),
+                                  Row(children: [
+                                    Container(
+                                      decoration:
+                                          platformBrightness != Brightness.light
+                                              ? BoxDecoration(boxShadow: [
+                                                  BoxShadow(
+                                                    color: Color(0xFF000000),
+                                                    spreadRadius: 5.0,
+                                                    blurRadius: 10.0,
+                                                    offset: Offset(0, 0),
                                                   ),
-                                                )
-                                              ],
-                                            ))
-                                          ]))),
-                                ),
-                                Container(
-                                  child: Card(
-                                      // color: Colors.grey[900],
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: new InkWell(
-                                          onTap: () {
-                                            userData.chooseMode = "training";
-                                            Navigator.of(context).pushNamed(
-                                                '/explain',
-                                                arguments: userData);
-                                          },
-                                          child: Column(children: [
-                                            Container(
-                                                child: Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(
-                                                      size.height * 0.03),
-                                                  child: Container(
-                                                    child: Text("遊び方",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headline6),
-                                                  ),
-                                                )
-                                              ],
-                                            ))
-                                          ]))),
-                                ),
-                              ]),
-                              Row(children: [
-                                Container(
-                                  child: Padding(
+                                                ])
+                                              : null,
+                                      child: Card(
+                                          // color: Colors.grey[900],
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: new InkWell(
+                                              onTap: () {
+                                                userData.chooseMode =
+                                                    "training";
+                                                Navigator.of(context).pushNamed(
+                                                    '/howtoplay',
+                                                    arguments: userData);
+                                              },
+                                              child: Column(children: [
+                                                Container(
+                                                    child: Column(
+                                                  children: [
+                                                    Padding(
+                                                      padding: EdgeInsets.all(
+                                                          size.height * 0.03),
+                                                      child: Container(
+                                                        child: Text("胸骨圧迫のやり方",
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .headline6),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ))
+                                              ]))),
+                                    ),
+                                  ]),
+                                  Padding(
                                     padding: const EdgeInsets.only(top: 8.0),
-                                    child: Card(
-                                        // color: Colors.grey[900],
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
+                                    child: Row(children: [
+                                        Container(
+                                          child: Card(
+                                              // color: Colors.grey[900],
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: new InkWell(
+                                                  onTap: () {
+                                                    userData.chooseMode =
+                                                        "training";
+                                                    Navigator.of(context)
+                                                        .pushNamed('/explain',
+                                                            arguments: userData);
+                                                  },
+                                                  child: Column(children: [
+                                                    Container(
+                                                        child: Column(
+                                                      children: [
+                                                        Padding(
+                                                          padding: EdgeInsets.all(
+                                                              size.height * 0.03),
+                                                          child: Container(
+                                                            child: Text(
+                                                                "当アプリの遊び方",
+                                                                style: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .headline6),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ))
+                                                  ]))),
                                         ),
-                                        child: new InkWell(
-                                            onTap: () {
-                                              userData.chooseMode = "training";
-                                              Navigator.of(context).pushNamed(
-                                                  '/emergency',
-                                                  arguments: userData);
-                                            },
-                                            child: Column(children: [
-                                              Container(
-                                                  child: Column(
-                                                children: [
-                                                  Padding(
-                                                    padding: EdgeInsets.all(
-                                                        size.height * 0.03),
-                                                    child: Container(
-                                                      child: Text("救急蘇生法について",
-                                                          style:
-                                                              Theme.of(context)
+                                      ]),
+                                  ),
+                                  Row(children: [
+                                    Container(
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 8.0),
+                                        child: Card(
+                                            // color: Colors.grey[900],
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: new InkWell(
+                                                onTap: () {
+                                                  userData.chooseMode =
+                                                      "training";
+                                                  Navigator.of(context)
+                                                      .pushNamed('/emergency',
+                                                          arguments: userData);
+                                                },
+                                                child: Column(children: [
+                                                  Container(
+                                                      child: Column(
+                                                    children: [
+                                                      Padding(
+                                                        padding: EdgeInsets.all(
+                                                            size.height * 0.03),
+                                                        child: Container(
+                                                          child: Text(
+                                                              "救急蘇生法について",
+                                                              style: Theme.of(
+                                                                      context)
                                                                   .textTheme
                                                                   .headline6),
-                                                    ),
-                                                  )
-                                                ],
-                                              ))
-                                            ]))),
-                                  ),
-                                ),
-                              ]),
-                            ])
-                          : Container(),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ))
+                                                ]))),
+                                      ),
+                                    ),
+                                  ]),
+                                ]): Container(),
 
                       _selectedIndex == 2
                           ? Column(
@@ -795,10 +813,13 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                 Container(
                                   width: double.infinity,
                                   child: Padding(
-                                    padding: EdgeInsets.only(top: 24, bottom: 8),
+                                    padding:
+                                        EdgeInsets.only(top: 24, bottom: 8),
                                     child: Text("やってみよう",
                                         textAlign: TextAlign.left,
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 24)),
                                   ),
                                 ),
                                 Card(

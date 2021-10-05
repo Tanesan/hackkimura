@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hackkimura/model/BarometerArgs.dart';
 import 'package:hackkimura/model/UserData.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Howtoplay extends StatefulWidget {
   const Howtoplay({Key? key}) : super(key: key);
@@ -39,7 +40,8 @@ class _HowtoplayState extends State<Howtoplay> {
       imagePadding: EdgeInsets.zero,
     );
 
-    return IntroductionScreen(
+    return Scaffold(
+        body: IntroductionScreen(
       key: introKey,
       globalBackgroundColor: Colors.white,
       globalHeader: Align(
@@ -52,7 +54,7 @@ class _HowtoplayState extends State<Howtoplay> {
                 textStyle: const TextStyle(fontSize: 20),
               ),
               onPressed: () {Navigator.of(context).pushNamed("/grade", arguments: userData);},
-              child: Text('モード選択に戻る', style: Theme.of(context).textTheme.subtitle1),
+              child: Text('トップに戻る', style: Theme.of(context).textTheme.subtitle1),
             ),
           ),
         ),
@@ -109,8 +111,16 @@ class _HowtoplayState extends State<Howtoplay> {
           bodyWidget:Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children:  [
-              Center(child: Text("この情報は「社団法人　北海道医師会」応急手当WEBをもとに作成しました。",
-                  style: Theme.of(context).textTheme.subtitle1))
+              Center(
+                child: InkWell(
+                    child: Text("この情報は「社団法人　北海道医師会」応急手当WEBをもとに作成しました。出典元サイトはこちらをクリックしてください。", style: Theme.of(context).textTheme.subtitle1),
+                    onTap: () async {
+                      if (await canLaunch("http://www.hokkaido.med.or.jp/firstaid/")) {
+                        await launch("http://www.hokkaido.med.or.jp/firstaid/");
+                      }
+                    },
+                  ),
+              ),
           ]),
           image: _buildImage('start.png'),
         ),
@@ -120,7 +130,7 @@ class _HowtoplayState extends State<Howtoplay> {
       nextFlex: 0,
       //rtl: true, // Display as right-to-left
       next: const Icon(Icons.arrow_forward),
-      done: const Text('Play', style: TextStyle(fontWeight: FontWeight.w600)),
+      done: const Text('遊ぶ', style: TextStyle(fontWeight: FontWeight.w600)),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
       dotsDecorator: const DotsDecorator(
@@ -137,6 +147,6 @@ class _HowtoplayState extends State<Howtoplay> {
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
       ),
-    );
+        ));
   }
 }

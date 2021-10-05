@@ -46,7 +46,7 @@ class _EmergencyState extends State<Emergency> {
         child: Column(
           children: [
         InkWell(
-        child: Text("詳しくはこちら（ソース元）"),
+        child: Text("このページの情報のソースはこちらです。", style: Theme.of(context).textTheme.subtitle1),
           onTap: () async {
             if (await canLaunch("https://www.med.or.jp/99/cpr.html")) {
               await launch("https://www.med.or.jp/99/cpr.html");
