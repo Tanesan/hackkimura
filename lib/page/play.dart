@@ -14,9 +14,11 @@ class Training extends StatefulWidget {
 
 class _TrainingState extends State<Training> {
   double _currentSliderValue = 60;
+  double _currentBPMValue = 110;
   bool _active = true;
   void _changeSwitch(bool e) => setState(() => _active = e);
   void _changeMusic(bool e) => setState(() => _active = e);
+  void _changeBpm(bool e) => setState(() => _active = e);
 
   @override
   Widget build(BuildContext context) {
@@ -84,13 +86,54 @@ class _TrainingState extends State<Training> {
                         ],
                       ) : Container(),
                       userData.chooseMode == "training" ? Padding(
-                        padding: EdgeInsets.only(right: 220, top: 16),
+                        padding: EdgeInsets.only(right: 230, top: 8),
+                        child: Text("BPM",
+                            textAlign: TextAlign.left,
+                            style: Theme.of(context).textTheme.subtitle1),
+                      ) : Container(),
+                      userData.chooseMode == "training" ? Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(right: 16.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: [
+                                Text(_currentBPMValue.round().toString(),
+                                    textAlign: TextAlign.left,
+                                    style: Theme.of(context).textTheme.headline4)
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: size.width * 0.59,
+                            child: Slider(
+                              value: _currentBPMValue,
+                              min: 110,
+                              max: 120,
+                              divisions: 10,
+                              label: _currentBPMValue.round().toString(),
+                              onChanged: (double value) {
+                                setState(() {
+                                  _currentBPMValue = value;
+                                });
+                              },
+                            ),
+                          )
+                        ],
+                      ) : Container(),
+
+
+                      userData.chooseMode == "training" ? Padding(
+                        padding: EdgeInsets.only(right: 220, top: 8),
                         child: Text("メトロノーム",
                             textAlign: TextAlign.left,
                             style: Theme.of(context).textTheme.subtitle1),
                       ) : Container(),
+
                       userData.chooseMode == "training" ? Padding(
-                        padding: EdgeInsets.only(top: 8.0, left: 8.0),
+                        padding: EdgeInsets.only(left: 40.0),
                         child: Row(
                           children: [
                             Text(_active ? "ON " : "OFF",
@@ -153,6 +196,7 @@ class _TrainingState extends State<Training> {
                                         userData: userData,
                                         time: _currentSliderValue,
                                         metro: _active,
+                                        bpm: _currentBPMValue,
                                         mode: userData.chooseMode));
                               },
                             ),
@@ -168,9 +212,7 @@ class _TrainingState extends State<Training> {
               ),
             ),
             ),
-            AudioPlayout(
-              desiredState: PlayerState.PLAYING,
-            )],
+          ],
         ));
   }
 }

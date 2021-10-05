@@ -9,5 +9,6 @@ class BarometerArgs {
   var time;
   var mode;
   var metro;
-  BarometerArgs({this.userData, this.time, this.metro, this.t, this.ddx, this.ddy, this.ddz, this.mode});
+  var bpm;
+  BarometerArgs({this.userData, this.time, this.metro, this.t, this.ddx, this.ddy, this.ddz, this.mode, this.bpm});
 }

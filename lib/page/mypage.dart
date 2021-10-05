@@ -519,7 +519,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                                   const EdgeInsets
                                                                           .only(
                                                                       left: 2),
-                                                              child: Text("グラフ",
+                                                              child: Text("+32%",
                                                                   style: Theme.of(
                                                                           context)
                                                                       .textTheme
@@ -528,7 +528,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                           ],
                                                         ),
                                                       ),
-                                                      Text("score graph",
+                                                      Text("スコアの伸び率",
                                                           style:
                                                               Theme.of(context)
                                                                   .textTheme
