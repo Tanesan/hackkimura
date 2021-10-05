@@ -93,7 +93,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                     await GamesServices.showLeaderboards(
                                         iOSLeaderboardID: 'training_score');
                               },
-                              child: Text("Game Center>",
+                              child: Text("Learderboad >",
                                   textAlign: TextAlign.left,
                                   style: Theme.of(context).textTheme.subtitle1),
                             )),
@@ -101,9 +101,18 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
 
                       _selectedIndex == 0
                           ? Column(children: [
+                        Container(
+                          width: double.infinity,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 24),
+                            child: Text("概要",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                          ),
+                        ),
                               Padding(
                                   padding:
-                                      EdgeInsets.only(top: size.height * 0.04),
+                                      EdgeInsets.only(top: size.height * 0.01),
                                   child: Row(children: <Widget>[
                                     Container(
                                       decoration:
@@ -655,9 +664,14 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
 
                       _selectedIndex == 1
                           ? Column(children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 24, bottom: 8),
-                                child: Text("-やり方紹介-"),
+                              Container(
+                                width: double.infinity,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 24, bottom: 8),
+                                  child: Text("やり方紹介",
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                                ),
                               ),
                               Row(children: [
                                 Container(
@@ -667,7 +681,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                               BoxShadow(
                                                 color: Color(0xFF000000),
                                                 spreadRadius: 5.0,
-                                                blurRadius: 20.0,
+                                                blurRadius: 10.0,
                                                 offset: Offset(0, 0),
                                               ),
                                             ])
@@ -778,9 +792,14 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                       _selectedIndex == 2
                           ? Column(
                               children: [
-                                Padding(
-                                  padding: EdgeInsets.only(top: 24, bottom: 8),
-                                  child: Text("-やってみよう-"),
+                                Container(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 24, bottom: 8),
+                                    child: Text("やってみよう",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                                  ),
                                 ),
                                 Card(
                                     // color: Colors.grey[900],
