@@ -140,8 +140,8 @@ class _AEDMapState extends State {
   void _gpsToggle() async {
     _controller.future.then((mapboxMap) {
       mapboxMap.moveCamera(CameraUpdate.newLatLng(LatLng(
-          _yourLocation!.latitude ?? _initialLat,
-          _yourLocation!.longitude ?? _initialLong)));
+          _yourLocation != null ? _yourLocation!.latitude! : _initialLat,
+          _yourLocation != null ? _yourLocation!.longitude! : _initialLong)));
     });
   }
 
