@@ -97,6 +97,16 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                   textAlign: TextAlign.left,
                                   style: Theme.of(context).textTheme.subtitle2),
                             )),
+                        Container(
+                            width: double.infinity,
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.of(context).pushNamed('/top');
+                              },
+                              child: Text("ログアウト(トップページへ)",
+                                  textAlign: TextAlign.left,
+                                  style: Theme.of(context).textTheme.subtitle2),
+                            ))
                       ]),
 
                       _selectedIndex == 0

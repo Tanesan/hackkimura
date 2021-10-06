@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.from(
-          colorScheme:ColorScheme.light(primary: Colors.green),
+          colorScheme:ColorScheme.light(primary: Colors.green, background: Color(0xfff2f2f7)),
           textTheme: Typography.material2018().black.copyWith(
               subtitle1: TextStyle(fontWeight: FontWeight.bold),
               subtitle2: TextStyle(fontWeight: FontWeight.bold),
