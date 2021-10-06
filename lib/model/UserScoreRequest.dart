@@ -1,12 +1,10 @@
 class UserScoreRequest {
+  var uuid;
   var className;
   var userName;
 
-  UserScoreRequest({var className, var userName}) {
-    this.className = className;
-    this.userName = userName;
-  }
+  UserScoreRequest({this.uuid, this.className, this.userName});
 
   Map<String, dynamic> toJson() =>
-      {'className': className, 'userName': userName};
+      {'uuid': uuid, 'user_name': userName, 'class_name': className, 'className': className, 'userName': userName};
 }

@@ -82,16 +82,14 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
   }
 
   Future<bool> _signIn() async {
-    print("bef");
     try {
       final _result = await IOSGameCenter.signIn.timeout(Duration(seconds: 5));
-      print("aft");
       if (_result.account != null) {
         userData.id = _result.account.id;
         userData.name = _result.account.displayName;
       }
     } catch (e) {
-      print(e);
+      print("Error on signing into Game Center: $e");
     }
     return true;
   }

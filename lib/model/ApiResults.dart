@@ -4,13 +4,15 @@ class ApiResults {
   var rank;
   var topFiveUsers;
   var topFiveScores;
+  var rewards;
 
   ApiResults(
       {this.score,
       this.average,
       this.rank,
       this.topFiveUsers,
-      this.topFiveScores});
+      this.topFiveScores,
+      this.rewards});
 
   factory ApiResults.fromJson(Map<String, dynamic> json) {
     return ApiResults(
@@ -18,6 +20,8 @@ class ApiResults {
         average: json['average'],
         rank: json['rank'],
         topFiveUsers: json['result']['userName'],
-        topFiveScores: json['result']['score']);
+        topFiveScores: json['result']['score'],
+        rewards:  json['rewards']
+    );
   }
 }

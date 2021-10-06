@@ -18,6 +18,7 @@ class _ResultState extends State<Result> {
   Future<ApiResults> _getResult(BarometerArgs args) async {
     var url = Uri.parse('http://52.193.204.138:5000');
     Request request = Request(
+        uuid: _args.userData.id,
         className: _args.userData.classCode,
         userName: _args.userData.name,
         timestamp: (DateTime.now().millisecondsSinceEpoch).round(),

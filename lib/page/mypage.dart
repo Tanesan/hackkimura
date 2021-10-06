@@ -18,7 +18,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
   Future<UserScoreResponse> _getResult(UserData userData) async {
     var url = Uri.parse('http://52.193.204.138:5000/class');
     UserScoreRequest request = UserScoreRequest(
-        className: userData.classCode, userName: userData.name);
+        uuid: userData.id, className: userData.classCode, userName: userData.name);
     final response = await http.post(url,
         body: json.encode(request.toJson()),
         headers: {"Content-Type": "application/json"});
