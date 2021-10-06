@@ -36,14 +36,14 @@ class _HowtoplayState extends State<Howtoplay> {
       titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
       descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Colors.white,
+      // pageColor: Colors.white,
       imagePadding: EdgeInsets.zero,
     );
 
     return Scaffold(
         body: IntroductionScreen(
       key: introKey,
-      globalBackgroundColor: Colors.white,
+      // globalBackgroundColor: Colors.white,
       globalHeader: Align(
         alignment: Alignment.topRight,
         child: SafeArea(
