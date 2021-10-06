@@ -5,7 +5,7 @@ import 'package:hackkimura/model/UserData.dart';
 import 'package:hackkimura/model/UserScoreResponse.dart';
 import 'package:hackkimura/model/UserScoreRequest.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:games_services/games_services.dart';
+import 'package:ios_game_center/ios_game_center.dart';
 
 class Grade extends StatefulWidget {
   const Grade({Key? key}) : super(key: key);
@@ -82,7 +82,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                         ),
                         Container(
                             width: double.infinity,
-                            child: Text("豊田組(所属名)",
+                            child: Text(userData.classCode,
                                 textAlign: TextAlign.left,
                                 style: Theme.of(context).textTheme.bodyText1)),
                         Container(
@@ -90,8 +90,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                             child: InkWell(
                               onTap: () async {
                                 final result =
-                                    await GamesServices.showLeaderboards(
-                                        iOSLeaderboardID: 'training_score');
+                                    await IOSGameCenter.showLeaderboard('jp.hacks.kimura.training_score');
                               },
                               child: Text("リーダーボードを見る",
                                   textAlign: TextAlign.left,

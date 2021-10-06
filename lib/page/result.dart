@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:games_services/games_services.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:ios_game_center/ios_game_center.dart';
 import 'package:hackkimura/model/BarometerArgs.dart';
 import 'package:hackkimura/model/ApiResults.dart';
 import 'package:hackkimura/model/Request.dart';
@@ -77,11 +77,9 @@ class _ResultState extends State<Result> {
           FutureBuilder<ApiResults>(
             future: _getResult(_args),
             builder: (context, snapshot) {
-              final result = GamesServices.submitScore(
-                  score: Score(
-                      // androidLeaderboardID: 'android_leaderboard_id',
-                      iOSLeaderboardID: 'training_score',
-                      value: snapshot.data?.score));
+              final result = IOSGameCenter.submitScore(
+                      id: 'jp.hacks.kimura.training_score',
+                      score: snapshot.data?.score);
               if (snapshot.hasData) {
                 return Padding(
                     padding: EdgeInsets.only(

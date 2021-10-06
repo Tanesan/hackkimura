@@ -45,6 +45,7 @@ dependencies:
   font_awesome_flutter: ^9.1.0
   games_services: ^2.0.1
   charts_flutter: ^0.11.0
+  ios_game_center: ^0.1.2
 
 dependency_overrides:
   mapbox_gl:
