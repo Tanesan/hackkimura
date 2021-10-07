@@ -124,7 +124,6 @@ class _AEDMapState extends State {
           });
         }
       }
-
       final metersPerPixel =
           await mapboxMap.getMetersPerPixelAtLatitude(latitude);
       mapboxMap.addCircle(CircleOptions(
