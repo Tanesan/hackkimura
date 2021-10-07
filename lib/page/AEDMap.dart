@@ -118,7 +118,7 @@ class _AEDMapState extends State {
             mapboxMap.addSymbol(
               SymbolOptions(
                   geometry: LatLng(response.latitude, response.longitude),
-                  iconImage: "images/AED.jpg",
+                  iconImage: "images/pin.png",
                   iconSize: .1),
             );
           });
