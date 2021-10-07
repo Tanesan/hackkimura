@@ -72,14 +72,14 @@ class _ExplainState extends State<Explain> {
           title: "ペットボトルの上にスマホ",
           body:
           "ペットボトルの上にスマホを乗せてください。乗せる位置はどこでもどうぞ",
-          image: _buildImage('img2.jpg'),
+          image: _buildImage('onthephone.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "上から押そう",
           body:
           "リズムに乗って上から押すだけ",
-          image: _buildImage('img3.jpg'),
+          image: _buildImage('pushtop.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(

@@ -219,6 +219,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  ios_game_center:
+    dependency: "direct main"
+    description:
+      name: ios_game_center
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   js:
     dependency: transitive
     description:

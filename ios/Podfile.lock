@@ -13,6 +13,8 @@ PODS:
     - Flutter
   - games_services (0.0.1):
     - Flutter
+  - ios_game_center (0.0.1):
+    - Flutter
   - LineSDKSwift (5.8.0):
     - LineSDKSwift/Core (= 5.8.0)
   - LineSDKSwift/Core (5.8.0)
@@ -44,6 +46,7 @@ DEPENDENCIES:
   - flutter_playout (from `.symlinks/plugins/flutter_playout/ios`)
   - flutter_siri_suggestions (from `.symlinks/plugins/flutter_siri_suggestions/ios`)
   - games_services (from `.symlinks/plugins/games_services/ios`)
+  - ios_game_center (from `.symlinks/plugins/ios_game_center/ios`)
   - location (from `.symlinks/plugins/location/ios`)
   - mapbox_gl (from `.symlinks/plugins/mapbox_gl/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
@@ -73,6 +76,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_siri_suggestions/ios"
   games_services:
     :path: ".symlinks/plugins/games_services/ios"
+  ios_game_center:
+    :path: ".symlinks/plugins/ios_game_center/ios"
   location:
     :path: ".symlinks/plugins/location/ios"
   mapbox_gl:
@@ -94,6 +99,7 @@ SPEC CHECKSUMS:
   flutter_playout: a5aed32b3003b02eb4432815ecfe0c0e42a801ff
   flutter_siri_suggestions: 2c0bc235516b5b51a86a641d0f39dba3cd336ac3
   games_services: 6c9a23d55bc6ae0129b24507e008643dcb02f341
+  ios_game_center: ed0b207512a08dd2029c26b4e3704c10da473462
   LineSDKSwift: 07caae66911f77d1ccf9e650e4da4020d737ecc7
   location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
   Mapbox-iOS-SDK: 2563ed87ead6ec08f1c2090873977b8a7be335a8
