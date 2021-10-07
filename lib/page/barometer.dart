@@ -74,8 +74,13 @@ class _BarometerState extends State<Barometer> {
   @override
   void initState() {
     super.initState();
-    _playFile();
-    _startTimer();
+    Future.delayed(Duration.zero, () {
+      setState(() {
+        args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
+      });
+      _playFile();
+      _startTimer();
+    });
   }
 
   void _stopFile() {
@@ -134,7 +139,6 @@ class _BarometerState extends State<Barometer> {
 
   @override
   Widget build(BuildContext context) {
-    args = ModalRoute.of(context)?.settings.arguments as BarometerArgs;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
