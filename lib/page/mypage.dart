@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:hackkimura/model/UserData.dart';
 import 'package:hackkimura/model/UserScoreResponse.dart';
 import 'package:hackkimura/model/UserScoreRequest.dart';
+import 'package:hackkimura/model/ClassScoreRequest.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ios_game_center/ios_game_center.dart';
 
@@ -16,13 +17,27 @@ class Grade extends StatefulWidget {
 
 class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
   Future<UserScoreResponse> _getResult(UserData userData) async {
-    var url = Uri.parse('http://52.193.204.138:5000/class');
-    UserScoreRequest request = UserScoreRequest(
-        uuid: userData.id, className: userData.classCode, userName: userData.name);
-    final response = await http.post(url,
-        body: json.encode(request.toJson()),
+    var url = Uri.parse('http://52.193.204.138:5000/user');
+    UserScoreRequest userRequest = UserScoreRequest(
+        uuid: userData.id,
+        userName: userData.name);
+    print(userRequest.toJson());
+    var response = await http.post(url,
+        body: json.encode(userRequest.toJson()),
         headers: {"Content-Type": "application/json"});
-    return UserScoreResponse.fromJson(json.decode(response.body));
+    var userScoreResponse = UserScoreResponse.fromJson(json.decode(response.body));
+    print(response.body);
+
+    url = Uri.parse('http://52.193.204.138:5000/class');
+    ClassScoreRequest classRequest = ClassScoreRequest(
+        uuid: userData.id,
+        className: userData.classCode,
+        userName: userData.name);
+    response = await http.post(url,
+        body: json.encode(classRequest.toJson()),
+        headers: {"Content-Type": "application/json"});
+    userScoreResponse.rank = json.decode(response.body)['rank'];
+    return userScoreResponse;
   }
 
   int _selectedIndex = 0;
@@ -90,7 +105,8 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                             child: InkWell(
                               onTap: () async {
                                 final result =
-                                    await IOSGameCenter.showLeaderboard('jp.hacks.kimura.training_score');
+                                    await IOSGameCenter.showLeaderboard(
+                                        'jp.hacks.kimura.training_score');
                               },
                               child: Text("リーダーボードを見る",
                                   textAlign: TextAlign.left,
@@ -99,7 +115,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                         Container(
                             width: double.infinity,
                             child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.of(context).pushNamed('/top');
                               },
                               child: Text("ログアウト(トップページへ)",
@@ -485,7 +501,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                                         ? "--"
                                                                         : snapshot
                                                                             .data!
-                                                                            .bestScore
+                                                                            .numberOfTrainings
                                                                             .toString(),
                                                                     style: Theme.of(
                                                                             context)
@@ -617,7 +633,10 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                                         left:
                                                                             2),
                                                                     child: Text(
-                                                                        "--",
+                                                                        !snapshot.hasData || snapshot.hasError
+                                                                            ? "--"
+                                                                            : snapshot.data!.scoreRate.toStringAsFixed(
+                                                                                0),
                                                                         style: Theme.of(context)
                                                                             .textTheme
                                                                             .headline3),
@@ -630,7 +649,7 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                                         top:
                                                                             13.0),
                                                                     child: Text(
-                                                                        "回",
+                                                                        "%",
                                                                         style: Theme.of(context)
                                                                             .textTheme
                                                                             .subtitle2),
@@ -671,9 +690,9 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                           : Container(),
 
                       _selectedIndex == 1
-                          ?  Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
                                   Container(
                                     width: double.infinity,
                                     child: Padding(
@@ -736,42 +755,42 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: Row(children: [
-                                        Container(
-                                          child: Card(
-                                              // color: Colors.grey[900],
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              child: new InkWell(
-                                                  onTap: () {
-                                                    userData.chooseMode =
-                                                        "training";
-                                                    Navigator.of(context)
-                                                        .pushNamed('/explain',
-                                                            arguments: userData);
-                                                  },
-                                                  child: Column(children: [
-                                                    Container(
-                                                        child: Column(
-                                                      children: [
-                                                        Padding(
-                                                          padding: EdgeInsets.all(
-                                                              size.height * 0.03),
-                                                          child: Container(
-                                                            child: Text(
-                                                                "当アプリの遊び方",
-                                                                style: Theme.of(
-                                                                        context)
-                                                                    .textTheme
-                                                                    .headline6),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ))
-                                                  ]))),
-                                        ),
-                                      ]),
+                                      Container(
+                                        child: Card(
+                                            // color: Colors.grey[900],
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: new InkWell(
+                                                onTap: () {
+                                                  userData.chooseMode =
+                                                      "training";
+                                                  Navigator.of(context)
+                                                      .pushNamed('/explain',
+                                                          arguments: userData);
+                                                },
+                                                child: Column(children: [
+                                                  Container(
+                                                      child: Column(
+                                                    children: [
+                                                      Padding(
+                                                        padding: EdgeInsets.all(
+                                                            size.height * 0.03),
+                                                        child: Container(
+                                                          child: Text(
+                                                              "当アプリの遊び方",
+                                                              style: Theme.of(
+                                                                      context)
+                                                                  .textTheme
+                                                                  .headline6),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ))
+                                                ]))),
+                                      ),
+                                    ]),
                                   ),
                                   Row(children: [
                                     Container(
@@ -814,7 +833,8 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                       ),
                                     ),
                                   ]),
-                                ]): Container(),
+                                ])
+                          : Container(),
 
                       _selectedIndex == 2
                           ? Column(

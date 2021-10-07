@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hackkimura/model/UserData.dart';
 import 'package:flutter/services.dart';
 import 'package:ios_game_center/ios_game_center.dart';
-import 'package:flutter_siri_suggestions/flutter_siri_suggestions.dart';
+//import 'package:flutter_siri_suggestions/flutter_siri_suggestions.dart';
 
 class Top extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class Top extends StatefulWidget {
 
 class _TopState extends State<Top> with SingleTickerProviderStateMixin {
   UserData userData = UserData();
-  final ScrollController controller = ScrollController();
+  final ScrollController controller = ScrollController(initialScrollOffset: 0);
   late AnimationController animationController;
   late Animation<double> animation;
 
@@ -107,7 +107,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                 return Center(child: CircularProgressIndicator());
               }
 
-              return Column(
+              return SingleChildScrollView(child: Column(
                 children: [
                   InkWell(
                       onTap: () {
@@ -169,7 +169,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                           ))),
                   Container(
                       width: double.infinity,
-                      height: animation.value * 1.3,
+                      height: animation.value * 0.9,
                       child: animation.value > 40
                           ? SingleChildScrollView(
                               child: Column(children: [
@@ -235,11 +235,12 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                                  */
                               Padding(
                                   padding: EdgeInsets.only(
-                                      top: size.width * 0.01,
+                                      top: size.width * 0.05,
                                       right: size.width * 0.1,
                                       left: size.width * 0.1),
                                   child: FocusScope(
                                       child: Focus(
+                                        /*
                                           onFocusChange: (focus) =>
                                               controller.animateTo(
                                                 size.height * 0.3,
@@ -247,6 +248,8 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                                                 duration: const Duration(
                                                     milliseconds: 300),
                                               ),
+
+                                         */
                                           child: Center(
                                             child: TextField(
                                                 inputFormatters: <
@@ -368,7 +371,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                         child: Padding(
                           padding: EdgeInsets.only(
                               top:
-                                  size.height * 0.4 - 66 - animation.value * 1),
+                                  size.height * 0.4 - 66 - animation.value * 1 > 0 ? size.height * 0.4 - 66 - animation.value * 1 : 0),
                           child: Center(
                             child: Column(
                               children: [
@@ -424,7 +427,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                         )),
                   )
                 ],
-              );
+              ));
             }));
   }
 }
