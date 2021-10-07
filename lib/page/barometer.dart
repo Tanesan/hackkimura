@@ -66,8 +66,9 @@ class _BarometerState extends State<Barometer> {
 
  */
   void _playFile() async{
-    print(args.bpm);
-    args.bpm == 110 ? players = await _player.play('sound/training.mp3') : null; // assign player here
+    if (args.mode == "training" && args.bpm == 110) {
+      players = await _player.play('sound/training.mp3');
+    }
   }
 
   @override
@@ -78,7 +79,9 @@ class _BarometerState extends State<Barometer> {
   }
 
   void _stopFile() {
-    args.bpm == 110 ?  players.stop() : null; // stop the file like this
+    if (args.mode == "training" && args.bpm == 110) {
+      players.stop();
+    }
   }
 
   void _finishMeasurement() {
@@ -168,7 +171,7 @@ class _BarometerState extends State<Barometer> {
                           ),
                           Text("$_current",
                               style: TextStyle(
-                                  fontSize: 500, fontWeight: FontWeight.bold))
+                                  fontSize: 300, fontWeight: FontWeight.bold))
                         ])
                       : Column(
                           mainAxisSize: MainAxisSize.min,
@@ -189,6 +192,7 @@ class _BarometerState extends State<Barometer> {
                                     return Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
+                                          SizedBox(height: 64),
                                           Text("残り",
                                               style: TextStyle(fontSize: 32)),
                                           Text("${(_counter / 2).round()}",
