@@ -88,7 +88,7 @@ class _AEDMapState extends State {
               child: Text('この周辺のAEDを探す',
                   style: Theme.of(context).textTheme.bodyText1),
               style: OutlinedButton.styleFrom(
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.black,
                 shape: const StadiumBorder(),
                 side: const BorderSide(color: Colors.green),
               ),
@@ -119,7 +119,7 @@ class _AEDMapState extends State {
               SymbolOptions(
                   geometry: LatLng(response.latitude, response.longitude),
                   iconImage: "images/pin.png",
-                  iconSize: .1),
+                  iconSize: .5),
             );
           });
         }
