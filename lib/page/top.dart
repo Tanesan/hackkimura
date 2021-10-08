@@ -25,7 +25,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
     animation.addListener(() {
       setState(() {});
     });
-    // initSuggestions();
+    initSuggestions();
     super.initState();
   }
 
@@ -48,20 +48,20 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
         });
 
     await FlutterSiriSuggestions.instance.buildActivity(FlutterSiriActivity(
-        "mainActivity Suggestion", "mainActivity",
+        "胸骨圧迫を手伝って", "mainActivity",
         isEligibleForSearch: true,
         isEligibleForPrediction: true,
-        contentDescription: "胸骨圧迫を手伝って",
-        suggestedInvocationPhrase: "open my app"));
+        contentDescription: "胸骨あっぱくんのアプリを開きます",
+        suggestedInvocationPhrase: "アプリを開きます"));
 
-    await FlutterSiriSuggestions.instance.buildActivity(FlutterSiriActivity(
-      "beerActivity Suggestion",
-      "beerActivity",
-      isEligibleForSearch: true,
-      isEligibleForPrediction: true,
-      contentDescription: "胸骨圧迫",
-      suggestedInvocationPhrase: "coooooool",
-    ));
+    // await FlutterSiriSuggestions.instance.buildActivity(FlutterSiriActivity(
+    //   "胸骨圧迫",
+    //   "beerActivity",
+    //   isEligibleForSearch: true,
+    //   isEligibleForPrediction: true,
+    //   contentDescription: "胸骨圧迫",
+    //   suggestedInvocationPhrase: "胸骨圧迫",
+    // ));
   }
 
   @override
