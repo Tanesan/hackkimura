@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hackkimura/model/UserData.dart';
 import 'package:flutter/services.dart';
 import 'package:ios_game_center/ios_game_center.dart';
-//import 'package:flutter_siri_suggestions/flutter_siri_suggestions.dart';
+import 'package:flutter_siri_suggestions/flutter_siri_suggestions.dart';
 
 class Top extends StatefulWidget {
   @override
@@ -29,49 +29,40 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
     super.initState();
   }
 
-  // void initSuggestions() async {
-  //   FlutterSiriSuggestions.instance.configure(
-  //       onLaunch: (Map<String, dynamic> message) async {
-  //         //Awaken from Siri Suggestion
-  //         ///// TO DO : do something!
-  //         String? __text;
-  //
-  //         print("called by ${message['key']} suggestion.");
-  //
-  //         switch (message["key"]) {
-  //           case "mainActivity":
-  //             __text = "redirect to mainActivity";
-  //             break;
-  //           case "beerActivity":
-  //             __text = "redirect to beerActivity";
-  //             break;
-  //           case "searchActivity":
-  //             __text = "redirect to searchActivity";
-  //             break;
-  //           case "talkActivity":
-  //             __text = "redirect to talkActivity";
-  //             break;
-  //           default:
-  //             __text = "hmmmm...... made a typo";
-  //         }
-  //       });
-  //
-  //   await FlutterSiriSuggestions.instance.buildActivity(FlutterSiriActivity(
-  //       "mainActivity Suggestion", "mainActivity",
-  //       isEligibleForSearch: true,
-  //       isEligibleForPrediction: true,
-  //       contentDescription: "Open mainActivity",
-  //       suggestedInvocationPhrase: "open my app"));
-  //
-  //   await FlutterSiriSuggestions.instance.buildActivity(FlutterSiriActivity(
-  //     "beerActivity Suggestion",
-  //     "beerActivity",
-  //     isEligibleForSearch: true,
-  //     isEligibleForPrediction: true,
-  //     contentDescription: "Open beerActivity 🍺",
-  //     suggestedInvocationPhrase: "coooooool",
-  //   ));
-  // }
+  void initSuggestions() async {
+    FlutterSiriSuggestions.instance.configure(
+        onLaunch: (Map<String, dynamic> message) async {
+          //Awaken from Siri Suggestion
+          ///// TO DO : do something!
+          String? __text;
+
+          print("called by ${message['key']} suggestion.");
+
+          switch (message["key"]) {
+            case "mainActivity":
+              __text = "緊急モードにリダイレクトします。";
+              break;
+            default:
+              __text = "hmmmm...... made a typo";
+          }
+        });
+
+    await FlutterSiriSuggestions.instance.buildActivity(FlutterSiriActivity(
+        "mainActivity Suggestion", "mainActivity",
+        isEligibleForSearch: true,
+        isEligibleForPrediction: true,
+        contentDescription: "胸骨圧迫を手伝って",
+        suggestedInvocationPhrase: "open my app"));
+
+    await FlutterSiriSuggestions.instance.buildActivity(FlutterSiriActivity(
+      "beerActivity Suggestion",
+      "beerActivity",
+      isEligibleForSearch: true,
+      isEligibleForPrediction: true,
+      contentDescription: "胸骨圧迫",
+      suggestedInvocationPhrase: "coooooool",
+    ));
+  }
 
   @override
   void dispose() {
@@ -371,7 +362,7 @@ class _TopState extends State<Top> with SingleTickerProviderStateMixin {
                         child: Padding(
                           padding: EdgeInsets.only(
                               top:
-                                  size.height * 0.4 - 66 - animation.value * 1 > 0 ? size.height * 0.4 - 66 - animation.value * 1 : 0),
+                                  size.height * 0.4 - 66 - animation.value * 1 > 0 ? size.height * 0.4 - 66 - animation.value * 1 : 10),
                           child: Center(
                             child: Column(
                               children: [
