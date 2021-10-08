@@ -82,48 +82,6 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                   future: _getResult(userData),
                   builder: (context, snapshot) {
                     return Column(children: [
-                      Column(children: [
-                        Container(
-                          width: double.infinity,
-                          child: Text("ようこそ",
-                              textAlign: TextAlign.left,
-                              style: Theme.of(context).textTheme.subtitle1),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          child: Text(userData.name,
-                              textAlign: TextAlign.left,
-                              style: Theme.of(context).textTheme.headline4),
-                        ),
-                        Container(
-                            width: double.infinity,
-                            child: Text(userData.classCode,
-                                textAlign: TextAlign.left,
-                                style: Theme.of(context).textTheme.bodyText1)),
-                        Container(
-                            width: double.infinity,
-                            child: InkWell(
-                              onTap: () async {
-                                final result =
-                                    await IOSGameCenter.showLeaderboard(
-                                        'jp.hacks.kimura.training_score');
-                              },
-                              child: Text("リーダーボードを見る",
-                                  textAlign: TextAlign.left,
-                                  style: Theme.of(context).textTheme.subtitle2),
-                            )),
-                        Container(
-                            width: double.infinity,
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.of(context).pushNamed('/top');
-                              },
-                              child: Text("ログアウト(トップページへ)",
-                                  textAlign: TextAlign.left,
-                                  style: Theme.of(context).textTheme.subtitle2),
-                            ))
-                      ]),
-
                       _selectedIndex == 0
                           ? Column(children: [
                               Container(
@@ -360,8 +318,10 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                                   child: Text(
                                                                       !snapshot.hasData ||
                                                                               snapshot
-                                                                                  .hasError
-                                                                          ? "--"
+                                                                                  .hasError || snapshot
+                                                                          .data!
+                                                                          .bestScore.toString() == "null"
+                                                                          ? "0"
                                                                           : snapshot
                                                                               .data!
                                                                               .bestScore
@@ -688,6 +648,48 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                               ),
                             ])
                           : Container(),
+
+                      Column(children: [
+                        Container(
+                          width: double.infinity,
+                          child: Text("ようこそ",
+                              textAlign: TextAlign.left,
+                              style: Theme.of(context).textTheme.subtitle1),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          child: Text(userData.name,
+                              textAlign: TextAlign.left,
+                              style: Theme.of(context).textTheme.headline4),
+                        ),
+                        Container(
+                            width: double.infinity,
+                            child: Text(userData.classCode,
+                                textAlign: TextAlign.left,
+                                style: Theme.of(context).textTheme.bodyText1)),
+                        Container(
+                            width: double.infinity,
+                            child: InkWell(
+                              onTap: () async {
+                                final result =
+                                    await IOSGameCenter.showLeaderboard(
+                                        'jp.hacks.kimura.training_score');
+                              },
+                              child: Text("リーダーボードを見る",
+                                  textAlign: TextAlign.left,
+                                  style: Theme.of(context).textTheme.subtitle2),
+                            )),
+                        Container(
+                            width: double.infinity,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context).pushNamed('/top');
+                              },
+                              child: Text("ログアウト(トップページへ)",
+                                  textAlign: TextAlign.left,
+                                  style: Theme.of(context).textTheme.subtitle2),
+                            ))
+                      ]),
 
                       _selectedIndex == 1
                           ? Column(
