@@ -102,8 +102,7 @@ class _ResultState extends State<Result> {
                               Padding(
                                 padding:
                                     EdgeInsets.only(left: size.width * 0.18),
-                                child: Text("W",
-                                    // '${snapshot.data?.score.toString()}',
+                                child: Text('${snapshot.data?.score.toString()}',
                                     style: TextStyle(
                                         fontSize: 48,
                                         fontWeight: FontWeight.w200)),
@@ -136,8 +135,7 @@ class _ResultState extends State<Result> {
                                 padding:
                                     //EdgeInsets.only(left: size.width * 0.18),
                                     EdgeInsets.only(left: size.width * 0.0),
-                                child: Text("W",
-                                    // '${snapshot.data?.average.toStringAsFixed(1)}',
+                                child: Text('${snapshot.data?.average.toStringAsFixed(1)}',
                                     style: TextStyle(
 
                                         fontSize: 48,
@@ -170,8 +168,7 @@ class _ResultState extends State<Result> {
                               Padding(
                                 padding:
                                     EdgeInsets.only(left: size.width * 0.18),
-                                child: Text("W",
-                                    // '${snapshot.data?.rank.toString()}',
+                                child: Text('${snapshot.data?.rank.toString()}',
                                     style: TextStyle(
 
                                         fontSize: 48,
@@ -228,9 +225,7 @@ class _ResultState extends State<Result> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.only(top: 15),
-                                        child: Text(
-                                            "W",
-                                            // '${snapshot.data?.topFiveUsers[0]}',
+                                        child: Text( '${snapshot.data?.topFiveUsers[0]}',
                                             style: TextStyle(
 
                                                 fontSize: 30)),
@@ -240,9 +235,7 @@ class _ResultState extends State<Result> {
                                           padding: EdgeInsets.only(
                                               //left: size.width * 0.18),
                                               left: size.width * 0),
-                                          child: Text(
-                                              "W",
-                                              // '${snapshot.data?.topFiveScores[0].toString()}',
+                                          child: Text( '${snapshot.data?.topFiveScores[0].toString()}',
                                               style: TextStyle(
 
                                                   fontSize: 48,
@@ -266,9 +259,7 @@ class _ResultState extends State<Result> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.only(top: 15),
-                                        child: Text(
-                                            "W",
-                                            // '${snapshot.data?.topFiveUsers[1]}',
+                                        child: Text('${snapshot.data?.topFiveUsers[1]}',
                                             style: TextStyle(
 
                                                 fontSize: 30)),
@@ -278,9 +269,7 @@ class _ResultState extends State<Result> {
                                           padding: EdgeInsets.only(
                                               //left: size.width * 0.18),
                                               left: size.width * 0),
-                                          child: Text(
-                                              "W",
-                                              // '${snapshot.data?.topFiveScores[1].toString()}',
+                                          child: Text('${snapshot.data?.topFiveScores[1].toString()}',
                                               style: TextStyle(
 
                                                   fontSize: 48,
@@ -304,9 +293,7 @@ class _ResultState extends State<Result> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.only(top: 15),
-                                        child: Text(
-                                            "W",
-                                            // '${snapshot.data?.topFiveUsers[2]}',
+                                        child: Text('${snapshot.data?.topFiveUsers[2]}',
                                             style: TextStyle(
 
                                                 fontSize: 30)),
@@ -316,9 +303,7 @@ class _ResultState extends State<Result> {
                                           padding: EdgeInsets.only(
                                               //left: size.width * 0.18),
                                               left: size.width * 0),
-                                          child: Text(
-                                              "W",
-                                              // '${snapshot.data?.topFiveScores[2].toString()}',
+                                          child: Text('${snapshot.data?.topFiveScores[2].toString()}',
                                               style: TextStyle(
 
                                                   fontSize: 48,
