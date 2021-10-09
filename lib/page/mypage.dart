@@ -21,22 +21,22 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
     UserScoreRequest userRequest = UserScoreRequest(
         uuid: userData.id,
         userName: userData.name);
-    print(userRequest.toJson());
     var response = await http.post(url,
         body: json.encode(userRequest.toJson()),
         headers: {"Content-Type": "application/json"});
-    var userScoreResponse = UserScoreResponse.fromJson(json.decode(response.body));
     print(response.body);
-
+    var userScoreResponse = UserScoreResponse.fromJson(json.decode(response.body));
     url = Uri.parse('http://52.193.204.138:5000/class');
     ClassScoreRequest classRequest = ClassScoreRequest(
         uuid: userData.id,
         className: userData.classCode,
         userName: userData.name);
+    print(userScoreResponse.rank);
     response = await http.post(url,
         body: json.encode(classRequest.toJson()),
         headers: {"Content-Type": "application/json"});
     userScoreResponse.rank = json.decode(response.body)['rank'];
+    print(userScoreResponse.rank);
     return userScoreResponse;
   }
 
@@ -356,14 +356,11 @@ class _GradeState extends State<Grade> with SingleTickerProviderStateMixin {
                                                                   padding: const EdgeInsets
                                                                           .only(
                                                                       left: 2),
-                                                                  child: Text(
-                                                                      !snapshot.hasData ||
-                                                                              snapshot
-                                                                                  .hasError || snapshot
-                                                                          .data!
-                                                                          .bestScore.toString() == "null"
-                                                                          ? "0"
-                                                                          : snapshot
+                                                                  child: Text(!snapshot.hasData ||
+                                                                  snapshot.hasError ||snapshot
+                                                                       .data!
+                                                                       .bestScore.toString() == "null"? "0":
+                                                                      snapshot
                                                                               .data!
                                                                               .bestScore
                                                                               .toString(),
