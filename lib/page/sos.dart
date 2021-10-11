@@ -83,7 +83,7 @@ class _SosState extends State<Sos> {
                     ),
                     child: new InkWell(
                         onTap: () {
-                          Navigator.of(context).pushNamed('/aed')
+                          Navigator.of(context).pushNamed('/aed');
                           // showDialog<String>(
                           //   context: context,
                           //   builder: (BuildContext context) => AlertDialog(
