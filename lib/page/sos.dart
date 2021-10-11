@@ -83,7 +83,19 @@ class _SosState extends State<Sos> {
                     ),
                     child: new InkWell(
                         onTap: () {
-                          Navigator.of(context).pushNamed('/aed');
+                          showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              // title: const Text('AlertDialog Title'),
+                              content: const Text('このアプリでは現在地周辺のAEDの場所の取得を可能にするために、現在地のデータが収集されます。アプリを閉じているときや、使用していないときにも収集されます'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () => Navigator.of(context).pushNamed('/aed'),
+                                  child: const Text('了解'),
+                                ),
+                              ],
+                            ),
+                          );
                         },
                         child: Column(
                           children: [
