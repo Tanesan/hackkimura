@@ -28,7 +28,7 @@ class _EmergencyState extends State<Emergency> {
     }
   }
   void _call119() async =>
-      await canLaunch('tel:09071071210') ? await launch('tel:09071071210') : throw 'Could not launch';
+      await canLaunch('tel:119') ? await launch('tel:119') : throw 'Could not launch';
 
   @override
   void initState() {
